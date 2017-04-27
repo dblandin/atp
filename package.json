@@ -1,0 +1,57 @@
+{
+  "name": "apple-tree-partners",
+  "description": "Apple Three Partners company website",
+  "version": "0.0.1",
+  "private": true,
+  "author": "Stinkdigital",
+  "contributors": [
+    "Mathias Van Impe",
+    "James La Marre",
+    "Oskar Tilly"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Stinkdigital/apple-tree-partners"
+  },
+  "bugs": {
+    "url": "https://github.com/Stinkdigital/apple-tree-partners"
+  },
+  "app": {},
+  "engines": {
+    "node": "latest",
+    "npm": "latest"
+  },
+  "devDependencies": {
+    "autoprefixer-stylus": "latest",
+    "backbone": "^1.2.3",
+    "custom-event": "^1.0.0",
+    "eslint": "latest",
+    "exports-loader": "^0.6.3",
+    "gsap": "1.18.0",
+    "imports-loader": "^0.6.5",
+    "json-loader": "^0.5.4",
+    "live-reload": "latest",
+    "node-libs-browser": "*",
+    "npm": "^3.7.5",
+    "parallelshell": "latest",
+    "prefix-style": "^2.0.1",
+    "raf": "^3.2.0",
+    "source-map": "^0.5.3",
+    "stylus": "latest",
+    "twig": "^0.8.8",
+    "twig-loader": "^0.2.0",
+    "underscore": "^1.8.3",
+    "vendor-prefix": "^0.1.0",
+    "webpack": "*"
+  },
+  "scripts": {
+    "dev": "npm run watch:js & parallelshell 'npm run watch:stylus' 'npm run livereload'",
+    "watch:js": "ENV_PROD=0 webpack --progress --colors --watch --cache",
+    "watch:stylus": "$(npm bin)/stylus -m -w ./src/styl/app.styl -o ./public/css/app.css --include-css",
+    "deploy": "npm run lint & parallelshell 'npm run dist:stylus' 'npm run dist:js'",
+    "dist:js": "ENV_PROD=1 webpack",
+    "dist:stylus": "$(npm bin)/stylus -u autoprefixer-stylus ./src/styl/app.styl -o ./public/css/app.min.css --include-css -c",
+    "lint": "eslint ./src/scripts/project; exit 0",
+    "livereload": "$(npm bin)/live-reload --port 9091 ./public/"
+  }
+}

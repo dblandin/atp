@@ -1,0 +1,85 @@
+{#
+ # Porfolio page template
+ # ---------------
+ #}
+
+{% extends "_layouts/_layout" %}
+
+{% block content %}
+
+	<div id="portfolio" class="page-wrapper">
+		<aside class="section-nav portfolio">
+			<ul>
+				{% for expertise in entry.expertiseSection %}
+					
+					{% set anchor = expertise.expertiseTitle|split(' ')[0] %}
+
+					<li class="portfolio"><a class="anchorLink" href="#{{anchor}}">{{expertise.expertiseTitle}}</a></li>
+				{% endfor %}
+			</ul>
+		</aside>
+		
+		{% for expertise in entry.expertiseSection %}
+			
+			{% set anchor = expertise.expertiseTitle|split(' ')[0] %}
+
+			<section class="expertise-section row" id="{{anchor}}">
+
+				{% set image = expertise.expertiseImage.first() %}
+				{% if image %}
+					<div class="lazyLoad" data-src="{{ image.getUrl({ width: 1600, height: 800 }) }}" data-src-m="{{ image.getUrl({ width: 1600, height: 800 }) }}">
+						 <noscript>
+							<img src="{{ image.getUrl({ width: 1600, height: 800 }) }}" alt="{{ image.title }}"/>
+						 </noscript>
+					</div>
+				{% endif %}
+
+				<div class="expertise-title">
+					{% if expertise.type == "areaOfExpertise" %}
+						<h1>{{expertise.expertiseTitle}}</h1>
+					{% endif %}
+				</div>
+				
+				<div class="collapse-wrapper">
+					<div class="expertise-info">
+						{% if expertise.type == "areaOfExpertise" %}
+							
+							<p>{{expertise.expertiseDescription}}</p>
+
+							{% set link = expertise.expertiseLink %}
+
+		         	 		{% if link %}
+								
+								{% set anchor = expertise.expertiseTitle|split(' ')[0] %}
+
+								<a href="../team/#{{anchor}}">{{expertise.expertiseLink}}</a>
+							{% endif %}
+
+						{% endif %}
+					</div>
+					<div class="expertise-companies">
+						<ul class="row">
+							{% for company in expertise.company %}
+								{% if company.type == "company" %}
+									<li class="col-sm-12 col-lg-3">
+										{% set image = company.companyLogo.first() %}
+					          {% if image %}
+					               <span></span><img src="{{ image.getUrl}}" alt="{{ image.title }}"/>
+					          {% endif %}
+
+										<a class="company-about col-lg-12" href="{{ company.url }}">
+											<p>{{company.companyShortDescription}}</p>
+											<h5>Read more</h5>
+										</a>
+									</li>
+								{% endif %}
+							{% endfor %}
+						</ul>
+					</div>
+				</div>	
+			</section>
+		{% endfor %}
+
+	</div>
+
+{% endblock %}

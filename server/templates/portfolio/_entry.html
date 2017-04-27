@@ -1,0 +1,93 @@
+{#
+ # Company page template
+ # ---------------
+ #}
+
+{% extends "_layouts/_layout" %}
+
+{% block content %}
+	
+	<div id="company" class="row page-wrapper">
+
+		{% set image = entry.companyHeaderImage.first() %}
+		{% if image %}
+			<div class="lazyLoad globalHeader" data-src="{{ image.getUrl({ width: 1600, height: 800 }) }}" data-src-m="{{ image.getUrl({ width: 1600, height: 800 }) }}">
+				 <noscript>
+					<img src="{{ image.getUrl({ width: 1600, height: 800 }) }}" alt="{{ image.title }}"/>
+				 </noscript>
+			</div>
+		{% endif %}
+
+		<a href="../portfolio" class="button-back">
+			<svg version="1.1" class="back-arrow" xmlns="http://www.w3.org/2000/svg" viewBox="-245 392 120 10">
+				<polygon points="-125,396 -238,396 -238,392 -244.5,397 -238,402 -238,398 -125,398"/>
+			</svg>
+			
+			Back to Portfolio
+		</a>
+		
+		<section class="content-wrapper row">
+
+			<div class="company-info">
+
+				{# Loop through this company's tags for area of expertise #}
+
+					{% for area in entry.companyTags %}
+						<h2 class="title">{{area.name}}</h2>
+					{% endfor %}
+
+				<h1>{{entry.title}}</h1>
+
+				{% for contactMethods in entry.companyContactMethods %}
+					<a href="{{contactMethods.companyWebsite}}">Visit company website</a>
+
+					{% set linkedin = contactMethods.linkedin %}
+	        {% if linkedin %}
+						<a href="{{contactMethods.linkedin}}">LinkedIn</a>
+					{% endif %}
+				{% endfor %}
+
+				<p>{{entry.companyBio}}</p>
+
+				{% set image = entry.companyLogo.first() %}
+        {% if image %}
+        	<img src="{{ image.getUrl}}" alt="{{ image.title }}"/>
+        {% endif %}
+			</div>
+
+			<div class="latest-news-section row">
+
+				<h3 class="title" id="latest-news">Latest News</h3>
+
+				{% set newsEntriesCriteria = craft.entries({
+				    section: 'news',
+				    order: 'postDate desc'
+				}) %}
+
+				{% set newsEntries = craft.entries.section('news').limit(null).order('publishedDate desc') %}
+				{% for newsEntry in newsEntries %}
+				<div class="news-tile col-sm-12 col-lg-12 {% for tag in newsEntry.tags %} {{ tag.name | split(' ')[0] }} {% endfor %}">
+
+					<div class="content-wrapper-news">
+						<p class="news-date">{{newsEntry.publishedDate | date("M d, Y")}}</p>
+						<h2>{{newsEntry.articleDisplayTitle}}</h2>
+						<a href="/news/{{newsEntry.slug}}" class="read-more">Read more</a>
+					</div>
+				</div>
+			{% endfor %}
+
+			<div class="all-news-container" id="{{entry.title | split(' ')[0]}}">
+
+
+        {% for tag in craft.tags.group('newsTags').relatedTo(entry) %}
+	      	<a class="all-news-link" id="{{tag.title}}" href="../news">More news about this company</a>
+	    	{% endfor %}
+			</div>
+
+			</div>
+
+		</section>
+
+	</div>
+
+{% endblock %}

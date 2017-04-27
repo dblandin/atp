@@ -1,0 +1,111 @@
+{#
+ # Homepage template
+ # ---------------
+ #
+ # When this template gets loaded, it will be because someone has accessed
+ # http://yoursite.com/ (without any URI). Craft checks to see if you have
+ # a Single section set to be the Homepage (as you do, by default), and
+ # loads the section’s Template (this file). A special ‘entry’ variable
+ # will already be set for you, assigned to the Homepage entry.
+ #
+ # It's worth noting that even if you didn't have a Homepage Single section,
+ # as long as this template remains at craft/templates/index.html, it
+ # would still be the one to get loaded when accessing http://yoursite.com/,
+ # albeit without an ‘entry’ variable already set for you.
+ #
+ # See this page for more details on how Craft routes requests:
+ # http://craftcms.com/docs/routing
+ #}
+
+{% extends "_layouts/_layout" %}
+
+{% block content %}
+	<div id="index" class="page-wrapper">
+
+		<section class="hero-section row middle">
+			{% set image = entry.heroImage.first() %}
+			{% if image %}
+				<div class="lazyLoad hero-image" data-src="{{ image.getUrl({ width: 1600, height: 800 }) }}" data-src-m="{{ image.getUrl({ width: 1600, height: 881 }) }}">
+					 <noscript>
+						<img src="{{ image.getUrl({ width: 1600, height: 881 }) }}" alt="{{ image.title }}"/>
+					 </noscript>
+				</div>
+			{% endif %}
+
+			<div class="blurb-container">
+				<div class="outline"></div>
+				{{entry.blurb}}
+			</div>
+		</section>
+
+		<section class="expertise-section">
+
+			{% for header in entry.areasOfExpertise %}
+				{% if header.type == "sectionTitle" %}
+					<h2 class="title">{{ header.header }}</h2>
+				{% endif %}
+			{% endfor %}
+
+			<ul class="areas-container row">
+				{% for expertise in entry.areasOfExpertise %}
+					{% if expertise.type == "areaOfExpertise" %}
+
+						{% set anchor = expertise.areaTitle|split(' ')[0] %}
+
+						<li class="expertise col-sm-12 col-lg-3">
+							<h3>{{expertise.areaTitle}}</h3>
+							<p>{{expertise.areaDescription}}</p>
+							<a href="/portfolio#{{anchor}}">Portfolio</a>
+							<a href="/team#{{anchor}}">Team</a>
+						</li>
+					{% endif %}
+				{% endfor %}
+			</ul>
+
+		</section>
+
+		<section class="partnership-section">
+
+			<h2 class="title">{{ entry.partnershipSectionTitle }}</h2>
+
+			<div class="carousel partnership-carousel row">
+
+				<ul class="carousel-items-container row middle">
+					{% for partnership in entry.partnerships %}
+						{% if partnership.type == "partnership" %}
+							<li class="carousel-item col-sm-12 col-lg-8 {% if loop.index == 1 %} active {% endif %}" data-id="{{loop.index - 1}}">
+								{{partnership.partnershipInfo}}
+							</li>
+						{% endif %}
+					{% endfor %}
+				</ul>
+
+				<div class="carousel-arrows">
+				  <div class="left-arrow"><span></span></div>
+				  <div class="right-arrow"><span></span></div>
+				</div>
+
+			</div>
+
+		</section>
+
+		<section class="latest-news-section row">
+
+			<p class="title">Recent News</h2>
+
+			{% set news = entry.featurednewsitems.order('postDate desc') %}
+			{% for newsItem in news.limit(2) %}
+				<div class="news-tile col-sm-12 col-lg-6">
+
+					<!-- <div class="news-letter">{{newsItem.title|slice(0, 1)}}</div> -->
+					<div class="content-wrapper-news">
+						<p class="news-date">{{newsItem.publishedDate | date("M d, Y")}}</p>
+						<h2>{{newsItem.articleDisplayTitle}}</h2>
+						<a href="/news/{{newsItem.slug}}" class="read-more">Read more</a>
+					</div>
+				</div>
+			{% endfor %}
+		</section>
+
+	</div>
+{% endblock %}

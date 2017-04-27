@@ -1,0 +1,140 @@
+{#
+ # Team page template
+ # ---------------
+ #}
+
+{% extends "_layouts/_layout" %}
+
+{% block content %}
+	
+	<div id="team" class="page-wrapper">
+		<aside class="section-nav">
+			<ul>
+				{% for team in entry.teams %}
+					
+					{% set anchor = team.teamName|split(' ')[0] %}
+
+					<li>
+						<a class="anchorLink" href="#{{anchor}}">{{team.teamName}}</a>
+					</li>
+				{% endfor %}
+
+				<li>
+					<a href="#about">About</a>
+				</li>
+			</ul>
+		</aside>
+		
+		{% for team in entry.teams %}
+			
+			{% set anchor = team.teamName|split(' ')[0] %}
+
+			<section class="team-section row" id="{{anchor}}">
+
+				{% set image = team.teamImage.first() %}
+				{% if image %}
+					<div class="lazyLoad" data-src="{{ image.getUrl({ width: 1600, height: 800 }) }}" data-src-m="{{ image.getUrl({ width: 1600, height: 800 }) }}">
+						 <noscript>
+							<img src="{{ image.getUrl({ width: 1600, height: 800 }) }}" alt="{{ image.title }}"/>
+						 </noscript>
+					</div>
+				{% endif %}
+
+				<div class="team-title">
+					{% if team.type == "teamName" %}
+						<h1>{{team.teamName}}</h1>
+					{% endif %}
+				</div>
+				
+				<div class="collapse-wrapper">
+					<div class="team-info">
+						{% if team.type == "teamName" %}
+							<p>{{team.teamDescription}}</p>
+
+							{% set link = team.teamLink %}
+		          		{% if link %}
+										
+								{% set anchor = team.teamName|split(' ')[0] %}
+
+								<a href="../portfolio#{{anchor}}">{{team.teamLink}}</a>
+							{% endif %}
+
+						{% endif %}
+					</div>
+					<div class="team-members">
+
+						<h2 class="title">{{team.teamMemberTitleCopy}}</h2>
+						
+						<ul class="row">
+							{% for teamMember in team.teamMember %}
+								{% if teamMember.type == "teamMember" %}
+									<li class="members-only-{{teamMember.partnerSelect}} col-sm-12 col-lg-4">
+
+										<div class="team-member-letter col-lg-12">
+											{{teamMember.teamMemberInitials}}
+										</div>
+										<h2>{{teamMember.title}}</a></h2>
+										<p>{{teamMember.teamMemberPosition}}</p>
+
+										<a class="team-member-about col-lg-12" href="{{ teamMember.url }}">
+											<p>{{teamMember.teamMemberShortDescription}}</p>
+											<h5>Read more</h5>
+										</a>
+									</li>
+								{% endif %}
+							{% endfor %}
+						</ul>
+
+						<h2 class="title">{{team.partnerTitleCopy}}</h2>
+						
+						<ul class="row">
+
+							{% for teamMember in team.teamMember %}
+								{% if teamMember.partnerSelect %}
+									<li class="col-sm-12 col-lg-4">
+
+										<div class="team-member-letter col-lg-12">
+											{{teamMember.teamMemberInitials}}
+										</div>
+										<h2>{{teamMember.title}}</a></h2>
+										<p>{{teamMember.teamMemberPosition}}</p>
+
+										<a class="team-member-about col-lg-12" href="{{ teamMember.url }}">
+											<p>{{teamMember.teamMemberShortDescription}}</p>
+											<h5>Read more</h5>
+										</a>
+									</li>
+								{% endif %}
+							{% endfor %}
+						</ul>
+					</div>
+				</div>
+			</section>
+		{% endfor %}
+		
+
+		<section class="team-section row" id="about">
+
+			{% set image = entry.aboutImage.first() %}
+			{% if image %}
+				<div class="lazyLoad" data-src="{{ image.getUrl({ width: 1600, height: 800 }) }}" data-src-m="{{ image.getUrl({ width: 1600, height: 800 }) }}">
+					 <noscript>
+						<img src="{{ image.getUrl({ width: 1600, height: 800 }) }}" alt="{{ image.title }}"/>
+					 </noscript>
+				</div>
+			{% endif %}
+
+			<div class="team-title">
+				<h1>{{entry.aboutTitle}}</h1>
+			</div>
+			
+			<div class="collapse-wrapper">
+				<div class="team-info">
+					<p>{{entry.aboutText}}</p>
+				</div>
+			</div>
+		</section>
+
+	</div>
+
+{% endblock %}

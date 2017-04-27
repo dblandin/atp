@@ -1,0 +1,14 @@
+node_modules
+.DS_Store
+.sass-cache
+composer.lock
+composer.phar
+data/mustache/*
+data/cache/*
+npm-debug.log.*
+public/assets/pngs-sprite/*
+public/js/bundle.js
+public/js/bundle.js.map
+public/css/app.css
+public/css/app.css.map
+shared/jsons/*

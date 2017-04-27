@@ -1,0 +1,100 @@
+#----------------------------------------------------------------------
+# Password Protection
+#----------------------------------------------------------------------
+
+#AuthUserFile /home/atp/.htpasswd
+#AuthName "Restricted"
+#AuthType Basic
+#require valid-user
+
+
+# ----------------------------------------------------------------------
+# Gzip compression
+# ----------------------------------------------------------------------
+
+<IfModule mod_deflate.c>
+  # Insert filter
+  SetOutputFilter DEFLATE
+
+  # Don't compress images
+  SetEnvIfNoCase Request_URI \.(?:gif|jpe?g|png)$ no-gzip dont-vary
+
+  # Make sure proxies don't deliver the wrong content
+  Header append Vary User-Agent env=!dont-vary
+</IfModule>
+
+
+# If you don't use filenames to version, lower the CSS  and JS to something like
+# "access plus 1 week" or so.
+
+<IfModule mod_expires.c>
+ ExpiresActive on
+
+ # Perhaps better to whitelist expires rules? Perhaps.
+ ExpiresDefault                          "access plus 1 month"
+
+ # cache.appcache needs re-requests in FF 3.6 (thanks Remy ~Introducing HTML5)
+ ExpiresByType text/cache-manifest       "access plus 0 seconds"
+
+ # Your document html
+ ExpiresByType text/html                 "access plus 0 seconds"
+
+ # Data
+ ExpiresByType text/xml                  "access plus 0 seconds"
+ ExpiresByType application/xml           "access plus 0 seconds"
+ ExpiresByType application/json          "access plus 0 seconds"
+
+ # Feed
+ ExpiresByType application/rss+xml       "access plus 1 hour"
+ ExpiresByType application/atom+xml      "access plus 1 hour"
+
+ # Favicon (cannot be renamed)
+ ExpiresByType image/x-icon              "access plus 1 week"
+
+ # Media: images, video, audio
+ ExpiresByType image/gif                 "access plus 1 month"
+ ExpiresByType image/png                 "access plus 1 month"
+ ExpiresByType image/jpeg                "access plus 1 month"
+ ExpiresByType video/ogg                 "access plus 1 month"
+ ExpiresByType audio/ogg                 "access plus 1 month"
+ ExpiresByType video/mp4                 "access plus 1 month"
+ ExpiresByType video/webm                "access plus 1 month"
+
+ # HTC files  (css3pie)
+ ExpiresByType text/x-component          "access plus 1 month"
+
+ # Webfonts
+ ExpiresByType application/x-font-ttf    "access plus 1 month"
+ ExpiresByType font/opentype             "access plus 1 month"
+ ExpiresByType application/x-font-woff   "access plus 1 month"
+ ExpiresByType image/svg+xml             "access plus 1 month"
+ ExpiresByType application/vnd.ms-fontobject "access plus 1 month"
+
+ # CSS and JavaScript
+ ExpiresByType text/css                  "access plus 1 year"
+ ExpiresByType application/javascript    "access plus 1 year"
+</IfModule>
+
+
+# ----------------------------------------------------------------------
+# Default Craft .htaccess
+# ----------------------------------------------------------------------
+
+<IfModule mod_rewrite.c>
+	RewriteEngine On
+
+#RewriteCond %{HTTP_HOST} ^appletreepartners.com$ [NC]
+#RewriteRule ^(.*)$ http://www.appletreepartners.com/$1 [L,R=301,NC]
+
+#RewriteCond %{HTTP_HOST} !www.appletreepartners.com$ [NC]
+#RewriteRule ^(.*)$ http%{ENV:protossl}://www.appletreepartners.com/$1 [L,R=301]
+
+	#RewriteCond %{HTTP_HOST} !^www\. [NC]
+        #RewriteRule ^(.*)$ http://www.%{HTTP_HOST}/$1 [R=301,L]
+
+	# Send would-be 404 requests to Craft
+	RewriteCond %{REQUEST_FILENAME} !-f
+	RewriteCond %{REQUEST_FILENAME} !-d
+	RewriteCond %{REQUEST_URI} !^/(favicon\.ico|apple-touch-icon.*\.png)$ [NC]
+	RewriteRule (.+) index.php?p=$1 [QSA,L]
+</IfModule>

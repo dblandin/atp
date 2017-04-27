@@ -1,0 +1,78 @@
+#contact {
+	
+	.location-section {
+		
+		height: 850px;
+
+		.map {
+			
+			#map-1, #map-2, #map-3, {
+				height: 250px;
+			}
+		}
+
+		.city-name {
+
+			margin: 6% 0 8%;
+			margin-left: 40px;
+	   		fontSize(60rem, h1-fontsize, 360, 600);
+
+		}
+		
+		.location-info {
+			
+			display: flex;
+    		flex-direction: row;
+    		flex-wrap: wrap;
+    		align-items: center;
+			
+			top: -10%;
+			
+			.location-details {
+
+				display: block;
+				
+				.address, .tel {
+					
+					&:before {
+						background-position-y: 10px;
+					}
+				}
+				
+				& div {
+
+					margin-bottom: 10%;
+
+				}
+
+			}
+		
+			p {
+				width: 98%;
+		    fontSize(45rem, h5-fontsize, 360, 600);
+	      lineHeight(40rem, h3-fontsize, 360, 600);
+
+			}
+		    	
+	    a {
+
+	    	fontSize(48rem, h5-fontsize, 360, 600);
+
+	    }
+			
+			.contact-center {
+				
+				li {
+					text-align: left;
+				}
+			
+			}
+			
+			.contact-right {
+				
+				margin-left: 40px;
+
+			}
+		}
+	}
+}

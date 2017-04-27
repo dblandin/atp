@@ -1,0 +1,214 @@
+
+.page-wrapper {
+
+  margin-top: 90px;
+
+}
+
+// link styles
+a {
+
+  color: matte-red;
+  text-decoration: none;
+  border-bottom: 1px dotted grey-copy;
+  transition: color 0.1s ease-in-out;
+
+  line-height: 1.4;
+
+  &:hover {
+
+    color: grey-copy;
+
+  }
+
+  &.current {
+    color: matte-red !important;
+  }
+
+  &.header-link {
+
+    color: darker-grey-copy;
+
+    &:hover {
+
+      color: matte-red;
+
+    }
+
+  }
+
+}
+
+p {
+
+  color: dark-grey-copy;
+  font-family: National-Book;
+  letter-spacing: 0;
+
+}
+
+// global image header for sections with
+// only one header image
+.globalHeader {
+
+  aspect-ratio(1600, 250);
+  position: absolute;
+  width: 100%;
+  max-width: 1600px;
+  height: 250px;
+  z-index: 0;
+
+  img {height: 250px;}
+
+}
+
+// subnav on index with entries pages
+.section-nav {
+
+  position: absolute;
+  width: 100%;
+  max-width: 1600px;
+  background-color: transparent;
+  z-index: 1;
+
+  ul {
+
+    height: 128px;
+    width: 70%;
+    display: flex;
+    margin: 0 auto;
+    align-items: center;
+
+    li {
+
+      display: inline-block;
+      width: 20%;
+      text-align: center;
+
+      a {
+        color: darker-grey-copy;
+        &:hover {color: matte-red;}
+      }
+
+      &.portfolio {width: 25%;}
+    }
+
+  }
+
+  &.portfolio {
+
+    border-top: none;
+    width: 100%;
+    max-width: 1600px;
+
+  }
+}
+
+.button-back {
+
+  position: relative;
+  left: 85%;
+  margin-top: 50px;
+  color: darker-grey-copy;
+
+  .back-arrow {
+
+    position: absolute;
+    width: 50%;
+    top: 30%;
+    right: 125%;
+    fill: darker-grey-copy;
+
+  }
+
+}
+
+// title header styles
+.title {
+  width: 100%;
+  margin-bottom: 8%;
+  text-align: center;
+  fontSize(140.11rem, h5-fontsize, 360, 1600);
+  font-family: National-Medium;
+  letter-spacing: 1.5px;
+  color: matte-red;
+  text-transform: uppercase;
+
+  &:after {
+
+    content: "";
+    position: absolute;
+    width: 5%;
+    margin-top: 3.2%;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    -moz-transform: translateX(-50%);
+    -o-transform: translateX(-50%);
+    transform: translateX(-50%);
+    border-bottom: 3px solid matte-red;
+
+  }
+}
+
+// date formatter for news articles with bullet across site
+.news-date {
+  color: grey-copy;
+  font-family: National-Book;
+
+  &:before {
+
+    display: inline-block;
+    content: "";
+    width: 10px;
+    height: 10px;
+    margin-right: 15px;
+    background-color: matte-red;
+
+  }
+}
+
+// latest news sections
+.latest-news-section {
+
+  width: 85%;
+  margin: 0 auto;
+
+  .title {
+
+    &:after {
+
+      width: 4.2%;
+
+    }
+  }
+
+  .news-tile {
+    position: relative;
+    //display: table;
+
+    .content-wrapper-news {
+
+      position: relative;
+      top: 15%;
+      left: 0;
+      padding: 0 10% 75px;
+
+      .news-date {
+
+        fontSize(165rem, h5-fontsize, 360, 1600);
+
+      }
+
+      h2 {
+        margin: 40px 0;
+        font-size: 3vw;
+        line-height: 4.08vw;
+      }
+    }
+
+    a {
+      position: relative;
+      fontSize(175.5rem, h4-fontsize, 360, 1600);
+    }
+  }
+}

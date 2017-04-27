@@ -1,0 +1,177 @@
+#press {
+	
+	.content-wrapper {
+		
+		padding: 100px 6% 2%;
+		z-index: 1;
+		
+		.press-info,
+		.press-team,
+		.press-assets,
+		.press-news {
+			
+			width: 96%;
+	    margin: 0 auto;
+	    padding: 45px 7% 0;
+			border-bottom: 1px solid rgba(0,0,0,0.1);
+			background-color: white;
+
+			h1 {
+				margin: 2% 0;
+				color: darker-grey-copy;
+				fontSize(104.599rem, h1-fontsize, 360, 1600);
+			}
+
+			h2 {
+				margin: 2% 0;
+				color: darker-grey-copy;
+				fontSize(99.555rem, h2-fontsize, 360, 1600);
+			}
+			
+			a {
+				display: inline-block;
+				margin: 20px 60px 50px 0;
+				fontSize(142.2rem, h5-fontsize, 360, 1600);
+			}
+			
+			p {
+				width: 80%;
+				margin-left: 5%;
+				fontSize(150.55rem, h5-fontsize, 360, 1600);
+				line-height: h3-lineheight;
+				
+				em {
+
+					color: matte-red;
+
+				}
+				
+				&:nth-of-type(2) {
+
+					margin-top: 43px;
+					font-family: Sabon;
+					color: darker-grey-copy;
+
+				}
+			}
+			
+			.assets {
+
+				display: inline-block;
+				position: relative;
+				width: 345px;
+				height: 230px;
+				margin: 5%;
+				margin-bottom: 50px;
+				text-align: center;
+				background-color: off-white-background;
+				
+				a {
+
+					display: inline;
+					margin: 0;
+					border-bottom: none;
+
+				}
+					
+				&:nth-child(3n) {
+	
+					margin-right: 0;
+
+				}
+								
+				span {
+
+					display: inline-block;
+				  height: 100%;
+				  vertical-align: middle;
+				  
+				}
+
+				img {
+
+					display: inline-block;
+					width: 180px;
+					vertical-align: middle;
+
+				}
+			}
+		}
+
+		.press-team-list {
+
+			display: table; 
+			width: 100%;
+			padding: 5%;
+			
+			a {
+
+				width: 33%;
+				margin: 2px 0;
+				border-bottom: none;
+
+				p {
+					
+					display: inline;
+					width: inherit;
+					margin: 0;
+					border-bottom: 1px dotted grey-copy;
+					color: dark-grey-copy;
+
+
+					&:hover {color:matte-red;}
+				}
+
+			}
+
+		}
+		
+		.press-news {
+
+			.latest-news-section {
+			  
+			  width: 100%;
+			  margin-top: 75px;
+			
+			}
+    
+	    .content-wrapper-news {
+	      
+	      position: relative;
+	      padding: 0 8% 8%;
+      
+	      .news-date {
+
+	      	margin-left: 0;
+
+	      }
+	      
+	      h2 {
+
+	      	fontSize(110.555rem, h2-fontsize, 360, 1600);
+
+	      }
+	    
+	    }
+      
+      a {
+
+      	bottom: 0;
+
+      }
+
+			.news-link{	
+				
+				p {
+					font-family: Sabon;
+					letter-spacing: -0.04em;
+				}
+
+				em {
+					color: matte-red;
+				}
+			}
+
+		}
+	}
+}

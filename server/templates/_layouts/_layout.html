@@ -1,0 +1,224 @@
+{#
+ # Layout template
+ # ---------------
+ #
+ # This template defines your site’s global layout. It can be
+ # “extended” by other templates to fill in the gaps.
+ #
+ # See Twig’s Template Inheritance documentation for more details:
+ # http://twig.sensiolabs.org/doc/templates.html#template-inheritance
+ #}
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US">
+<head>
+
+  <meta charset="utf-8" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+  <meta name="robots" content="index, follow">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="apple-mobile-web-app-capable" content="yes"/>
+
+  <!-- Opengraph meta -->
+  {% if entry.type is defined and entry.type == 'article' %}
+    {% set longUrl = 'https://www.appletreepartners.com/news/{{entry.slug}}' %}
+  {% else %}
+    {% set longUrl = 'https://www.appletreepartners.com/' %}
+  {% endif %}
+
+  <meta property="og:type" content="{% if entry.type is defined and entry.type == 'article' %} article {% else %} website {% endif %}" />
+  <meta property="og:title" content="{% if entry.type is defined and entry.type == 'article' %} Apple Tree Partners News {% else %} Apple Tree Partners {% endif %}" />
+  <meta property="og:description" content="{% if entry.type is defined and entry.type == 'article' %} {{ entry.title }} {% else %} We use a long term investment philosophy to build sustainable healthcare companies through meaningful partnerships and deep expertise. {% endif %}" />
+  <meta property="og:url" content="{% if entry.type is defined and entry.type == 'article' %} https://www.appletreepartners.com/news/{{entry.slug}} {% else %} https://www.appletreepartners.com {% endif %}" />
+  <meta property="og:image" content="/assets/images/site/icon_atp_logo.png" />
+  <meta property="og:site_name" content="Apple Tree Partners" />
+
+  <!-- Twitter meta -->
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:site" content="@AppleTreePartners" />
+  <meta name="twitter:title" content="{% if entry.type is defined and entry.type == 'article' %} Apple Tree Partners News {% else %} Apple Tree Partners {% endif %}" />
+  <meta name="twitter:description" content="{% if entry.type is defined and entry.type == 'article' %} {{ entry.title }} - {{ longUrl|shorten }}{% else %} We use a long term investment philosophy to build sustainable healthcare companies through meaningful partnerships and deep expertise. - {{ longUrl|shorten }} {% endif %}" />
+  <meta name="twitter:image" content="/assets/images/site/icon_atp_logo.png" />
+
+  <title>{% if title is defined %}{{ entry.title }} - {% endif %}{{ siteName }}</title>
+
+  <link rel="shortcut icon" href="/assets/favicon.ico" type="image/x-icon">
+  <link rel="icon" type="image/png" href="/assets/favicon.png" />
+
+  {% if siteUrl == 'http://atp.local/' %}
+    <link rel="stylesheet" href="/css/app.css">
+  {% else %}
+    <link rel="stylesheet" href="/css/app.min.css">
+  {% endif %}
+</head>
+
+<body>
+  <div id="container">
+
+    <header id="header" class="row no-gutters middle">
+
+      <div class="col-sm-4 col-lg-auto">
+        <a href="{{ siteUrl }}">
+          {% set image = headerLogo.globalHeaderImage.first() %}
+          {% if image %}
+              <img class="default" src="{{ image.getUrl({ width: 1600, height: 800 }) }}" alt="{{ image.title }}"/>
+          {% endif %}
+
+          {% set image = homepageLogo.homepageLogoImage.first() %}
+          {% if image %}
+              <img class="white" src="{{ image.getUrl({ width: 1600, height: 800 }) }}" alt="{{ image.title }}"/>
+          {% endif %}
+        </a>
+      </div>
+
+      <div class="menu">
+        <svg version="1.1" class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="-297 390 16 14">
+          <rect x="-297" y="390" class="st0" width="16" height="2"/>
+          <rect x="-297" y="402" class="st0" width="16" height="2"/>
+          <rect x="-297" y="396" class="st0" width="16" height="2"/>
+        </svg>
+
+        <!-- <div class="menu-copy">Menu</div> -->
+      </div>
+
+      <nav class="navigation col-sm-12 col-lg-8">
+
+        {% set image = headerBackground.headerBackground.first() %}
+        {% if image %}
+            <img class="mobile-background" src="{{ image.getUrl({ width: 1600, height: 800 }) }}" alt="{{ image.title }}"/>
+        {% endif %}
+
+        <ul>
+          <li><a class="header-link portfolio {% if craft.request.lastSegment == 'portfolio' %} current {% endif %}" href="/portfolio">Portfolio</a></li>
+          <li><a class="header-link team {% if craft.request.lastSegment == 'team' %} current {% endif %}" href="/team">Team</a></li>
+          <li><a class="header-link news {% if craft.request.lastSegment == 'news' %} current {% endif %}" href="/news">News</a></li>
+          <li><a class="header-link {% if craft.request.lastSegment == 'contact' %} current {% endif %}" href="/contact">Contact</a></li>
+        </ul>
+      </nav>
+
+    </header>
+
+    <main id="content" role="main">
+      {% block content %}
+        <!-- Page content comes here -->
+      {% endblock %}
+    </main>
+
+    <footer id="footer" class="row">
+
+      <div class="footer-image col-sm-12 col-lg-6">
+        {% set image = footer.footerImage.first() %}
+        {% if image %}
+          <div class="lazyLoad" data-src="{{ image.getUrl({ width: 1600, height: 800 }) }}" data-src-m="{{ image.getUrl({ width: 1600, height: 800 }) }}">
+             <noscript>
+              <img src="{{ image.getUrl({ width: 1600, height: 800 }) }}" alt="{{ image.title }}"/>
+             </noscript>
+          </div>
+        {% endif %}
+
+        {{footer.footerCopy}}
+      </div>
+
+      <div class="footer-links-container col-sm-12 col-lg-6">
+        
+        <div class="footer-links-wrapper">
+          <h2 class="title">Our offices</h2>
+
+           <ul class="locations">
+            {% for location in footer.locations %}
+              <li><a class="footerLink" href="/contact#{{location.cityName | split(' ')[0] }}">{{location.cityName}}</a></li>
+            {% endfor %}
+          </ul>
+
+          <ul class="links">
+            {% for link in footer.footerLink %}
+              <li><a href="{{link.hyperlink}}">{{link.displayLink}}</a></li>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+
+    </footer>
+  </div>
+
+  <script type="text/javascript">
+
+        (function (n) {
+
+            var detectIE = function(){
+
+              var ua = window.navigator.userAgent;
+
+              var msie = ua.indexOf('MSIE ');
+              if (msie > 0) {
+                // IE 10 or older => return version number
+                return parseInt(ua.substring(msie + 5, ua.indexOf('.', msie)), 10);
+              }
+
+              var trident = ua.indexOf('Trident/');
+              if (trident > 0) {
+                // IE 11 => return version number
+                var rv = ua.indexOf('rv:');
+                return parseInt(ua.substring(rv + 3, ua.indexOf('.', rv)), 10);
+              }
+
+              var edge = ua.indexOf('Edge/');
+              if (edge > 0) {
+                // Edge (IE 12+) => return version number
+                return parseInt(ua.substring(edge + 5, ua.indexOf('.', edge)), 10);
+              }
+
+              // other browser
+              return false;
+            }
+
+            var ie = detectIE();
+
+            if (ie)
+                 document.documentElement.className ="is-ie " + document.documentElement.className;
+
+            if (ie && ie <= 9) {
+
+                window.location = '/legacy';
+
+            } else {
+
+                 var u = window.location.href;
+                 var p = u.split("/")[0];
+                 var t = n.createElement("script"), i; t.type = "text/javascript";
+                 t.async = !0;
+
+                 if(u.indexOf("atp.local") > -1) {
+                  t.src = "/js/bundle.js";
+                 }else{
+                  t.src = "/js/bundle.min.js";
+                 }
+
+                 i = n.getElementsByTagName("script")[0];
+                 i.parentNode.insertBefore(t, i);
+            }
+
+        })(document)
+
+    </script>
+
+    <!-- Google Analytics -->
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-80576759-1', 'auto');
+      ga('send', 'pageview');
+    </script>
+    <!-- End Google Analytics -->
+
+    {% if siteUrl == 'http://atp.local/' %}
+      <script src="http://localhost:9091"></script>
+    {% endif %}
+
+</body>
+</html>

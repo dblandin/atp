@@ -1,0 +1,50 @@
+{#
+#
+# Shortener for Craft Settings Template
+# Author: Aaron Berkowitz (@asberk)
+# https://github.com/aberkie/craft-shortener
+#
+#}
+
+{% from "_includes/forms" import textfield, selectfield %}
+
+{{textfield({
+	id: 'token',
+	name: 'token',
+	value: settings['token'],
+	label: 'Bitly Token',
+	size: 30
+})}}
+
+{{textfield({
+	id: 'cacheTime',
+	name: 'cacheTime',
+	value: settings['cacheTime'],
+	label: 'Cache Time In Seconds (Default is 1 day)',
+	size: 30
+})}}
+
+{% set opts = [
+	{'value': 'bit.ly', 'label':  'bit.ly'},
+	{'value': 'j.mp', 'label':  'j.mp'},
+	{'value': 'bitly.com', 'label':  'bitly.com'}
+]  %}
+
+{{selectfield({
+	id: 'domain',
+	name: 'domain',
+	label: 'Domain - the short domain to use',
+	value: settings['domain'],
+	options: opts
+})}}
+
+{{textfield({
+	id: 'customDomain',
+	name: 'customDomain',
+	value: settings['customDomain'],
+	label: 'Custom short domain associated with your account. This will override the Domain option above.',
+	size: 30
+})}}
+
+
+<p>Be sure to <strong>clear your site's cache</strong> after making any changes to these settings!</p>

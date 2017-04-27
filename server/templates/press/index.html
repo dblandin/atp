@@ -1,0 +1,114 @@
+{#
+ # Press page template
+ # ---------------
+ #}
+
+{% extends "_layouts/_layout" %}
+
+{% block content %}
+
+	<div id="press" class="row page-wrapper">
+
+		{% set image = entry.pressHeaderImage.first() %}
+		{% if image %}
+			<div class="lazyLoad globalHeader" data-src="{{ image.getUrl({ width: 1600, height: 800 }) }}" data-src-m="{{ image.getUrl({ width: 1600, height: 800 }) }}">
+				 <noscript>
+					<img src="{{ image.getUrl({ width: 1600, height: 800 }) }}" alt="{{ image.title }}"/>
+				 </noscript>
+			</div>
+		{% endif %}
+
+		<section class="content-wrapper row">
+
+				<div class="press-info">
+
+					{% for press in entry.pressMaterials %}
+						{% if press.type == "pressInfo" %}
+
+							<h1>{{press.pressHeader}}</h1>
+							<p>{{press.pressDescription}}</p>
+							{{press.pressLink}}
+
+						{% endif %}
+					{% endfor %}
+				</div>
+
+				<div class="press-assets">
+
+					{% for press in entry.pressMaterials %}
+						{% if press.type == "brandAssets" %}
+
+							<h2>{{press.brandAssetsHeader}}</h2>
+
+		          {% for image in press.logoOptions.kind('image') %}
+								<li class="assets">
+			            <span></span><a href="{{ image.getUrl}}" download>
+			            	<img src="{{ image.getUrl({ width: 300 })}}" alt="{{ image.title }}"/>
+			            </a>
+		          	</li>
+		          {% endfor %}
+
+						{% endif %}
+					{% endfor %}
+				</div>
+
+				<div class="press-team">
+
+					{% for press in entry.pressMaterials %}
+						{% if press.type == "pressTeam" %}
+
+							<h2>{{press.pressTeamHeader}}</h2>
+
+							<div class="press-team-list"> 
+		            {% for press in entry.pressMaterials %}
+									{% if press.type == "pressTeamBios" %}
+	  								
+			              {% set bio = press.headshotAndBio.first() %}
+			            	{% if bio %}
+		  								<a href="{{ bio.getUrl}}">
+					              <p>{{press.headshotBioNames}}</p>
+				              </a>
+					          {% endif %}
+			                            
+			            {% endif %}
+		            {% endfor %}
+	          	</div>
+
+						{% endif %}
+					{% endfor %}
+				</div>
+
+				<div class="press-news">
+
+					{% for press in entry.pressMaterials %}
+						{% if press.type == "pressNews" %}
+
+							<h2>{{press.pressNewsHeader}}</h2>
+
+							<div class="latest-news-section row">
+
+								{% for newsItem in craft.entries.section('news').limit(2).order('publishedDate desc') %}
+									<div class="news-tile col-sm-12 col-lg-6">
+
+										<!-- <div class="news-letter">{{newsItem.title|slice(0, 1)}}</div> -->
+										<div class="content-wrapper-news">
+											<p class="news-date">{{newsItem.publishedDate | date("M d, Y")}}</p>
+											<h2>{{newsItem.articleDisplayTitle}}</h2>
+											<a href="/news/{{newsItem.slug}}" class="read-more">Read more</a>
+										</div>
+									</div>
+								{% endfor %}
+
+							</div>
+
+							<div class="news-link">{{press.pressNewsLink}}</div>
+
+						{% endif %}
+					{% endfor %}
+				</div>
+
+		</section>
+
+	</div>
+
+{% endblock %}

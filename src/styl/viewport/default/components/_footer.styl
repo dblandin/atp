@@ -1,0 +1,156 @@
+#footer {
+
+	position: relative;
+  width: 100%;
+  height: 275px;
+  background-color: black;
+	overflow: hidden;
+
+	.footer-links-container {
+
+		padding: 70px 0 80px;
+
+	}
+
+	.footer-links-wrapper {
+
+		width: 85%;
+		margin-left: 15%;
+
+	}
+
+	.title {
+
+		margin-bottom: 25px;
+		color: darker-grey-copy;
+		text-align: left;
+
+		&:after {width: 0;}
+
+	}
+
+	.footer-image {
+
+	  	padding: 0;
+		background-color: lazyload-background;
+
+		h2 {
+
+			color: darker-grey-copy;
+			position: relative;
+	    width: 70%;
+  		margin: 0 auto;
+    	z-index: 1;
+			fontSize(136.6rem, h2-fontsize, 360, 1600);
+			lineHeight(96.6rem, h2-lineheight, 320 , 1600);
+
+			&:first-of-type {
+
+				margin-top: 66px;
+
+			}
+
+			a, em {
+
+				color: darker-grey-copy;
+				border-bottom: 1px dotted darker-grey-copy;
+				fontSize(136.6rem, h2-fontsize, 360, 1600);
+				lineHeight(96.6rem, h2-lineheight, 320 , 1600);
+
+				&:hover {
+
+					color: matte-red;
+
+				}
+
+			}
+
+		}
+
+		.lazyLoad {
+
+			overflow: visible;
+
+			img {
+
+				height: 275px;
+
+			}
+
+		}
+
+	}
+
+	.links {
+
+		display: table;
+    	width: 25%;
+    	margin: 20px 0;
+
+		li {
+
+			display: table-cell;
+			text-align: center;
+
+			&:first-child {
+
+				text-align: left;
+
+			}
+
+			a {
+
+				display: block;
+				color: grey-copy;
+				text-decoration: none;
+				border-bottom: none;
+				font-family: National-Book;
+				fontSize(150.55rem, h5-fontsize, 360, 1600);
+
+				&:hover {color: white;}
+
+			}
+
+		}
+	}
+
+	.locations {
+
+		display: table;
+
+		li {
+
+			display: inline-block;
+			text-align: center;
+			border-right: 1px solid darker-grey-copy;
+			padding-right: 20px;
+			padding-left: 20px;
+
+			&:first-of-type {
+
+				padding-left: 0;
+
+			}
+
+			&:last-child {
+
+				border-right: none;
+
+			}
+
+			a {
+
+				display: block;
+				color: white;
+				text-decoration: none;
+				fontSize(123.05rem, h4-fontsize, 360, 1600);
+				border-bottom: 2px dotted dark-grey-copy;
+
+
+				&:hover {color: grey-copy;}
+
+			}
+
+		}
+	}
+}

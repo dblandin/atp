@@ -1,0 +1,132 @@
+{#
+ # News index template
+ # -------------------
+ #
+ # This template is loaded whenever http://example.com/news is
+ # requested, because it is located at news/index.html in your
+ # craft/templates/ folder.
+ #
+ # See this page for more details on how Craft routes requests:
+ # http://craftcms.com/docs/routing
+ #}
+
+{% extends "_layouts/_layout" %}
+
+{# Get the most recent featured News entry, regardless of which page we're on #}
+{% set featuredEntry = craft.entries({
+    section: 'news',
+    featuredEntry: 0,
+    order: 'postDate asc'
+}).first() %}
+
+{# Now set the params for the remaining entries, and paginate them in groups of 4 #}
+{% set newsEntriesCriteria = craft.entries({
+    section: 'news',
+    id: (featuredEntry ? 'not '~featuredEntry.id),
+    order: 'postDate asc'
+}) %}
+
+{% set isFirstPage = craft.request.getPageNum() == 1 %}
+{% set limit = null %}
+{% paginate newsEntriesCriteria.limit(limit) as newsEntries %}
+
+{% if isFirstPage and featuredEntry %}
+    {# Tack the featured entry onto the front of the list #}
+    {% set newsEntries = [featuredEntry]|merge(newsEntries) %}
+{% endif %}
+
+{% block content %}
+	
+	<div id="news" class="page-wrapper">
+		
+		{% set newsEntries = craft.entries.section('news').limit(1).order('publishedDate desc') %}
+		{% for newsEntry in newsEntries %}
+			{% set image = newsEntry.newsHeaderImage.first() %}
+			{% if image %}
+				<div class="lazyLoad globalHeader" data-src="{{ image.getUrl({ width: 1600, height: 800 }) }}" data-src-m="{{ image.getUrl({ width: 1600, height: 800 }) }}">
+					 <noscript>
+						<img src="{{ image.getUrl({ width: 1600, height: 800 }) }}" alt="{{ image.title }}"/>
+					 </noscript>
+				</div>
+			{% endif %}
+		{% endfor %}
+
+		<!-- add filter templating here -->
+
+		{% set newsEntries = craft.entries.section('news').limit(null).order('publishedDate desc') %}
+		<div class="news-filters">
+			
+			<div class="news-filters-container">
+
+				<div class="news-filter-select-container">
+					<span>Show</span>
+					<div class="news-filter-select year">all<div class="arrow-down"></div></div>
+				</div>
+
+				<div class="news-filter-select-container">
+					<span>news about</span>
+					<div class="news-filter-select company">all companies<div class="arrow-down"></div></div>
+				</div>
+				
+			</div>
+
+			<ul class="year-filter-dropdown">
+
+			  <li id="all" class="year-filter">all</li>
+				{% set allEntries = craft.entries.section('news').limit(null).order('publishedDate desc') %}
+				{% for date, entries in allEntries | group("publishedDate|date('Y')") %}
+				  <li id="year-{{date}}" class="year-filter">{{date}}</li>
+				{% endfor %}
+
+			</ul>
+
+			<ul class="company-filter-dropdown">
+
+			  <li id="all" class="company-filter">all companies</li>
+				{% for tag in craft.tags.group('newsTags').relatedTo(allEntries) %}
+			  	<li id="{{tag.title | split(' ')[0] }}" class="company-filter">{{tag.title}}</li>
+				{% endfor %}
+
+			</ul>
+		</div>
+		<!-- end filter template --> 
+
+		<div class="article-container">
+			{# Loop through this page's News entries #}
+			{% set newsEntriesCriteria = craft.entries({
+			    section: 'news',
+			    order: 'postDate desc'
+			}) %}
+			{% for newsEntry in newsEntries %}
+
+				{# Figure out where this entry should link to #}
+				{% set url = newsEntry.type.handle == 'link' ? newsEntry.linkUrl : newsEntry.url %}
+
+				<article class="news-tile all {% for tag in newsEntry.tags %} {{ tag.name | split(' ')[0] }} {% endfor %} year-{{newsEntry.publishedDate | slice(0,4) }} row">
+						
+					<div class="news-info">
+
+						<p class="news-date">{{newsEntry.publishedDate | date("M d, Y")}}</p>
+						<a class="title-link" href="{{ url }}"><h1>{{ newsEntry.articleDisplayTitle }}</h1></a>
+						<a href="{{ url }}" class="more-link">Read More</a>
+					</div>
+						
+				</article>
+			{% endfor %}
+		</div>
+
+		<div class="load-more-container">
+
+			<a class="load-more">Load more news</a>
+
+		</div>
+
+		<div class="no-more-container">
+
+			<p>{{noMoreNewsCopy.noNewsCopy}}</p>
+
+		</div>
+
+	</div>	
+
+{% endblock %}

@@ -1,0 +1,97 @@
+.carousel {
+	
+	position: relative;
+	
+	.left-arrow,
+	.right-arrow {
+		
+		width: 40px;
+		height: 40px;
+		position: absolute;
+		top: 25%;
+		cursor: pointer;
+
+		span {
+			
+		  left: 50%;
+		  top: 50%;
+		  transform: translate(-50%, -50%);
+	      width: 18px;
+	      height: 18px;
+	      position: absolute;
+	      border-top: 3px solid dark-grey-copy;
+	      border-left: 3px solid dark-grey-copy;
+	    }
+      
+    }
+    .left-arrow {
+	  
+      left: 8%;
+      -ms-transform: rotate(315deg);
+      -webkit-transform: rotate(315deg);
+      transform: rotate(315deg);
+
+    }
+    .right-arrow {
+    	
+      right: 8%;
+      -ms-transform: rotate(135deg);
+      -webkit-transform: rotate(135deg);
+      transform: rotate(135deg);
+      
+    }
+	
+	&.partnership-carousel {
+		
+		height: 230px;
+		
+		.carousel-item {
+			
+			width: 60%;
+			position: absolute;
+			text-align: center;
+			left: 0;
+		    right: 0;
+		    top: 0;
+		    margin-left: auto;
+		    margin-right: auto;
+		    z-index: 1;
+			
+			transition: all 0.4s ease-in-out;
+		    -webkit-transform: translate3d(0, 10px,0);
+		    -moz-transform: translate3d(0, 10px,0);
+		    -o-transform: translate3d(0, 10px,0);
+		    transform: translate3d(0, 10px,0);
+		    opacity: 0;
+		    
+		    &.active {
+		    	
+		    	-webkit-transform: translate3d(0,0,0);
+		    	-moz-transform: translate3d(0,0,0);
+		    	-o-transform: translate3d(0,0,0);
+		    	transform: translate3d(0,0,0);
+				opacity: 1;
+				z-index: 2;
+		    }
+		}
+	}
+	
+	&.trajectory-carousel {
+
+		height: 100%;
+		padding-top: 100px;
+		
+		.left-arrow,
+		.right-arrow {
+			z-index: 5;
+			top: 55%;
+			display: none;
+		}
+		
+		.carousel-item {
+			
+			// position: absolute;
+		
+		}
+	}
+}

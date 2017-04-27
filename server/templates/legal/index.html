@@ -1,0 +1,52 @@
+{#
+ # Legal index template
+ # -------------------
+ #
+ # This template is loaded whenever http://example.com/legal is
+ # requested, because it is located at legal/index.html in your
+ # craft/templates/ folder.
+ #
+ # See this page for more details on how Craft routes requests:
+ # http://craftcms.com/docs/routing
+ #}
+
+{% extends "_layouts/_layout" %}
+
+{% block content %}
+	
+	<div id="legal" class="row page-wrapper">
+
+		{% set image = entry.headerImage.first() %}
+		{% if image %}
+			<div class="lazyLoad globalHeader" data-src="{{ image.getUrl({ width: 1600, height: 800 }) }}" data-src-m="{{ image.getUrl({ width: 1600, height: 881 }) }}">
+				 <noscript>
+					<img src="{{ image.getUrl({ width: 1600, height: 881 }) }}" alt="{{ image.title }}"/>
+				 </noscript>
+			</div>
+		{% endif %}
+		
+		<section class="legal-section row">
+			<div class="legal-copy">
+
+				{% for copy in entry.legalCopy %}
+					
+					{% if copy.type == "legalHeader" %}
+						<h1> {{ copy.legalHeader }} </h1>
+					{% endif %}
+
+					{% if copy.type == "legalBody" %}
+						<h3> {{ copy.subheader }} </h3>
+						<p> {{ copy.legalCopy }} </p>
+					{% endif %}
+
+					{% if copy.type == "legalLink" %}
+						<p> {{ copy.linkCopy }} </p>
+					{% endif %}
+
+				{% endfor %}
+
+			</div>
+		</section>		
+	</div>	
+
+{% endblock %}

@@ -1,0 +1,53 @@
+{#
+ # Contact template
+ # ---------------
+ #}
+
+{% extends "_layouts/_layout" %}
+
+{% block content %}
+	
+	<div id="contact" class="page-wrapper">
+		{% for location in entry.locations %}
+			<section class="location-section row" id="{{location.cityName | split(' ')[0] }}">
+				<div class="map row">
+					<div id="map-{{loop.index}}" class="gmap" data-lat="{{location.locationLatitude}}" data-lng="{{location.locationLongitude}}"></div>
+				</div>
+				<div class="location-info col-sm-11 col-lg-10">
+					{% if location.type == "location" %}
+					
+					<h2 class="city-name">{{location.cityName}}</h2>
+
+						<div class="location-details row between">
+						
+							{% set address = location.address|nl2br %}
+
+							<div class="col-sm-10 col-lg-4">
+								<p class="address">{{address|raw}}</p>
+							</div>
+
+							<div class="contact-center col-sm-10 col-lg-4">
+								<ul class="tel">
+									<li><p>Tel {{location.telephone}}</p></li>
+									<li><p>Fax {{location.fax}}</p></li>
+								</ul>
+							</div>
+
+							<div class="contact-right col-sm-10 col-lg-4">
+								<p class="contactLine">
+									{{location.contactLine}}
+									<a href="mailto:{{location.email}}">{{location.emailCopy}}</a>
+								</p>
+							</div>
+						{% endif %}
+					</div>
+				</div>
+			</section>
+		{% endfor %}
+	</div>
+
+	<script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCXoQFbN_HfRuizfHOFbLOLeX-4C1mc1Yk">
+    </script>
+
+{% endblock %}

@@ -1,0 +1,148 @@
+
+.page-wrapper {margin-top: 55px;}
+
+// link styles
+a {
+
+  color: matte-red;
+  text-decoration: none;
+  border-bottom: 1px dotted grey-copy;
+  transition: color 0.1s ease-in-out;
+
+  &:hover {
+
+    color: grey-copy;
+
+  }
+
+  &.header-link {
+
+    color: darker-grey-copy;
+
+    &:hover {
+
+      color: matte-red;
+
+    }
+
+  }
+
+}
+
+// global image header for sections with
+// only one header image
+.globalHeader {
+
+  aspect-ratio(1600, 150);
+  position: absolute;
+  height: 150px;
+
+  img {height: 150px;}
+
+}
+
+// subnav on index with entries pages
+.section-nav {
+
+  position: relative;
+  width: 100%;
+  background-color: black;
+  overflow-x: scroll;
+
+  ul {
+
+    width: 225%;
+    height: 50px;
+
+  }
+
+  &.portfolio {
+
+    width: 100%;
+    margin-left: 0;
+
+  }
+}
+
+.button-back {
+
+  left: 50%;
+  transform: translateX(-50%);
+  margin: 12% 0 6%;
+
+  .back-arrow {
+
+    width: 40%;
+
+  }
+
+}
+
+// title header styles
+.title {
+
+  margin-bottom: 50px;
+  fontSize(48rem, h5-fontsize, 360, 600);
+
+  &:after {
+
+    margin-top: 28px;
+    border-bottom: 1px solid matte-red;
+    width: 25%;
+
+  }
+}
+
+// date formatter for news articles with bullet across site
+.news-date {
+
+  &:before {
+
+    width: 6px;
+    height: 6px;
+
+  }
+}
+
+// latest news sections
+.latest-news-section {
+
+  width: 95%;
+
+  .title {
+
+    &:after {
+
+      width: 15%;
+
+    }
+  }
+
+  .news-tile {
+    &:before {
+      padding-top: 85%;
+    }
+
+    .content-wrapper-news {
+
+      top: 5%;
+
+      .news-date {
+
+          fontSize(50rem, h5-fontsize, 360, 600);
+      }
+
+      h2 {
+
+        margin: 20px 0;
+        fontSize(50rem, h4-fontsize, 360, 600);
+        lineHeight(31rem, h4-fontsize, 360, 600);
+
+      }
+    }
+
+    a {
+      fontSize(39rem, h5-fontsize, 360, 600);
+    }
+  }
+}

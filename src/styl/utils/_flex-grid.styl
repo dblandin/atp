@@ -1,0 +1,93 @@
+/* 
+  For more information about flex, check out Chris Coyier's article: https://css-tricks.com/snippets/css/a-guide-to-flexbox/ 
+  Based on -> https://github.com/kristoferjoseph/flexboxgrid/blob/master/css/flexboxgrid.css
+*/
+
+/* ==== Flex alignment classes ==== */
+
+.row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin: 0;
+  
+  &.reverse {
+    flex-direction: row-reverse;
+  }
+  
+  // For in case we don't want gutters on all the rows
+  &.no-gutters {
+    
+    margin: 0;
+    
+    [class^="col"]{
+      
+      padding: 0;
+      
+    }
+    
+  }
+  
+}
+
+.col  {
+  
+  &.reverse {
+    flex-direction: column-reverse;
+  }
+  
+  &.no-gutters {
+    padding: 0;
+  }
+  
+}
+
+/* Justify-content */
+
+.start {
+  justify-content: flex-start;
+}
+
+.center {
+  justify-content: center;
+}
+
+.end {
+  justify-content: flex-end;
+}
+
+.around {
+  justify-content: space-around;
+}
+
+.between {
+  justify-content: space-between;
+}
+
+/* Align-items */
+
+.top {
+  align-items: flex-start;
+}
+
+.middle {
+  align-items: center;
+}
+
+.bottom {
+  align-items: flex-end;
+}
+
+.column{
+  flex-direction: column
+}
+
+/* Order */
+
+.first {
+  order: -1;
+}
+
+.last {
+  order: 1;
+}

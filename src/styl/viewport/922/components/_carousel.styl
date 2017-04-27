@@ -1,0 +1,55 @@
+.carousel {
+	
+	.left-arrow,
+	.right-arrow {
+		
+		width: 72px;
+		height: 72px;
+	
+		span {
+			width: 10px;
+  			height: 10px;
+		}
+      
+    }
+    
+    .left-arrow {
+	  
+      left: 0;
+
+    }
+    .right-arrow {
+    	
+      right: 0;
+    }
+	
+	&.partnership-carousel {
+		
+		height: 150px;
+
+		.carousel-item {
+			
+			width: 75%;
+
+		}
+	}
+	
+	&.trajectory-carousel {
+		
+		padding-top: 0;
+
+		.left-arrow,
+		.right-arrow {
+			
+			width: 72px;
+			height: 72px;
+			top: 50%;
+	      	display: block;
+	    }
+		
+		.carousel-item {
+			
+			position: absolute;
+		}
+	}
+}

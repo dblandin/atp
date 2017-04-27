@@ -1,0 +1,13 @@
+{
+    "rules": {
+        "strict": [0, "never"],
+        "no-mixed-spaces-and-tabs": [2, "smart-tabs"],
+        "no-unused-vars": 1
+     },
+     "plugins": [
+
+     ],
+    "ecmaFeatures": {
+        "modules" : "true"
+    },
+}

@@ -1,0 +1,93 @@
+{#
+ # Team Member page template
+ # ---------------
+ #}
+
+{% extends "_layouts/_layout" %}
+
+{% block content %}
+	
+	<div id="team-member" class="row page-wrapper">
+
+		{% set image = entry.memberHeaderImage.first() %}
+		{% if image %}
+			<div class="lazyLoad globalHeader" data-src="{{ image.getUrl({ width: 1600, height: 800 }) }}" data-src-m="{{ image.getUrl({ width: 1600, height: 800 }) }}">
+				 <noscript>
+					<img src="{{ image.getUrl({ width: 1600, height: 800 }) }}" alt="{{ image.title }}"/>
+				 </noscript>
+			</div>
+		{% endif %}
+
+		<a href="../team" class="button-back">
+			<svg version="1.1" class="back-arrow" xmlns="http://www.w3.org/2000/svg" viewBox="-245 392 120 10">
+				<polygon points="-125,396 -238,396 -238,392 -244.5,397 -238,402 -238,398 -125,398"/>
+			</svg>
+			
+			Back to Team
+		</a>
+		
+		<section class="content-wrapper row">
+
+			<div class="team-member-info">
+
+				{# Loop through this team member's tags for area of expertise #}
+				{% for area in entry.teamMemberExpertise %}
+					<h2 class="title">{{area.name}}</h2>
+
+				{% endfor %}
+
+				<h1>{{entry.title}}</h1>
+				<h4>{{entry.teamMemberPosition}}</h4>
+				<p>{{entry.teamMemberBio}}</p>
+
+				{% for contactMethods in entry.teamMemberContactMethods %}
+				
+					{% set email = contactMethods.email %}
+				  {% if email %}
+						<a href="mailto:{{contactMethods.email}}">Send an Email</a>
+					{% endif %}
+
+					{% set linkedin = contactMethods.linkedin %}
+				  {% if linkedin %}
+						<a href="{{contactMethods.linkedin}}" target="_blank">LinkedIn</a>
+					{% endif %}
+
+					<a>{{contactMethods.phone}}</a>
+
+				{% endfor %}
+
+				<div class="team-member-letter">
+					{{entry.teamMemberInitials}}
+				</div>
+
+			</div>
+
+			<div class="team-member-board">
+
+				<h2 class="title">Board Responsibilities</h2>
+
+					<ul class="member-board row">
+						{% for company in entry.teamTags %}
+							{% if company.type == "company" %}
+								<li class="col-sm-12 col-lg-3">
+									{% set image = company.companyLogo.first() %}
+				          {% if image %}
+				              <span></span><img src="{{ image.getUrl}}" alt="{{ image.title }}"/>
+				          {% endif %}
+
+									<a class="company-about col-lg-12" href="{{ company.url }}">
+										<p>{{company.companyShortDescription}}</p>
+										<h5>Read more</h5>
+									</a>
+								</li>
+							{% endif %}
+						{% endfor %}
+					</ul>
+
+			</div>
+
+		</section>
+
+	</div>
+
+{% endblock %}

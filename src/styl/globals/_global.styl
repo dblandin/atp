@@ -1,0 +1,103 @@
+/*==========  Global styles  ==========*/
+
+html, body {
+	
+  box-sizing: border-box;
+  font-size: 62.5%;
+  -webkit-text-size-adjust: 100%;
+  -webkit-font-smoothing: antialiased;
+  /* apply a natural box layout model to all elements, but allowing components to change */
+  /* We are defining a base font-size of 62.5% to have the convenience of sizing rems in a way that is similar to using px. 14px = 1.4rem */
+}
+
+html {background-color: #fafafa;}
+
+body {
+	max-width: 1600px;	
+	margin:0 auto;
+ 
+  font-family: Sabon;
+  
+  background-color: white;
+
+}
+
+*, *:before, *:after {
+	
+  box-sizing: inherit;
+  
+}
+
+body.is-scrolling{
+	pointer-events : none;
+}
+
+// Header Styles
+h1 a, h2 a, h3 a, h4 a, h5 a, h6 a { font-weight: inherit; }
+
+h1 { font-size: h1-fontsize; line-height: 100%; letter-spacing: -0.04em; }
+h2 { font-size: h2-fontsize; line-height: 100%; letter-spacing: -0.04em; }
+h3 { font-size: h3-fontsize; line-height: 100%; letter-spacing: -0.04em; }
+h4 { font-size: h4-fontsize; line-height: 100%; letter-spacing: -0.04em; }
+h5 { font-size: h5-fontsize; line-height: 100%; letter-spacing: -0.04em; }
+h6 { font-size: h6-fontsize; line-height: 100%; letter-spacing: -0.04em; }
+a  { font-size: base-fontsize; letter-spacing: -0.04em; }
+p  { font-size: base-fontsize; }
+
+blockquote, pre, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, b, footer{
+	font-size: base-fontsize;
+}
+
+// Text Styles
+em { font-style: italic; }
+strong { font-weight: 500; }
+small { font-size: 75%; }
+.light { font-weight: 300; }
+.thin { font-weight: 200; }
+
+#content {
+  padding: 0;
+}
+
+/* Lazy Loading Styles */
+
+.lazyLoad {
+  
+  position: relative;
+  width: 100%;
+  background-color: lazyload-background;
+  margin-bottom:0;
+  overflow:hidden;
+}
+
+.lazyLoad img,
+.lazyLoad video,
+.lazyLoad iframe {
+  
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: auto;
+  will-change: opacity, transform;
+  opacity:0;
+  transition: opacity 0.5s ease-out, transform 0.5s cubic-bezier(0.215, 0.61, 0.355, 1);
+  transform: scale3d(1.025, 1.025, 1.025);
+}
+
+.lazyLoad.show img,
+.lazyLoad.show video,
+.lazyLoad.show iframe {
+  
+  opacity:1;
+  transform: scale3d(1, 1, 1);
+}
+
+.lazyLoad iframe {
+  
+  outline: none;
+  border: none;
+  height: 100%;
+}

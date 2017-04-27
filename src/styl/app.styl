@@ -1,0 +1,55 @@
+/*==========  Browser reset  ==========*/
+@import "_reset";
+global-reset()
+
+/*==========  Globals and Variables  ==========*/
+
+@import "globals/_variables";
+@import "globals/_z-indexes";
+@import "globals/_fonts";
+@import "globals/_global";
+
+/*==========  Mixins  ==========*/
+
+@import "mixins/_mixins";
+
+/*==========  Utils  ==========*/
+
+@import "utils/_flex-grid";
+@import "utils/_utils";
+
+/*==========  Media queries  ==========*/
+
+@import "viewport/_default";
+
+/* Generate the default grid == generateGrid($size, $min-colums, $max-columns, $gutters (10px)) */
+generateGrid(lg, min-columns, max-columns, gutters); 
+
+/* Devices, Tablets/Mobile */
+@media only screen and (max-width : 922px)  {
+	
+	@import "viewport/_922";
+	
+	/* Generate the small grid == generateGrid($size, $min-colums, $max-columns, $gutters (10px)) */
+	generateGrid(sm, min-columns, max-columns, gutters);
+}
+
+
+/* Medium Devices, Tablets Portrait Override */
+@media only screen and (min-width : 768px) and (max-width : 1000px){
+	
+	@import "viewport/_768";
+	
+	/* Not neccesary to create a new grid for tablet */
+
+}	
+
+/* Landscape Devices */
+
+
+/* Landscape */
+@media only screen and (max-device-width: 736px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: landscape) {
+	
+	@import "viewport/_landscape";
+
+}	

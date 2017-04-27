@@ -1,0 +1,211 @@
+#team {
+
+	margin-bottom: 50px;
+
+	.team-section {
+
+		border-top: 5px solid matte-red;
+		position: relative;
+
+		&:first-of-type {
+
+			border-top: none;
+
+		}
+
+		&:last-of-type {
+
+			.collapse-wrapper {
+
+				.team-info {min-height: 280px;}
+			}
+		}
+
+		.lazyLoad {
+
+			aspect-ratio(1600, 250);
+			position: absolute;
+			width: 100%;
+			max-width: 1600px;
+			height: 250px;
+			z-index: 0;
+
+			img {
+
+				height: 250px;
+
+			}
+
+		}
+
+		.team-title {
+
+			width: 85%;
+			margin: 125px auto 0;
+	    	padding: 45px 8% 2% 8%;
+			background-color: white;
+			z-index: 1;
+
+			h1 {
+				margin: 2% 0;
+				color: darker-grey-copy;
+				font-size: 45px;
+			}
+		}
+
+		.collapse-wrapper {
+
+			overflow: hidden;
+			width: 100%;
+			height: 100%;
+			z-index: 1;
+		}
+
+		.team-info {
+
+			width: 85%;
+			margin: 0px auto;
+			padding: 0 8% 5% 8%;
+			background-color: white;
+
+			p {
+				margin-bottom: 20px;
+				fontSize(150.55rem, h5-fontsize, 360, 1600);
+				line-height: h3-lineheight;
+			}
+
+			a {
+				display: inline-block;
+				margin-top: 50px;
+				fontSize(142.2rem, h5-fontsize, 360, 1600);
+			}
+		}
+
+		.team-members {
+
+			width: 85%;
+			margin: 0 auto;
+
+			.title {
+
+				margin-bottom: 5%;
+
+				&:after {width: 3.5%;}
+
+			}
+
+			ul {
+
+				margin: 25px 0;
+
+				.members-only-1 {
+
+					display: none;
+
+				}
+
+				li {
+
+					position: relative;
+					min-height: 300px;
+					margin-bottom: 1%;
+
+					transition: all 0.2s ease-in-out;
+
+					z-index: 1;
+
+					h2 {
+
+						width: 65%;
+    				margin: 20% auto 0;
+						text-align: center;
+						margin-top: 20%;
+						fontSize(123.05rem, h4-fontsize, 360, 1600);
+						z-index: 1;
+
+					}
+
+					p {
+
+						text-align: center;
+						fontSize(150.55rem, h5-fontsize, 360, 1600);
+						max-width: 80%;
+  					margin: 3% auto 0;
+						z-index: 1;
+
+					}
+
+					.team-member-letter {
+
+						position: absolute;
+						opacity: 0.95;
+						top: 5%;
+						left: 50%;
+						transform: translateX(-50%);
+						text-align: center;
+						color: big-letters;
+						fontSize(33.85rem, h1-fontsize, 360, 1600);
+						letter-spacing: -11px;
+						z-index: -1;
+
+					}
+
+					.team-member-about {
+
+						display: inline-block;
+						opacity: 0;
+				    position: absolute;
+				    width: 90%;
+				    height: 90%;
+				    top: 0;
+				    left: 10%;
+				    padding: 8%;
+				    background-color: big-letters;
+						border-bottom: none;
+
+						transition: all 0.1s ease-in-out;
+
+						p {
+
+							text-align: left;
+							line-height: h4-lineheight;
+							fontSize(150.55rem, h5-fontsize, 360, 1600);
+							max-width: 100%;
+
+						}
+
+						h5 {
+
+							display: inline-block;
+							margin-top: 20px;
+							font-family: Sabon;
+							color: matte-red;
+							fontSize(142.2rem, h5-fontsize, 360, 1600);
+							border-bottom: 1px dotted darker-grey-copy;
+
+						}
+
+						a {
+
+							&:hover {color: grey-copy;}
+
+						}
+
+					}
+
+					&:hover {
+
+						.team-member-about {
+
+							opacity: 1;
+
+						}
+
+					}
+
+				}
+
+			}
+		}
+	}
+}
