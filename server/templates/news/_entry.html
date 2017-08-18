@@ -16,138 +16,103 @@
 {% extends "_layouts/_layout" %}
 
 {% block content %}
-	
-	<div id="article" class="row page-wrapper">
 
-		{% set image = entry.newsHeaderImage.first() %}
-		{% if image %}
-			<div class="lazyLoad globalHeader" data-src="{{ image.getUrl({ width: 1600, height: 800 }) }}" data-src-m="{{ image.getUrl({ width: 1600, height: 800 }) }}">
-				 <noscript>
-					<img src="{{ image.getUrl({ width: 1600, height: 800 }) }}" alt="{{ image.title }}"/>
-				 </noscript>
-			</div>
-		{% endif %}
+	<div id="article" class="page-wrapper">
 
-		<a href="../news" class="button-back">
-			<svg version="1.1" class="back-arrow" xmlns="http://www.w3.org/2000/svg" viewBox="-245 392 120 10">
-				<polygon points="-125,396 -238,396 -238,392 -244.5,397 -238,402 -238,398 -125,398"/>
-			</svg>
-			
-			Back to News
-		</a>
+		<section class="legal-section">
+			<div class="container">
+				<div class="grid">
 
-		<article class="content-wrapper row">
-
-			<div class="article-body">
-
-				<h3 class="news-date">{{entry.publishedDate | date("M d, Y")}}</h3>
-
-				<h1>{{entry.title}}</h1>
-				
-				{% for section in entry.articleBody %}
-				 	{% if section.type == "text" %}
-						<p>{{section.text}}</p>
-					{% endif %}
-				{% endfor %}
-
-			{# Loop through this new article's tags for mire news from link #}
-			{% for tag in entry.tags %}
-
-		    <a class="all-news-link" id="{{tag.name}}" href="../news">All news about {{tag.name}}</a>
-
-			{% endfor %}
-			</div>
-		</article>
-
-		<section class="social">
-			<ul class="icon-container row middle start">
-				<li><p>Share this article:</p></li>
-				<li class="icon">
-					<button class="facebook"><svg version="1.1" id="facebook" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-							viewBox="0 0 7 15" style="enable-background:new 0 0 7 15;" xml:space="preserve">
-							<style type="text/css">
-								.st0{fill:#B2B2B2;}
-							</style>
-							<g>
-								<path id="Facebook" class="st0" d="M1.5,3.2c0,0.4,0,2,0,2H0v2.5h1.5V15h3V7.7h2c0,0,0.2-1.2,0.3-2.5c-0.3,0-2.3,0-2.3,0
-									s0-1.4,0-1.7C4.5,3.3,4.8,3,5.2,3c0.3,0,1,0,1.6,0c0-0.3,0-1.5,0-2.6c-0.8,0-1.8,0-2.2,0C1.4,0.4,1.5,2.9,1.5,3.2z"/>
-							</g>
-						</svg>
-					</button>
-				</li>
-				<li class="icon">
-					<button class="twitter">
-						<svg version="1.1" id="twitter" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-							viewBox="0 0 18 15" style="enable-background:new 0 0 18 15;" xml:space="preserve">
-							<style type="text/css">
-								.st0{fill:#B2B2B2;}
-							</style>
-							<path class="st0" d="M17.5,2.1c-0.6,0.3-1.3,0.5-2.1,0.6c0.7-0.4,1.3-1.1,1.6-2c-0.7,0.4-1.5,0.7-2.3,0.9c-0.7-0.7-1.6-1.1-2.6-1.1
-								c-2,0-3.6,1.6-3.6,3.6c0,0.3,0,0.6,0.1,0.8C5.6,4.7,3,3.2,1.2,1.1C0.9,1.6,0.7,2.2,0.7,2.9c0,1.2,0.6,2.3,1.6,3
-								c-0.6,0-1.1-0.2-1.6-0.4c0,0,0,0,0,0c0,1.7,1.2,3.2,2.9,3.5C3.3,9,3,9.1,2.6,9.1C2.4,9.1,2.2,9.1,2,9c0.5,1.4,1.8,2.5,3.3,2.5
-								c-1.2,1-2.8,1.5-4.5,1.5c-0.3,0-0.6,0-0.9,0c1.6,1,3.5,1.6,5.5,1.6c6.6,0,10.2-5.5,10.2-10.2c0-0.2,0-0.3,0-0.5
-								C16.4,3.4,17,2.8,17.5,2.1z"/>
-						</svg>
-					</button>
-				</li>
-				<li class="icon">
-					<button class="linkedin">
-						<svg version="1.1" id="linkedin" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-							viewBox="0 0 15 15" style="enable-background:new 0 0 15 15;" xml:space="preserve">
-							<style type="text/css">
-								.st0{fill:#B2B2B2;}
-							</style>
-							<g id="black">
-								<g id="linkedin" transform="translate(16.000000, 17.000000)">
-									<path class="st0" d="M-12.9-2v-9.7h-3V-2H-12.9z M-12.9-15.1c0-0.9-0.6-1.5-1.5-1.5c-0.9,0-1.5,0.7-1.5,1.5c0,0.8,0.6,1.5,1.5,1.5
-										h0C-13.5-13.6-12.9-14.2-12.9-15.1z M-8.1-2v-5.5c0-0.3,0-0.6,0.1-0.8c0.2-0.6,0.8-1.2,1.7-1.2c1.2,0,1.9,0.7,1.9,2V-2h3v-5.6
-										c0-3-1.6-4.4-3.8-4.4c-1.8,0-2.5,1-3,1.7l0-1.3h-3c0,0.9,0,9.7,0,9.7H-8.1z"/>
-								</g>
-							</g>
-						</svg>
-					</button>
-				</li>
-				<li class="icon">
-					<a class="mail" href="mailto:?subject={{entry.title}}&body=Hi%2C%0A%0AI%20thought%20you'd%20like%20this%3A%0A%0Ahttp%3A%2F%2Fwww.appletreepartners.com%2Fnews%2F{{entry.slug}}">
-						<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-							viewBox="0 0 22 15" style="enable-background:new 0 0 22 15;" xml:space="preserve">
-							<style type="text/css">
-								.st0{fill:#B2B2B2;}
-							</style>
-							<path class="st0" d="M11,8.2L11,8.2c0.2,0,0.3,0,0.4-0.1l0,0c0,0,0,0,0,0l0.4-0.3l9-7.5L20.9,0H1.2c0,0.1,0,0.1-0.1,0.2L10.5,8
-								C10.7,8.1,10.9,8.2,11,8.2L11,8.2z M0,1.8v10.8c0,0.1,0.1,0.1,0.1,0.1c0,0,0.1,0,0.1,0l6.7-5.4L0.2,1.7C0.2,1.7,0.1,1.7,0,1.8
-								C0,1.8,0,1.8,0,1.8z M15.1,7.3l6.6,5.3c0.1,0.1,0.2,0.1,0.3,0c0,0,0-0.1,0-0.1V2c0-0.1-0.1-0.2-0.2-0.2c0,0-0.1,0-0.1,0L15.1,7.3z
-								M12,10c-0.6,0.5-1.4,0.5-2,0L8.4,8.7l-7.5,6.2v0C0.9,15,0.9,15,1,15c0,0,0,0,0,0h20c0.1,0,0.1,0,0.1-0.1v0l-7.5-6.1L12,10z"/>
-						</svg>
-					</a>
-				</li>
-			</ul>
-		</section>
-
-		{% set newsEntries = craft.entries.section('news').limit(null) %}
-		{% set thisEntryId = entry.id %}
-		<section class="latest-news-section row" id="{{ thisEntryId }}">
-
-			<h3 class="title">More News</h3>
-
-			{% set news = craft.entries.section('news').order('publishedDate desc') %}
-			{% for newsItem in news.limit(null) %}
-
-				{# Figure out where this entry should link to #}
-				{% set url = newsItem.type.handle == 'link' ? newsItem.linkUrl : newsItem.url %}
-				<div class="news-tile {{ newsItem.id }} col-sm-12 col-lg-6">
-
-					<!-- <div class="news-letter">{{newsItem.title|slice(0, 1)}}</div> -->
-					<div class="content-wrapper-news">
-						<p class="news-date">{{newsItem.publishedDate | date("M d, Y")}}</p>
-						<h2>{{newsItem.articleDisplayTitle}}</h2>
-						<a href="{{ url }}" class="read-more">Read more</a>
+					<div>
+						<div class="subnav-container col-2-8 back-to-articles">
+							<a href="../news" class="button-back">
+								<svg class="back-arrow" xmlns="http://www.w3.org/2000/svg" width="16" height="28" viewBox="0 0 16 28"><polygon fill="#818181" points="271.617 31.476 257.999 17.858 271.615 4.242 273.558 6.185 261.884 17.858 273.559 29.533" transform="translate(-258 -4)"/></svg>
+							</a>
+						</div>
+						<div class="overview-container col-6-8">
+							<div class="news-date bold desktop-only">{{entry.publishedDate | date("M d, Y")}}</div>
+							<h2 class="margin-b-40 title">{{entry.title}}</h2>
+							<div class="news-date bold tablet-only">{{entry.publishedDate | date("M d, Y")}}</div>
+						</div>
 					</div>
+
+					<div>
+						<div class="subnav-container col-2-8">
+							<div class="social">
+								<div class="bold">Share</div>
+								<a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u={{ url(craft.request.path)|url_encode }}">
+									<svg version="1.1" id="facebook" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 7 15" style="enable-background:new 0 0 7 15;" xml:space="preserve">
+										<style type="text/css">.st0{fill:#B2B2B2;}</style>
+										<g><path id="Facebook" class="st0" d="M1.5,3.2c0,0.4,0,2,0,2H0v2.5h1.5V15h3V7.7h2c0,0,0.2-1.2,0.3-2.5c-0.3,0-2.3,0-2.3,0
+												s0-1.4,0-1.7C4.5,3.3,4.8,3,5.2,3c0.3,0,1,0,1.6,0c0-0.3,0-1.5,0-2.6c-0.8,0-1.8,0-2.2,0C1.4,0.4,1.5,2.9,1.5,3.2z"/>
+										</g>
+									</svg>
+								</a>
+								<a target="_blank" href="http://twitter.com/intent/tweet?status={{entry.title|slice(0, 100)|url_encode}}+{{ url(craft.request.path)|url_encode }}">
+									<svg version="1.1" id="twitter" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 18 15" style="enable-background:new 0 0 18 15;" xml:space="preserve">
+										<style type="text/css">.st0{fill:#B2B2B2;}</style>
+										<path class="st0" d="M17.5,2.1c-0.6,0.3-1.3,0.5-2.1,0.6c0.7-0.4,1.3-1.1,1.6-2c-0.7,0.4-1.5,0.7-2.3,0.9c-0.7-0.7-1.6-1.1-2.6-1.1
+											c-2,0-3.6,1.6-3.6,3.6c0,0.3,0,0.6,0.1,0.8C5.6,4.7,3,3.2,1.2,1.1C0.9,1.6,0.7,2.2,0.7,2.9c0,1.2,0.6,2.3,1.6,3
+											c-0.6,0-1.1-0.2-1.6-0.4c0,0,0,0,0,0c0,1.7,1.2,3.2,2.9,3.5C3.3,9,3,9.1,2.6,9.1C2.4,9.1,2.2,9.1,2,9c0.5,1.4,1.8,2.5,3.3,2.5
+											c-1.2,1-2.8,1.5-4.5,1.5c-0.3,0-0.6,0-0.9,0c1.6,1,3.5,1.6,5.5,1.6c6.6,0,10.2-5.5,10.2-10.2c0-0.2,0-0.3,0-0.5
+											C16.4,3.4,17,2.8,17.5,2.1z"/>
+									</svg>
+								</a>
+								<a target="_blank" href="http://www.linkedin.com/shareArticle?mini=true&url={{ url(craft.request.path)|url_encode }}&title={{entry.title|url_encode}}&source=http://appletreepartners.com">
+									<svg version="1.1" id="linkedin" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 15 15" style="enable-background:new 0 0 15 15;" xml:space="preserve">
+										<style type="text/css">.st0{fill:#B2B2B2;}</style>
+										<g id="black">
+											<g id="linkedin" transform="translate(16.000000, 17.000000)">
+												<path class="st0" d="M-12.9-2v-9.7h-3V-2H-12.9z M-12.9-15.1c0-0.9-0.6-1.5-1.5-1.5c-0.9,0-1.5,0.7-1.5,1.5c0,0.8,0.6,1.5,1.5,1.5
+													h0C-13.5-13.6-12.9-14.2-12.9-15.1z M-8.1-2v-5.5c0-0.3,0-0.6,0.1-0.8c0.2-0.6,0.8-1.2,1.7-1.2c1.2,0,1.9,0.7,1.9,2V-2h3v-5.6
+													c0-3-1.6-4.4-3.8-4.4c-1.8,0-2.5,1-3,1.7l0-1.3h-3c0,0.9,0,9.7,0,9.7H-8.1z"/>
+											</g>
+										</g>
+									</svg>
+								</a>
+								<a class="mail" target="_blank" href="mailto:?subject={{entry.title}}&body=Hi%2C%0A%0AI%20thought%20you'd%20like%20this%3A%0A%0Ahttp%3A%2F%2Fwww.appletreepartners.com%2Fnews%2F{{entry.slug}}">
+									<svg version="1.1" id="emailshare" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 22 15" style="enable-background:new 0 0 22 15;" xml:space="preserve">
+										<style type="text/css">.st0{fill:#B2B2B2;}</style>
+										<path class="st0" d="M11,8.2L11,8.2c0.2,0,0.3,0,0.4-0.1l0,0c0,0,0,0,0,0l0.4-0.3l9-7.5L20.9,0H1.2c0,0.1,0,0.1-0.1,0.2L10.5,8
+											C10.7,8.1,10.9,8.2,11,8.2L11,8.2z M0,1.8v10.8c0,0.1,0.1,0.1,0.1,0.1c0,0,0.1,0,0.1,0l6.7-5.4L0.2,1.7C0.2,1.7,0.1,1.7,0,1.8
+											C0,1.8,0,1.8,0,1.8z M15.1,7.3l6.6,5.3c0.1,0.1,0.2,0.1,0.3,0c0,0,0-0.1,0-0.1V2c0-0.1-0.1-0.2-0.2-0.2c0,0-0.1,0-0.1,0L15.1,7.3z
+											M12,10c-0.6,0.5-1.4,0.5-2,0L8.4,8.7l-7.5,6.2v0C0.9,15,0.9,15,1,15c0,0,0,0,0,0h20c0.1,0,0.1,0,0.1-0.1v0l-7.5-6.1L12,10z"/>
+									</svg>
+								</a>
+							</div>
+						</div>
+						<div class="overview-container col-6-8">
+
+							{% for section in entry.articleBody %}
+							 	{% if section.type == "text" %}
+									<p>{{section.text}}</p>
+								{% endif %}
+							{% endfor %}
+
+							<!--
+							{% for tag in entry.tags %}
+						    <a class="all-news-link" id="{{tag.name}}" href="../news">All news about {{tag.name}}</a>
+							{% endfor %}
+
+							{% set news = craft.entries.section('news').order('publishedDate desc') %}
+							{% for newsItem in news.limit(null) %}
+
+								{# Figure out where this entry should link to #}
+								{% set url = newsItem.type.handle == 'link' ? newsItem.linkUrl : newsItem.url %}
+								<div class="news-tile {{ newsItem.id }} col-sm-12 col-lg-6">
+									<div class="content-wrapper-news">
+										<p class="news-date">{{newsItem.publishedDate | date("M d, Y")}}</p>
+										<a href="{{ url }}" class="read-more"><h2>{{newsItem.articleDisplayTitle}}</h2></a>
+									</div>
+								</div>
+							{% endfor %}
+							-->
+						</div>
+					</div>
+
 				</div>
-			{% endfor %}
-
+			</div>
 		</section>
-
 	</div>
 
 {% endblock %}

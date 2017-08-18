@@ -1,0 +1,187 @@
+//////////////////////////////////////////////////////////////////////////////
+// Page
+
+.error-page {
+	text-align: center;
+	padding: 100px 40px;
+	h1 {
+		color: $gray;
+		margin-bottom: 10px;
+	}
+	a {
+		@include transition (all, $timing-short, ease-in-out);
+		color: $primary;
+		cursor: pointer;
+		&:hover {
+			color: darken($primary, 20%);
+		}
+	}
+}
+
+body {
+	&.color-1 {
+		// background-color: lighten($primary, 35%);
+	}
+}
+
+.container {
+	position: relative;
+	margin-left: 40px;
+	margin-right: 40px;
+}
+
+#body {
+	margin-top: 100px;
+	section {
+		display: block;
+		padding-top: 70px;
+		padding-bottom: 70px;
+		&.hero-section {
+			min-height: calc(100vh - 100px);
+		}
+		&.color-background {
+			background-color: $light-gray;
+		}
+	}
+}
+#footer {
+	p {
+		margin: 0;
+	}
+	.offices {
+		padding-bottom: 140px;
+		padding-top: 70px;
+		margin-bottom: 0;
+	}
+	.links {
+		position: absolute;
+		left: 0;
+		bottom: 40px;
+		color: $gray;
+		a {
+			margin-right: 20px;
+		}
+	}
+}
+
+.tiles {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	.tile {
+		width: 33.33%;
+		float: left;
+		padding-right: $margin-base;
+		padding-bottom: 20px;
+		.grid &:last-of-type {
+			padding-right: 0;
+		}
+	}
+}
+
+.down-arrow {
+	@include transition (all, $timing-short, ease-in-out);
+	position: absolute;
+	bottom: 40px;
+	left: 50%;
+	margin-left: -20px;
+	display: block;
+	cursor: pointer;
+	opacity: 0.5;
+
+	animation-name: floating;
+	-webkit-animation-name: floating;
+	animation-duration: 1.5s;
+	-webkit-animation-duration: 1.5s;
+	animation-iteration-count: infinite;
+	-webkit-animation-iteration-count: infinite;
+	&:hover {
+		opacity: 1;
+	}
+}
+
+.carousel-items-container {
+	list-style: none;
+}
+.carousel-indicators {
+	margin-top: 60px;
+	button {
+		@include transition (all, $timing-short, ease-in-out);
+		@include border-radius (100px);
+		width: 14px;
+		height: 14px;
+		padding: 0;
+		background-color: transparent;
+		border: 2px solid $black;
+		cursor: pointer;
+		margin-right: 4px;
+		&:hover {
+			border-color: $primary;
+		}
+		&.active {
+			background-color: $black;
+			border-color: $black;
+		}
+	}
+}
+
+.social {
+	margin-top: 6px;
+	#facebook,
+	#twitter,
+	#linkedin,
+	#emailshare {
+		max-width: 18px;
+		max-height: 18px;
+		margin-right: 8px;
+		margin-top: 8px;
+	}
+}
+
+.year-filter-dropdown,
+.company-filter-dropdown {
+	&.active {
+		li {
+			display: block;
+		}
+	}
+	li {
+		@include transition (all, $timing-short, ease-in-out);
+		display: none;
+		list-style: none;
+		cursor: pointer;
+		color: $gray;
+		&:hover {
+			color: $black;
+		}
+		&.active {
+			color: $primary;
+			display: block;
+		}
+	}
+}
+.load-more {
+	cursor: pointer;
+}
+.tablet-nav {
+	display: none;
+}
+.news-tile {
+	display: none;
+	&.active {
+		display: block;
+	}
+	&.hidden {
+		display: none !important;
+	}
+}
+.see-map {
+	display: inline-block;
+	margin-top: 20px;
+}
+.map {
+	min-height: 500px;
+	#map {
+		min-height: 500px;
+	}
+}

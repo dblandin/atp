@@ -1,114 +1,115 @@
-{#
- # Press page template
- # ---------------
- #}
-
 {% extends "_layouts/_layout" %}
 
 {% block content %}
 
-	<div id="press" class="row page-wrapper">
+	<div id="legal" class="page-wrapper">
 
-		{% set image = entry.pressHeaderImage.first() %}
-		{% if image %}
-			<div class="lazyLoad globalHeader" data-src="{{ image.getUrl({ width: 1600, height: 800 }) }}" data-src-m="{{ image.getUrl({ width: 1600, height: 800 }) }}">
-				 <noscript>
-					<img src="{{ image.getUrl({ width: 1600, height: 800 }) }}" alt="{{ image.title }}"/>
-				 </noscript>
-			</div>
-		{% endif %}
+		<section class="legal-section">
+			<div class="container">
+				<div class="grid">
 
-		<section class="content-wrapper row">
+					<div class="subnav-container col-2-8">
+						<h4 class="bold">About</h4>
+						<h4 class="bold"><a href="/about">Overview</a></h4>
+						<h4 class="bold"><a href="/press" class="active">Press</a></h4>
+						<h4 class="bold"><a href="/legal">Legal</a></h4>
+					</div>
 
-				<div class="press-info">
+					<div class="overview-container col-6-8">
 
-					{% for press in entry.pressMaterials %}
-						{% if press.type == "pressInfo" %}
 
-							<h1>{{press.pressHeader}}</h1>
-							<p>{{press.pressDescription}}</p>
-							{{press.pressLink}}
+									<div class="press-info">
 
-						{% endif %}
-					{% endfor %}
-				</div>
+										{% for press in entry.pressMaterials %}
+											{% if press.type == "pressInfo" %}
 
-				<div class="press-assets">
+												<h1>{{press.pressHeader}}</h1>
+												<p>{{press.pressDescription}}</p>
+												{{press.pressLink}}
 
-					{% for press in entry.pressMaterials %}
-						{% if press.type == "brandAssets" %}
-
-							<h2>{{press.brandAssetsHeader}}</h2>
-
-		          {% for image in press.logoOptions.kind('image') %}
-								<li class="assets">
-			            <span></span><a href="{{ image.getUrl}}" download>
-			            	<img src="{{ image.getUrl({ width: 300 })}}" alt="{{ image.title }}"/>
-			            </a>
-		          	</li>
-		          {% endfor %}
-
-						{% endif %}
-					{% endfor %}
-				</div>
-
-				<div class="press-team">
-
-					{% for press in entry.pressMaterials %}
-						{% if press.type == "pressTeam" %}
-
-							<h2>{{press.pressTeamHeader}}</h2>
-
-							<div class="press-team-list"> 
-		            {% for press in entry.pressMaterials %}
-									{% if press.type == "pressTeamBios" %}
-	  								
-			              {% set bio = press.headshotAndBio.first() %}
-			            	{% if bio %}
-		  								<a href="{{ bio.getUrl}}">
-					              <p>{{press.headshotBioNames}}</p>
-				              </a>
-					          {% endif %}
-			                            
-			            {% endif %}
-		            {% endfor %}
-	          	</div>
-
-						{% endif %}
-					{% endfor %}
-				</div>
-
-				<div class="press-news">
-
-					{% for press in entry.pressMaterials %}
-						{% if press.type == "pressNews" %}
-
-							<h2>{{press.pressNewsHeader}}</h2>
-
-							<div class="latest-news-section row">
-
-								{% for newsItem in craft.entries.section('news').limit(2).order('publishedDate desc') %}
-									<div class="news-tile col-sm-12 col-lg-6">
-
-										<!-- <div class="news-letter">{{newsItem.title|slice(0, 1)}}</div> -->
-										<div class="content-wrapper-news">
-											<p class="news-date">{{newsItem.publishedDate | date("M d, Y")}}</p>
-											<h2>{{newsItem.articleDisplayTitle}}</h2>
-											<a href="/news/{{newsItem.slug}}" class="read-more">Read more</a>
-										</div>
+											{% endif %}
+										{% endfor %}
 									</div>
-								{% endfor %}
 
-							</div>
+									<div class="press-assets">
 
-							<div class="news-link">{{press.pressNewsLink}}</div>
+										{% for press in entry.pressMaterials %}
+											{% if press.type == "brandAssets" %}
 
-						{% endif %}
-					{% endfor %}
+												<h2>{{press.brandAssetsHeader}}</h2>
+
+							          {% for image in press.logoOptions.kind('image') %}
+													<li class="assets">
+								            <span></span><a href="{{ image.getUrl}}" download>
+								            	<img src="{{ image.getUrl({ width: 300 })}}" alt="{{ image.title }}"/>
+								            </a>
+							          	</li>
+							          {% endfor %}
+
+											{% endif %}
+										{% endfor %}
+									</div>
+
+									<div class="press-team">
+
+										{% for press in entry.pressMaterials %}
+											{% if press.type == "pressTeam" %}
+
+												<h2>{{press.pressTeamHeader}}</h2>
+
+												<div class="press-team-list"> 
+							            {% for press in entry.pressMaterials %}
+														{% if press.type == "pressTeamBios" %}
+
+								              {% set bio = press.headshotAndBio.first() %}
+								            	{% if bio %}
+							  								<a href="{{ bio.getUrl}}">
+										              <p>{{press.headshotBioNames}}</p>
+									              </a>
+										          {% endif %}
+
+								            {% endif %}
+							            {% endfor %}
+						          	</div>
+
+											{% endif %}
+										{% endfor %}
+									</div>
+
+									<div class="press-news">
+
+										{% for press in entry.pressMaterials %}
+											{% if press.type == "pressNews" %}
+
+												<h2>{{press.pressNewsHeader}}</h2>
+
+												<div class="latest-news-section row">
+
+													{% for newsItem in craft.entries.section('news').limit(2).order('publishedDate desc') %}
+														<div class="news-tile col-sm-12 col-lg-6">
+
+															<!-- <div class="news-letter">{{newsItem.title|slice(0, 1)}}</div> -->
+															<div class="content-wrapper-news">
+																<p class="news-date">{{newsItem.publishedDate | date("M d, Y")}}</p>
+																<h2>{{newsItem.articleDisplayTitle}}</h2>
+																<a href="/news/{{newsItem.slug}}" class="read-more">Read more</a>
+															</div>
+														</div>
+													{% endfor %}
+
+												</div>
+
+												<div class="news-link">{{press.pressNewsLink}}</div>
+
+											{% endif %}
+										{% endfor %}
+									</div>
+
+
+					</div>
 				</div>
-
+			</div>
 		</section>
-
 	</div>
 
 {% endblock %}

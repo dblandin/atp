@@ -1,0 +1,139 @@
+//////////////////////////////////////////////////////////////////////////////
+// Grid
+
+// * {
+//   @include box-sizing(border-box);
+// }
+
+.grid {
+	margin: 0; //0 0 $margin-base 0;
+	&:after {
+		/* Or @extend clearfix */
+		content: "";
+		display: table;
+		clear: both;
+	}
+}
+
+[class*='col-'] {
+	float: left;
+	padding-right: $margin-base;
+	.grid &:last-of-type {
+		padding-right: 0;
+	}
+}
+.col-1-8 {
+	width: 12.5%;
+}
+.col-2-8 {
+	width: 25%;
+}
+.col-3-8 {
+	width: 37.5%;
+}
+.col-4-8 {
+	width: 50%;
+}
+.col-5-8 {
+	width: 62.5%;
+}
+.col-6-8 {
+	width: 75%;
+}
+.col-7-8 {
+	width: 87.5%;
+}
+.col-8-8 {
+	width: 100%;
+}
+
+.col-1-3 {
+	width: 33.3%;
+}
+.col-2-3 {
+	width: 66.6%;
+}
+.col-3-3 {
+	width: 100%;
+}
+
+//////////////////////////////////////////////////////////////////////////////
+// Padding
+
+$max-space: 250;
+$increase-space: 10;
+$space: 10;
+
+@while $space <= $max-space {
+	.pad-#{$space} {
+		padding: #{$space}px;
+	}
+	.pad-t-#{$space} {
+		padding-top: #{$space}px;
+	}
+	.pad-b-#{$space} {
+		padding-bottom: #{$space}px;
+	}
+	.pad-tb-#{$space} {
+		padding-top: #{$space}px;
+		padding-bottom: #{$space}px;
+	}
+	$space: $space + $increase-space;
+}
+
+//////////////////////////////////////////////////////////////////////////////
+// Margins
+
+$max-margin: 250;
+$increase-margin: 10;
+$margin: 10;
+
+@while $margin <= $max-margin {
+	.margin-#{$margin} {
+		margin: #{$margin}px;
+	}
+	.margin-t-#{$margin} {
+		margin-top: #{$margin}px;
+	}
+	.margin-r-#{$margin} {
+		margin-right: #{$margin}px;
+	}
+	.margin-b-#{$margin} {
+		margin-bottom: #{$margin}px;
+	}
+	.margin-l-#{$margin} {
+		margin-left: #{$margin}px;
+	}
+	.margin-tb-#{$margin} {
+		margin-top: #{$margin}px;
+		margin-bottom: #{$margin}px;
+	}
+	$margin: $margin + $increase-margin;
+}
+
+//////////////////////////////////////////////////////////////////////////////
+// Widths
+
+$max-width: 100;
+$increase-width: 10;
+$width: 10;
+
+@while $width <= $max-width {
+	.width-#{$width} {
+		width: $width * 1%;
+	}
+	$width: $width + $increase-width;
+}
+
+$max-width: 800;
+$increase-width: 50;
+$width: 50;
+
+@while $width <= $max-width {
+	.max-width-#{$width} {
+		max-width: #{$width}px;
+	}
+	$width: $width + $increase-width;
+}
+
+//////////////////////////////////////////////////////////////////////////////

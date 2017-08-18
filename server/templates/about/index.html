@@ -14,32 +14,23 @@
 
 {% block content %}
 
-	<div id="legal" class="page-wrapper">
+	<div id="about" class="page-wrapper">
 
-		<section class="legal-section">
+		<section class="overview-section">
 			<div class="container">
 				<div class="grid">
 
 					<div class="subnav-container col-2-8">
 						<h4 class="bold">About</h4>
-						<h4 class="bold"><a href="/about">Overview</a></h4>
+						<h4 class="bold"><a href="/about" class="active">Overview</a></h4>
 						<h4 class="bold"><a href="/press">Press</a></h4>
-						<h4 class="bold"><a href="/legal" class="active">Legal</a></h4>
+						<h4 class="bold"><a href="/legal">Legal</a></h4>
 					</div>
 
 					<div class="overview-container col-6-8">
-						{% for copy in entry.legalCopy %}
-
-							{% if copy.type == "legalBody" %}
-								<h4> {{ copy.subheader }} </h4>
-								<p> {{ copy.legalCopy }} </p>
-							{% endif %}
-
-							{% if copy.type == "legalLink" %}
-								<p> {{ copy.linkCopy }} </p>
-							{% endif %}
-
-						{% endfor %}
+						{% if entry.overview %}
+						{{ entry.overview|nl2br }}
+						{% endif %}
 					</div>
 				</div>
 			</div>

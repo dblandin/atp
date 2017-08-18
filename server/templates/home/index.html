@@ -22,90 +22,102 @@
 {% block content %}
 	<div id="index" class="page-wrapper">
 
-		<section class="hero-section row middle">
-			{% set image = entry.heroImage.first() %}
-			{% if image %}
-				<div class="lazyLoad hero-image" data-src="{{ image.getUrl({ width: 1600, height: 800 }) }}" data-src-m="{{ image.getUrl({ width: 1600, height: 881 }) }}">
-					 <noscript>
-						<img src="{{ image.getUrl({ width: 1600, height: 881 }) }}" alt="{{ image.title }}"/>
-					 </noscript>
-				</div>
-			{% endif %}
-
-			<div class="blurb-container">
-				<div class="outline"></div>
-				{{entry.blurb}}
+		<section class="hero-section">
+			<div class="container">
+				<h1>{{entry.blurb}}</h1>
 			</div>
+			<svg class="down-arrow" xmlns="http://www.w3.org/2000/svg" width="41" height="23" viewBox="0 0 41 23">
+			  <polyline fill="none" stroke="#000" stroke-width="3.093" points="2 1.33 20.875 20.158 39.703 1.283"/>
+			</svg>
 		</section>
 
 		<section class="expertise-section">
-
-			{% for header in entry.areasOfExpertise %}
-				{% if header.type == "sectionTitle" %}
-					<h2 class="title">{{ header.header }}</h2>
-				{% endif %}
-			{% endfor %}
-
-			<ul class="areas-container row">
-				{% for expertise in entry.areasOfExpertise %}
-					{% if expertise.type == "areaOfExpertise" %}
-
-						{% set anchor = expertise.areaTitle|split(' ')[0] %}
-
-						<li class="expertise col-sm-12 col-lg-3">
-							<h3>{{expertise.areaTitle}}</h3>
-							<p>{{expertise.areaDescription}}</p>
-							<a href="/portfolio#{{anchor}}">Portfolio</a>
-							<a href="/team#{{anchor}}">Team</a>
-						</li>
-					{% endif %}
-				{% endfor %}
-			</ul>
-
-		</section>
-
-		<section class="partnership-section">
-
-			<h2 class="title">{{ entry.partnershipSectionTitle }}</h2>
-
-			<div class="carousel partnership-carousel row">
-
-				<ul class="carousel-items-container row middle">
-					{% for partnership in entry.partnerships %}
-						{% if partnership.type == "partnership" %}
-							<li class="carousel-item col-sm-12 col-lg-8 {% if loop.index == 1 %} active {% endif %}" data-id="{{loop.index - 1}}">
-								{{partnership.partnershipInfo}}
-							</li>
+			<div class="container">
+				<div class="grid">
+					{% for header in entry.areasOfExpertise %}
+						{% if header.type == "sectionTitle" %}
+							<h4 class="bold col-2-8 expertise-header">{{ header.header }}</h4>
 						{% endif %}
 					{% endfor %}
-				</ul>
 
-				<div class="carousel-arrows">
-				  <div class="left-arrow"><span></span></div>
-				  <div class="right-arrow"><span></span></div>
-				</div>
-
-			</div>
-
-		</section>
-
-		<section class="latest-news-section row">
-
-			<p class="title">Recent News</h2>
-
-			{% set news = entry.featurednewsitems.order('postDate desc') %}
-			{% for newsItem in news.limit(2) %}
-				<div class="news-tile col-sm-12 col-lg-6">
-
-					<!-- <div class="news-letter">{{newsItem.title|slice(0, 1)}}</div> -->
-					<div class="content-wrapper-news">
-						<p class="news-date">{{newsItem.publishedDate | date("M d, Y")}}</p>
-						<h2>{{newsItem.articleDisplayTitle}}</h2>
-						<a href="/news/{{newsItem.slug}}" class="read-more">Read more</a>
+					<div class="areas-container col-6-8">
+						{% for expertise in entry.areasOfExpertise %}
+							{% if expertise.type == "areaOfExpertise" %}
+								<div class="grid margin-b-40">
+									<div class="col-1-3">
+										{% set anchor = expertise.areaTitle|split(' ')[0] %}
+										<h4>{{expertise.areaTitle}}</h4>
+									</div>
+									<div class="col-2-3">
+										{{expertise.areaDescription}}<br>
+										<br>
+										<a href="/expertise/{{anchor}}#portfolio">Portfolio</a>&nbsp;&nbsp;&nbsp;&nbsp;
+										<a href="/expertise/{{anchor}}#team">Team</a>
+									</div>
+								</div>
+							{% endif %}
+						{% endfor %}
 					</div>
 				</div>
-			{% endfor %}
+			</div>
 		</section>
 
+		<section class="partnership-section color-background">
+			<div class="container">
+				<div class="grid">
+					<h4 class="bold col-2-8 news-header">Recent News</h4>
+
+					<div class="col-6-8 partnership-carousel">
+
+						<ul class="carousel-items-container">
+							{% set news = entry.featurednewsitems.order('postDate desc') %}
+							{% for newsItem in news.limit(6) %}
+								<li class="carousel-item {% if loop.index == 1 %} active {% endif %}" data-id="{{loop.index - 1}}">
+									<div class="bold">{{newsItem.publishedDate | date("M d, Y")}}</div>
+									<a href="/news/{{newsItem.slug}}">
+										<h2>{{newsItem.articleDisplayTitle}}</h2>
+									</a>
+								</li>
+							{% endfor %}
+						</ul>
+
+						<div class="carousel-indicators">
+							<button class="active"></button>
+							<button></button>
+							<button></button>
+							<button></button>
+							<button></button>
+							<button></button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
 	</div>
+
+	<footer id="footer" class="row">
+		<div class="container">
+			<div class="grid offices">
+				<h4 class="bold col-2-8 office-header">{{footer.footerCopy}}</h4>
+				<div class="tablet-column">
+					{% for location in footer.locations %}
+						<div class="col-2-8">
+							<a href="/contact#{{location.cityName |replace(' ', '-') }}" class="regular bold office-name">{{location.cityName}}</a>
+							<div class="tablet-office">
+								{{location.address|nl2br}}<br>
+								Tel {{location.telephone}}<br>
+								Fax {{location.fax}}<br>
+								<a href="/contact#{{location.cityName |replace(' ', '-')}}" class="see-map">See Map</a>
+							</div>
+						</div>
+					{% endfor %}
+				</div>
+			</div>
+
+			<div class="links">
+				<a href="/press">Press</a> <a href="/legal">Legal</a>
+			</div>
+		</div>
+	</footer>
+
 {% endblock %}

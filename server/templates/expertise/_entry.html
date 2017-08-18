@@ -1,0 +1,126 @@
+{% extends "_layouts/_layout" %}
+
+{% block content %}
+
+	<div id="expertise" class="page-wrapper">
+
+		<section class="expertise-section">
+			<div class="container">
+				<div class="grid">
+
+					<div class="subnav-container col-2-8">
+						<h4 class="bold">{{entry.title}}</h4>
+						<h4 class="bold"><a href="#" class="toggle-nav active" data-pane="overview" data-group="subnav">Overview</a></h4>
+						<h4 class="bold"><a href="#" class="toggle-nav" data-pane="portfolio" data-group="subnav">Portfolio</a></h4>
+
+							<div class="tablet-nav hidden" data-tablet="portfolio">
+								{% for company in entry.companies %}
+								<h4 data-switch="company"><a href="#" class="toggle-nav" data-pane="company-{{company.id}}" data-group="companies">{{company.title}}</a></h4>
+								{% endfor %}
+							</div>
+
+						<h4 class="bold"><a href="#" class="toggle-nav" data-pane="team" data-group="subnav">Team</a></h4>
+
+							<div class="tablet-nav hidden" data-tablet="team">
+								{% for team in entry.team %}
+									<h4{% if loop.index != "1" %} class="margin-t-30"{% endif %}>{{team.category}}</h4>
+									{% for member in team.members %}
+										<h4 data-switch="member"><a href="#" class="toggle-nav" data-pane="company-{{member.id}}" data-group="member">{{member.title}}</a></h4>
+									{% endfor %}
+								{% endfor %}
+							</div>
+
+						<h4 class="bold"><a href="#" class="toggle-nav" data-pane="investments" data-group="subnav">Legacy Investments</a></h4>
+					</div>
+
+					<div class="subnav col-6-8 tablet-2-3" data-pane="overview">
+						{{entry.expertiseOverview}}
+					</div>
+
+					<div class="subnav col-6-8 tablet-2-3 hidden" data-pane="portfolio">
+						<div class="overview-container col-1-3 desktop-only">
+							{% for company in entry.companies %}
+							<h4 data-switch="company"><a href="#" class="toggle-nav" data-pane="company-{{company.id}}" data-group="companies">{{company.title}}</a></h4>
+							{% endfor %}
+						</div>
+						<div class="overview-container col-2-3">
+							{% for company in entry.companies %}
+							<div class="companies hidden" data-pane="company-{{company.id}}">
+
+								{{company.companyBio}}
+
+								<div class="margin-tb-30">
+								{% for contact in company.companyContactMethods %}
+									{% if contact.companyWebsite %}
+										<div><a href="{{contact.companyWebsite}}">Visit company's website</a></div>
+									{% endif %}
+									{% if contact.linkedin %}
+										<div><a href="{{contact.linkedin}}">Visit company's LinkedIn</a></div>
+									{% endif %}
+								{% endfor %}
+								</div>
+
+								<div class="col-4-8">
+									<span class="bold">Related News</span>
+								</div>
+								<div class="col-4-8">
+									<ul>
+										{% for news in craft.entries.section('news').relatedTo(company.newsTag).limit(3) %}
+										{% set url = news.type.handle == 'link' ? news.linkUrl : news.url %}
+										<div class="margin-b-30">
+											<h5 class="bold">{{news.publishedDate | date("M d, Y")}}</h5>
+											<a href="{{url}}">{{news.title}}</a>
+										</div>
+										{% endfor %}
+									</ul>
+								</div>
+
+							</div>
+							{% endfor %}
+						</div>
+					</div>
+
+					<div class="subnav col-6-8 tablet-2-3 hidden" data-pane="team">
+						<div class="overview-container col-1-3 desktop-only">
+							{% for team in entry.team %}
+								<h4{% if loop.index != "1" %} class="margin-t-30"{% endif %}>{{team.category}}</h4>
+								{% for member in team.members %}
+									<h4 data-switch="member"><a href="#" class="toggle-nav" data-pane="company-{{member.id}}" data-group="member">{{member.title}}</a></h4>
+								{% endfor %}
+							{% endfor %}
+						</div>
+						<div class="overview-container col-2-3">
+							{% for team in entry.team %}
+								{% for member in team.members %}
+									<div class="member hidden" data-pane="company-{{member.id}}">
+
+										<div class="margin-b-30">
+											{{member.teamMemberBio}}
+										</div>
+
+										<div class="col-4-8">
+											<span class="bold">Board Responsibilites</span>
+										</div>
+										<div class="col-4-8">
+											{% for tag in member.teamTags %}
+											{{tag}}<br>
+											{% endfor %}
+										</div>
+
+									</div>
+								{% endfor %}
+							{% endfor %}
+						</div>
+					</div>
+
+					<div class="subnav col-6-8 tablet-2-3 hidden" data-pane="investments">
+						4
+					</div>
+
+				</div>
+			</div>
+		</section>
+
+	</div>
+
+{% endblock %}
