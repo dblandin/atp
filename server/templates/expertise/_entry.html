@@ -8,7 +8,7 @@
 			<div class="container">
 				<div class="grid">
 
-					<div class="subnav-container col-2-8">
+					<div class="subnav-container sticky col-2-8">
 						<h4 class="bold">{{entry.title}}</h4>
 						<h4 class="bold"><a href="#" class="toggle-nav active" data-pane="overview" data-group="subnav">Overview</a></h4>
 						<h4 class="bold"><a href="#" class="toggle-nav" data-pane="portfolio" data-group="subnav">Portfolio</a></h4>
@@ -34,7 +34,7 @@
 					</div>
 
 					<div class="subnav col-6-8 tablet-2-3" data-pane="overview">
-						{{entry.expertiseOverview}}
+						<h4>{{entry.expertiseOverview}}</h4>
 					</div>
 
 					<div class="subnav col-6-8 tablet-2-3 hidden" data-pane="portfolio">
@@ -45,7 +45,7 @@
 						</div>
 						<div class="overview-container col-2-3">
 							{% for company in entry.companies %}
-							<div class="companies hidden" data-pane="company-{{company.id}}">
+							<div class="companies hidden no-first-p-top" data-pane="company-{{company.id}}">
 
 								{{company.companyBio}}
 
@@ -94,16 +94,18 @@
 								{% for member in team.members %}
 									<div class="member hidden" data-pane="company-{{member.id}}">
 
-										<div class="margin-b-30">
+										<div class="margin-b-30 no-first-p-top">
 											{{member.teamMemberBio}}
 										</div>
 
+										{% if member.teamTags|length > 0 %}
 										<div class="col-4-8">
 											<span class="bold">Board Responsibilites</span>
 										</div>
+										{% endif %}
 										<div class="col-4-8">
 											{% for tag in member.teamTags %}
-											{{tag}}<br>
+											<a class="hard-hash" href="/expertise/{{tag.companyTags[0] |lower |replace(' ', '-') }}#portfolio&company-{{tag.id}}">{{tag}}</a><br>
 											{% endfor %}
 										</div>
 
@@ -114,7 +116,7 @@
 					</div>
 
 					<div class="subnav col-6-8 tablet-2-3 hidden" data-pane="investments">
-						4
+						TK
 					</div>
 
 				</div>

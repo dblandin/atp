@@ -26,8 +26,10 @@ body {
 
 .container {
 	position: relative;
-	margin-left: 40px;
-	margin-right: 40px;
+	padding-left: 55px;
+	padding-right: 55px;
+	max-width: 1920px;
+	margin: 0 auto;
 }
 
 #body {
@@ -55,7 +57,7 @@ body {
 	}
 	.links {
 		position: absolute;
-		left: 0;
+		left: 55px;
 		bottom: 40px;
 		color: $gray;
 		a {
@@ -87,7 +89,6 @@ body {
 	margin-left: -20px;
 	display: block;
 	cursor: pointer;
-	opacity: 0.5;
 
 	animation-name: floating;
 	-webkit-animation-name: floating;
@@ -95,8 +96,14 @@ body {
 	-webkit-animation-duration: 1.5s;
 	animation-iteration-count: infinite;
 	-webkit-animation-iteration-count: infinite;
+	polyline {
+		@include transition (all, $timing-short, ease-in-out);
+		stroke: $gray;
+	}
 	&:hover {
-		opacity: 1;
+		polyline {
+			stroke: $primary;
+		}
 	}
 }
 
@@ -121,6 +128,9 @@ body {
 		&.active {
 			background-color: $black;
 			border-color: $black;
+			-webkit-box-shadow: inset 0px 0px 0px 14px rgba(0,0,0,1);
+			-moz-box-shadow: inset 0px 0px 0px 14px rgba(0,0,0,1);
+			box-shadow: inset 0px 0px 0px 14px rgba(0,0,0,1);
 		}
 	}
 }

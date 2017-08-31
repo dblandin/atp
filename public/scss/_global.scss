@@ -86,6 +86,7 @@ h3 {
 	line-height: 42px;
 	letter-spacing: 0px;
 }
+.h4,
 h4 {
 	font-size: 24px;
 	line-height: 32px;
@@ -100,6 +101,9 @@ h6 {
 	font-size: 12px;
 	line-height: 18px;
 	letter-spacing: 2px;
+	&.normal-spacing {
+		letter-spacing: 0;
+	}
 }
 hr {
     border: 0;
@@ -203,6 +207,25 @@ strong {
 //////////////////////////////////////////////////////////////////////////////
 // Other
 
+.two-columns-container {
+	display: flex;
+	flex-wrap: wrap;
+}
+.two-columns {
+	width: 50%;
+	flex-shrink: 0;
+	padding-right: 20px;
+}
+.sticky {
+	position: sticky;
+    position: -moz-sticky;
+    position: -ms-sticky;
+    position: -o-sticky;
+    top: 170px;
+}
+.no-first-p-top p:first-of-type {
+	margin-top: 0;
+}
 .tablet-only {
 	display: none;
 }

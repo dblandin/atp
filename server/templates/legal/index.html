@@ -20,7 +20,7 @@
 			<div class="container">
 				<div class="grid">
 
-					<div class="subnav-container col-2-8">
+					<div class="subnav-container sticky col-2-8">
 						<h4 class="bold">About</h4>
 						<h4 class="bold"><a href="/about">Overview</a></h4>
 						<h4 class="bold"><a href="/press">Press</a></h4>
@@ -31,12 +31,16 @@
 						{% for copy in entry.legalCopy %}
 
 							{% if copy.type == "legalBody" %}
-								<h4> {{ copy.subheader }} </h4>
-								<p> {{ copy.legalCopy }} </p>
-							{% endif %}
+								<div class="col-1-3{% if loop.index > 1 %} margin-t-50{% endif %}">
+									<h4> {{ copy.subheader }} </h4>
 
-							{% if copy.type == "legalLink" %}
-								<p> {{ copy.linkCopy }} </p>
+								</div>
+								<div class="col-2-3{% if loop.index > 1 %} margin-t-50{% endif %} no-first-p-top">
+									<p> {{ copy.legalCopy }} </p>
+									{% if copy.type == "legalLink" %}
+										<p> {{ copy.linkCopy }} </p>
+									{% endif %}
+								</div>
 							{% endif %}
 
 						{% endfor %}

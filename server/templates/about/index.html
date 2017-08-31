@@ -20,7 +20,7 @@
 			<div class="container">
 				<div class="grid">
 
-					<div class="subnav-container col-2-8">
+					<div class="subnav-container sticky col-2-8">
 						<h4 class="bold">About</h4>
 						<h4 class="bold"><a href="/about" class="active">Overview</a></h4>
 						<h4 class="bold"><a href="/press">Press</a></h4>
@@ -29,7 +29,9 @@
 
 					<div class="overview-container col-6-8">
 						{% if entry.overview %}
-						{{ entry.overview|nl2br }}
+						<h4>
+							{{ entry.overview|nl2br }}
+						</h4>
 						{% endif %}
 					</div>
 				</div>

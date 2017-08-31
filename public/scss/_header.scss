@@ -35,15 +35,15 @@
 		}
 	}
 	#menu {
-		@include transition (opacity, $timing-short, ease-in-out);
+		@include transition (all, $timing-short, ease-in-out);
 		position: absolute;
 		top: 36px;
-		right: 0;
+		right: 55px;
 		width: 30px;
 		cursor: pointer;
-		opacity: 0.5;
+		fill: $gray;
 		&:hover {
-			opacity: 1;
+			fill: $primary;
 		}
 	}
 	#navigation {
@@ -55,7 +55,7 @@
 		width: 50vw;
 		background-color: $primary;
 		display: flex;
-		align-items: center;
+		// align-items: center;
 		&.active {
 			right: 0vw;
 		}
@@ -71,18 +71,21 @@
 				opacity: 1;
 			}
 		}
-		li {
-			margin-left: 40px;
-			list-style: none;
-			a {
-				@include transition (opacity, $timing-short, ease-in-out);
-				display: block;
-				opacity: 0.5;
-				color: $white;
-				margin: 10px 0;
-				&:hover,
-				&.active {
-					opacity: 1;
+		ul {
+			margin-top: 150px;
+			li {
+				margin-left: 40px;
+				list-style: none;
+				a {
+					@include transition (opacity, $timing-short, ease-in-out);
+					display: block;
+					opacity: 0.5;
+					color: $white;
+					margin: 10px 0;
+					&:hover,
+					&.active {
+						opacity: 1;
+					}
 				}
 			}
 		}

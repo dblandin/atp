@@ -21,23 +21,23 @@
 			<div class="container">
 				<div class="grid">
 
-					<div class="subnav-container col-2-8">
+					<div class="subnav-container sticky col-2-8">
 						<h4 class="bold news-title">News</h4>
 						<h4>Filter by</h4>
 
 						<h4 class="toggle-year-filter"><a href="#">Years</a></h4>
 						<ul class="year-filter-dropdown">
-							<li id="year-all" class="year-filter active">All</li>
+							<li id="year-all" class="year-filter active"><h4>All</h4></li>
 							{% for date, entries in newsEntries | group("publishedDate|date('Y')") %}
-							<li id="year-{{date}}" class="year-filter">{{date}}</li>
+							<li id="year-{{date}}" class="year-filter"><h4>{{date}}</h4></li>
 							{% endfor %}
 						</ul>
 
-						<h4 class="toggle-company-filter margin-t-20"><a href="#">Companies</a></h4>
+						<h4 class="toggle-company-filter"><a href="#">Companies</a></h4>
 						<ul class="company-filter-dropdown">
-							<li id="company-all" class="company-filter active">All</li>
+							<li id="company-all" class="company-filter active"><h4>All</h4></li>
 							{% for tag in craft.tags.group('newsTags').relatedTo(newsEntries) %}
-							<li id="company-{{tag.title |replace(' ', '-') }}" class="company-filter">{{tag.title}}</li>
+							<li id="company-{{tag.title |replace(' ', '-') }}" class="company-filter"><h4>{{tag.title}}</h4></li>
 							{% endfor %}
 						</ul>
 

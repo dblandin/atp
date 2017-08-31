@@ -8,15 +8,35 @@ $(function() {
 	});
 
 	//////////////////////////////////////////////////////////////////////////////
+	// Navigate to page when only hash changes
+
+	$('.hard-hash').on("click", function(e) {
+		window.location.href = $(this).attr('href');
+		location.reload();
+	});
+
+	//////////////////////////////////////////////////////////////////////////////
 	// Navigate to hash
 
 	$(window).load(function() {
 		var currentPath = window.location.pathname;
 		if(window.location.hash) {
 			var hash = window.location.hash.substring(1);
-			if(currentPath == '/portfolio'){
-				if(hash == 'portfolio' || hash == 'team' || hash == 'investments') {
+			console.log("path", currentPath, hash, currentPath.substr(0, 10));
+			if(currentPath.substr(0, 10) == '/expertise'){
+				// Company
+				if(hash.indexOf('&') !== -1){
+					hashPieces = hash.split('&');
+					hash = hashPieces[0];
+					console.log(hashPieces, $('.toggle-nav[data-pane="'+hashPieces[1]+'"]'));
+					$('.toggle-nav[data-pane="'+hashPieces[1]+'"]').click();
+					// $('.toggle-nav[data-pane="'+hashPieces[1]+'"]').addClass('active');
+					// $('.companies[data-pane="'+hashPieces[1]+'"]').removeClass('hidden');
 					paneSelect('subnav', hash);
+				} else {
+					if(hash == 'portfolio' || hash == 'team' || hash == 'investments') {
+						paneSelect('subnav', hash);
+					}
 				}
 			}
 			if(currentPath == '/contact'){
