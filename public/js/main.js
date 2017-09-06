@@ -177,6 +177,8 @@ $(function() {
 		var lat = $('.map-item:not(.hidden)').data('lat');
 		var lon = $('.map-item:not(.hidden)').data('lon');
 		var center = new google.maps.LatLng(lat, lon);
+		// $('#mapLink').attr('href', "https://www.google.com/maps/preview/@"+lat+","+lon+",8z");
+		$('#mapLink').attr('href', "https://www.google.com/maps/place/"+$('.map-item:not(.hidden)').data('address'));
 		marker.setPosition(center);
 		map.panTo(center);
 	}
@@ -184,6 +186,9 @@ $(function() {
 	function initMap() {
 		var lat = $('.map-item:not(.hidden)').data('lat');
 		var lon = $('.map-item:not(.hidden)').data('lon');
+
+		// $('#mapLink').attr('href', "https://www.google.com/maps/preview/@"+lat+","+lon+",17z");
+		$('#mapLink').attr('href', "https://www.google.com/maps/place/"+$('.map-item:not(.hidden)').data('address'));
 
 		var mapOptions = {
 			zoom: 15,
@@ -210,7 +215,7 @@ $(function() {
 		});
 
 		map.setOptions({
-			draggable: false,
+			draggable: true,
 			zoomControl: false,
 			scrollwheel: false,
 			disableDoubleClickZoom: true,

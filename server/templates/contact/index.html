@@ -22,20 +22,24 @@
 
 					{% for location in entry.locations %}
 						{% set address = location.address|nl2br %}
-						<div class="map-item overview-container col-2-8 subnav {% if loop.index != "1" %}hidden{% endif %}" data-pane="{{location.cityName|replace(' ', '-')}}" data-lat="{{location.locationLatitude}}" data-lon="{{location.locationLongitude}}">
+						<div class="map-item overview-container col-2-8 subnav {% if loop.index != "1" %}hidden{% endif %}" data-pane="{{location.cityName|replace(' ', '-')}}" data-address="{{location.address|url_encode}}" data-lat="{{location.locationLatitude}}" data-lon="{{location.locationLongitude}}">
 							<div id="contact-{{loop.index}}">
-								{{address|raw}}<br>
-								Tel {{location.telephone}}<br>
-								Fax {{location.fax}}<br>
-								<a href="mailto:{{location.email}}">Contact Us</a>
+								<h4>
+									{{address|raw}}<br>
+									Tel {{location.telephone}}<br>
+									Fax {{location.fax}}<br>
+									<a href="mailto:{{location.email}}">Contact Us</a>
+								</h4>
 							</div>
 						</div>
 					{% endfor %}
-					<div class="overview-container col-4-8 map-container">
-						<div class="map row">
-							<div id="map"></div>
+					<a id="mapLink" target="_blank" href="#">
+						<div class="overview-container col-4-8 map-container">
+							<div class="map row">
+								<div id="map"></div>
+							</div>
 						</div>
-					</div>
+					</a>
 				</div>
 			</div>
 		</section>

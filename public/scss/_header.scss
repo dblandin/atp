@@ -14,10 +14,11 @@
 		color: $primary;
 		z-index: 2;
 		position: absolute;
-		width: 100%;
-		&:hover {
-			opacity: 0.5;
-		}
+		left: 55px;
+		right: 55px;
+		// &:hover {
+		// 	opacity: 0.5;
+		// }
 		h2 {
 			position: absolute;
 			top: 20px;

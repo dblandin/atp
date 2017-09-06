@@ -31,7 +31,11 @@ body {
 	max-width: 1920px;
 	margin: 0 auto;
 }
-
+.hero-text {
+	width: 100%;
+	font-size: 9vw;
+	line-height: 9vw;
+}
 #body {
 	margin-top: 100px;
 	section {
@@ -134,7 +138,13 @@ body {
 		}
 	}
 }
-
+.press-container {
+	p {
+		&:last-of-type {
+			margin-bottom: 0;
+		}
+	}
+}
 .social {
 	margin-top: 6px;
 	#facebook,
@@ -147,7 +157,28 @@ body {
 		margin-top: 8px;
 	}
 }
-
+.toggle-year-filter,
+.toggle-company-filter {
+	a {
+		position: relative;
+		width: 100%;
+		display: inline-block;
+		.toggle-arrow {
+			position: absolute;
+			right: 20px;
+			top: 8px;
+			polygon {
+				@include transition (all, $timing-short, ease-in-out);
+				fill: $gray;
+			}
+		}
+		&:hover {
+			svg polygon {
+				fill: $primary;
+			}
+		}
+	}
+}
 .year-filter-dropdown,
 .company-filter-dropdown {
 	&.active {
@@ -162,11 +193,26 @@ body {
 		cursor: pointer;
 		color: $gray;
 		&:hover {
-			color: $black;
+			color: $primary;
 		}
 		&.active {
 			color: $primary;
 			display: block;
+		}
+	}
+}
+.social a,
+.button-back {
+	path,
+	polygon {
+		@include transition (all, $timing-short, ease-in-out);
+	}
+	&:hover {
+		polygon {
+			fill: $primary;
+		}
+		path {
+			fill: $primary;
 		}
 	}
 }

@@ -218,10 +218,10 @@ strong {
 }
 .sticky {
 	position: sticky;
-    position: -moz-sticky;
-    position: -ms-sticky;
-    position: -o-sticky;
-    top: 170px;
+	position: -moz-sticky;
+	position: -ms-sticky;
+	position: -o-sticky;
+	top: 170px;
 }
 .no-first-p-top p:first-of-type {
 	margin-top: 0;

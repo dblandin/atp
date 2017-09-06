@@ -1247,9 +1247,8 @@ strong {
     color: #FF3F16;
     z-index: 2;
     position: absolute;
-    width: 100%; }
-    #header .logo:hover {
-      opacity: 0.5; }
+    left: 55px;
+    right: 55px; }
     #header .logo h2 {
       position: absolute;
       top: 20px;
@@ -1345,6 +1344,11 @@ strong {
   padding-right: 55px;
   max-width: 1920px;
   margin: 0 auto; }
+
+.hero-text {
+  width: 100%;
+  font-size: 9vw;
+  line-height: 9vw; }
 
 #body {
   margin-top: 100px; }
@@ -1444,6 +1448,9 @@ strong {
       -moz-box-shadow: inset 0px 0px 0px 14px black;
       box-shadow: inset 0px 0px 0px 14px black; }
 
+.press-container p:last-of-type {
+  margin-bottom: 0; }
+
 .social {
   margin-top: 6px; }
   .social #facebook,
@@ -1454,6 +1461,28 @@ strong {
     max-height: 18px;
     margin-right: 8px;
     margin-top: 8px; }
+
+.toggle-year-filter a,
+.toggle-company-filter a {
+  position: relative;
+  width: 100%;
+  display: inline-block; }
+  .toggle-year-filter a .toggle-arrow,
+  .toggle-company-filter a .toggle-arrow {
+    position: absolute;
+    right: 20px;
+    top: 8px; }
+    .toggle-year-filter a .toggle-arrow polygon,
+    .toggle-company-filter a .toggle-arrow polygon {
+      -webkit-transition: all 200ms ease-in-out 0ms;
+      -moz-transition: all 200ms ease-in-out 0ms;
+      -o-transition: all 200ms ease-in-out 0ms;
+      -ms-transition: all 200ms ease-in-out 0ms;
+      transition: all 200ms ease-in-out 0ms;
+      fill: #B3B3B3; }
+  .toggle-year-filter a:hover svg polygon,
+  .toggle-company-filter a:hover svg polygon {
+    fill: #FF3F16; }
 
 .year-filter-dropdown.active li,
 .company-filter-dropdown.active li {
@@ -1471,11 +1500,27 @@ strong {
   color: #B3B3B3; }
   .year-filter-dropdown li:hover,
   .company-filter-dropdown li:hover {
-    color: #000000; }
+    color: #FF3F16; }
   .year-filter-dropdown li.active,
   .company-filter-dropdown li.active {
     color: #FF3F16;
     display: block; }
+
+.social a path,
+.social a polygon,
+.button-back path,
+.button-back polygon {
+  -webkit-transition: all 200ms ease-in-out 0ms;
+  -moz-transition: all 200ms ease-in-out 0ms;
+  -o-transition: all 200ms ease-in-out 0ms;
+  -ms-transition: all 200ms ease-in-out 0ms;
+  transition: all 200ms ease-in-out 0ms; }
+.social a:hover polygon,
+.button-back:hover polygon {
+  fill: #FF3F16; }
+.social a:hover path,
+.button-back:hover path {
+  fill: #FF3F16; }
 
 .load-more {
   cursor: pointer; }
@@ -1546,6 +1591,14 @@ strong {
     right: -100vw;
     width: 100vw; }
 
+  .legal-section .col-1-3,
+  .press-section .col-1-3 {
+    width: 100%; }
+  .legal-section .col-2-3,
+  .press-section .col-2-3 {
+    width: 100%;
+    margin-top: 20px; }
+
   .expertise-section .expertise-header {
     width: 100%;
     margin-bottom: 40px; }
@@ -1599,11 +1652,21 @@ strong {
 
   .see-map {
     margin-top: 0; } }
-@media only screen and (max-width: 400px) {
+@media only screen and (max-width: 500px) {
   .container {
     position: relative;
-    margin-left: 20px;
-    margin-right: 20px; }
+    padding-left: 20px;
+    padding-right: 20px; }
+
+  #header .logo {
+    left: 20px;
+    right: 20px; }
+
+  #header #menu {
+    right: 20px; }
+
+  #footer .links {
+    left: 20px; }
 
   #body section {
     padding-top: 40px;
@@ -1655,6 +1718,13 @@ strong {
       right: 20px; }
     #header #menu {
       top: 26px; }
+
+  .sticky {
+    position: relative;
+    position: relative;
+    position: relative;
+    position: relative;
+    top: 0; }
 
   .expertise-section .areas-container .col-1-3 {
     width: 100%;
