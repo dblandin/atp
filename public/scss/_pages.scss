@@ -33,8 +33,8 @@ body {
 }
 .hero-text {
 	width: 100%;
-	font-size: 9vw;
-	line-height: 9vw;
+	font-size: 7vw;
+	line-height: 7vw;
 }
 #body {
 	margin-top: 100px;
@@ -216,6 +216,11 @@ body {
 		}
 	}
 }
+.news-nav-split {
+	display: none;
+	margin: 20px 20px 20px 0;
+	border-color: $gray;
+}
 .load-more {
 	cursor: pointer;
 }
@@ -224,6 +229,7 @@ body {
 }
 .news-tile {
 	display: none;
+	padding-right: 20px;
 	&.active {
 		display: block;
 	}

@@ -60,10 +60,18 @@ $(function() {
 
 	$('.toggle-year-filter').on("click", function(e) {
 		$('.year-filter-dropdown').toggleClass('active');
+		$('.company-filter-dropdown').removeClass('active');
+		if($('.year-filter-dropdown').hasClass('active')){
+			$('.news-nav-split').show();
+		} else {
+			$('.news-nav-split').hide();
+		}
 	});
 
 	$('.toggle-company-filter').on("click", function(e) {
 		$('.company-filter-dropdown').toggleClass('active');
+		$('.year-filter-dropdown').removeClass('active');
+		$('.news-nav-split').hide();
 	});
 
 	$('.year-filter-dropdown li').on("click", function(e) {
@@ -221,6 +229,19 @@ $(function() {
 			disableDoubleClickZoom: true,
 			streetViewControl: false,
 			disableDefaultUI: true
+		});
+
+		google.maps.event.addListener(map, 'drag', function() {
+			console.log('drag');
+			// event.preventDefault();
+			event.stopPropagation();
+		});
+
+		google.maps.event.addListener(map, 'click', function() {
+			console.log('click');
+			// event.preventDefault();
+			event.stopPropagation();
+			return;
 		});
 
 		google.maps.event.addDomListener(window, "resize", function() {
