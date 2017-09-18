@@ -44,7 +44,7 @@ $(function() {
 				moveToLocation();
 			}
 		}
-		$('.blocker').fadeOut(200);
+		$('.blocker').fadeOut(800);
 	}).on('resize', function(){
 		//
 	}).scroll(function() {
@@ -187,7 +187,7 @@ $(function() {
 		var lon = $('.map-item:not(.hidden)').data('lon');
 		var center = new google.maps.LatLng(lat, lon);
 		// $('#mapLink').attr('href', "https://www.google.com/maps/preview/@"+lat+","+lon+",8z");
-		$('#mapLink').attr('href', "https://www.google.com/maps/place/"+$('.map-item:not(.hidden)').data('address'));
+		// $('#mapLink').attr('href', "https://www.google.com/maps/place/"+$('.map-item:not(.hidden)').data('address'));
 		marker.setPosition(center);
 		map.panTo(center);
 	}
@@ -197,7 +197,7 @@ $(function() {
 		var lon = $('.map-item:not(.hidden)').data('lon');
 
 		// $('#mapLink').attr('href', "https://www.google.com/maps/preview/@"+lat+","+lon+",17z");
-		$('#mapLink').attr('href', "https://www.google.com/maps/place/"+$('.map-item:not(.hidden)').data('address'));
+		// $('#mapLink').attr('href', "https://www.google.com/maps/place/"+$('.map-item:not(.hidden)').data('address'));
 
 		var mapOptions = {
 			zoom: 15,
@@ -224,25 +224,12 @@ $(function() {
 		});
 
 		map.setOptions({
-			draggable: false,
+			draggable: true,
 			zoomControl: false,
 			scrollwheel: false,
 			disableDoubleClickZoom: true,
 			streetViewControl: false,
 			disableDefaultUI: true
-		});
-
-		google.maps.event.addListener(map, 'drag', function() {
-			console.log('drag');
-			// event.preventDefault();
-			event.stopPropagation();
-		});
-
-		google.maps.event.addListener(map, 'click', function() {
-			console.log('click');
-			// event.preventDefault();
-			event.stopPropagation();
-			return;
 		});
 
 		google.maps.event.addDomListener(window, "resize", function() {

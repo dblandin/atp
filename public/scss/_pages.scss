@@ -44,14 +44,14 @@ body {
 	margin-top: 100px;
 	section {
 		display: block;
-		padding-top: 70px;
-		padding-bottom: 70px;
+		padding-top: 55px;
+		padding-bottom: 55px;
 		&.hero-section {
 			padding-top: 0px;
 			min-height: calc(100vh - 100px);
 		}
 		&.color-background {
-			background-color: $light-gray;
+			background-color: #e5e5e5;
 		}
 	}
 }
@@ -61,7 +61,7 @@ body {
 	}
 	.offices {
 		padding-bottom: 140px;
-		padding-top: 70px;
+		padding-top: 55px;
 		margin-bottom: 0;
 	}
 	.links {

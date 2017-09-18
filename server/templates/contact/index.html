@@ -25,7 +25,7 @@
 						<div class="map-item overview-container col-2-8 subnav {% if loop.index != "1" %}hidden{% endif %}" data-pane="{{location.cityName|replace(' ', '-')}}" data-address="{{location.address|url_encode}}" data-lat="{{location.locationLatitude}}" data-lon="{{location.locationLongitude}}">
 							<div id="contact-{{loop.index}}">
 								<h4>
-									{{address|raw}}<br>
+									<a id="mapLink" target="_blank" href="https://www.google.com/maps/place/{{location.address|url_encode}}">{{address|raw}}</a><br>
 									Tel {{location.telephone}}<br>
 									Fax {{location.fax}}<br>
 									<a href="mailto:{{location.email}}">Contact Us</a>
@@ -33,13 +33,11 @@
 							</div>
 						</div>
 					{% endfor %}
-					<a id="mapLink" target="_blank" href="#">
-						<div class="overview-container col-4-8 map-container">
-							<div class="map row">
-								<div id="map"></div>
-							</div>
+					<div class="overview-container col-4-8 map-container">
+						<div class="map row">
+							<div id="map"></div>
 						</div>
-					</a>
+					</div>
 				</div>
 			</div>
 		</section>

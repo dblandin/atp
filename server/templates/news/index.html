@@ -62,7 +62,7 @@
 
 							<article class="{% if loop.index > 5 %}hidden{% endif %} active news-tile year-all company-all{% for tag in newsEntry.tags %} company-{{ tag.name |replace(' ', '-') }}{% endfor %} year-{{newsEntry.publishedDate | slice(0,4) }} row">
 
-								<div class="news-info margin-b-40">
+								<div class="news-info margin-b-50">
 									<div class="news-date bold">{{newsEntry.publishedDate | date("M d, Y")}}</div>
 									<a class="title-link" href="{{ url }}"><h2>{{ newsEntry.articleDisplayTitle }}</h2></a>
 								</div>

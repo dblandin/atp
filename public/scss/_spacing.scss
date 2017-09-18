@@ -111,6 +111,13 @@ $margin: 10;
 	$margin: $margin + $increase-margin;
 }
 
+.margin-b-50-not-last {
+	margin-bottom: 50px;
+	&:last-of-type {
+		margin-bottom: 0;
+	}
+}
+
 //////////////////////////////////////////////////////////////////////////////
 // Widths
 
