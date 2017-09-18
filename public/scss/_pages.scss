@@ -35,6 +35,10 @@ body {
 	width: 100%;
 	font-size: 7vw;
 	line-height: 7vw;
+	padding-top: 12vh;
+	p {
+		margin-top: 0;
+	}
 }
 #body {
 	margin-top: 100px;
@@ -43,6 +47,7 @@ body {
 		padding-top: 70px;
 		padding-bottom: 70px;
 		&.hero-section {
+			padding-top: 0px;
 			min-height: calc(100vh - 100px);
 		}
 		&.color-background {
@@ -219,7 +224,7 @@ body {
 .news-nav-split {
 	display: none;
 	margin: 20px 20px 20px 0;
-	border-color: $gray;
+	border-color: transparent;
 }
 .load-more {
 	cursor: pointer;

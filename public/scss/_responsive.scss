@@ -203,6 +203,13 @@
 	#header #menu {
 		right: 20px;
 	}
+	.hero-text {
+		font-size: 48px;
+		line-height: 48px;
+		p {
+			margin-top: 10px;
+		}
+	}
 	#footer .links {
 		left: 20px;
 	}
@@ -309,6 +316,9 @@
 		.subnav-container {
 			width: 100%;
 			margin-bottom: 40px;
+			border-top: 1px solid $light-gray;
+			border-bottom: 1px solid $light-gray;
+			padding: 10px 0;
 		}
 		.subnav {
 			width: 100%;
@@ -349,10 +359,9 @@
 		.subnav-container {
 			width: 100%;
 			margin-bottom: 40px;
-			border-top: 1px solid $black;
-			border-bottom: 1px solid $black;
-			padding-top: 10px;
-			padding-bottom: 10px;
+			border-top: 1px solid $light-gray;
+			border-bottom: 1px solid $light-gray;
+			padding: 10px 0;
 		}
 		.col-6-8 {
 			width: 100%;
@@ -363,6 +372,9 @@
 	#legal {
 		.subnav-container {
 			margin-bottom: 40px;
+			border-top: 1px solid $light-gray;
+			border-bottom: 1px solid $light-gray;
+			padding: 10px 0;
 		}
 		.col-2-8,
 		.col-6-8 {
@@ -370,7 +382,11 @@
 		}
 	}
 	.contact-section .subnav-container {
+		width: 100%;
 		min-height: auto;
+		border-top: 1px solid $light-gray;
+		border-bottom: 1px solid $light-gray;
+		padding: 10px 0;
 	}
 	.contact-section .subnav {
 		margin-top: 40px;

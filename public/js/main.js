@@ -44,6 +44,7 @@ $(function() {
 				moveToLocation();
 			}
 		}
+		$('.blocker').fadeOut(200);
 	}).on('resize', function(){
 		//
 	}).scroll(function() {
@@ -223,7 +224,7 @@ $(function() {
 		});
 
 		map.setOptions({
-			draggable: true,
+			draggable: false,
 			zoomControl: false,
 			scrollwheel: false,
 			disableDoubleClickZoom: true,

@@ -207,6 +207,15 @@ strong {
 //////////////////////////////////////////////////////////////////////////////
 // Other
 
+.blocker {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-color: $white;
+	z-index: 99999;
+}
 .two-columns-container {
 	display: flex;
 	flex-wrap: wrap;

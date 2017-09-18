@@ -269,6 +269,15 @@ ul {
 strong {
   font-weight: 500; }
 
+.blocker {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #FFFFFF;
+  z-index: 99999; }
+
 .two-columns-container {
   display: flex;
   flex-wrap: wrap; }
@@ -1348,7 +1357,10 @@ strong {
 .hero-text {
   width: 100%;
   font-size: 7vw;
-  line-height: 7vw; }
+  line-height: 7vw;
+  padding-top: 12vh; }
+  .hero-text p {
+    margin-top: 0; }
 
 #body {
   margin-top: 100px; }
@@ -1357,6 +1369,7 @@ strong {
     padding-top: 70px;
     padding-bottom: 70px; }
     #body section.hero-section {
+      padding-top: 0px;
       min-height: calc(100vh - 100px); }
     #body section.color-background {
       background-color: #D9D9D9; }
@@ -1525,7 +1538,7 @@ strong {
 .news-nav-split {
   display: none;
   margin: 20px 20px 20px 0;
-  border-color: #B3B3B3; }
+  border-color: transparent; }
 
 .load-more {
   cursor: pointer; }
@@ -1671,6 +1684,12 @@ strong {
   #header #menu {
     right: 20px; }
 
+  .hero-text {
+    font-size: 48px;
+    line-height: 48px; }
+    .hero-text p {
+      margin-top: 10px; }
+
   #footer .links {
     left: 20px; }
 
@@ -1758,7 +1777,10 @@ strong {
 
   #expertise .subnav-container {
     width: 100%;
-    margin-bottom: 40px; }
+    margin-bottom: 40px;
+    border-top: 1px solid #D9D9D9;
+    border-bottom: 1px solid #D9D9D9;
+    padding: 10px 0; }
   #expertise .subnav {
     width: 100%; }
   #expertise .col-4-8 {
@@ -1785,17 +1807,19 @@ strong {
   .news-section .subnav-container {
     width: 100%;
     margin-bottom: 40px;
-    border-top: 1px solid #000000;
-    border-bottom: 1px solid #000000;
-    padding-top: 10px;
-    padding-bottom: 10px; }
+    border-top: 1px solid #D9D9D9;
+    border-bottom: 1px solid #D9D9D9;
+    padding: 10px 0; }
   .news-section .col-6-8 {
     width: 100%; }
 
   #about .subnav-container,
   #press .subnav-container,
   #legal .subnav-container {
-    margin-bottom: 40px; }
+    margin-bottom: 40px;
+    border-top: 1px solid #D9D9D9;
+    border-bottom: 1px solid #D9D9D9;
+    padding: 10px 0; }
   #about .col-2-8,
   #about .col-6-8,
   #press .col-2-8,
@@ -1805,7 +1829,11 @@ strong {
     width: 100%; }
 
   .contact-section .subnav-container {
-    min-height: auto; }
+    width: 100%;
+    min-height: auto;
+    border-top: 1px solid #D9D9D9;
+    border-bottom: 1px solid #D9D9D9;
+    padding: 10px 0; }
 
   .contact-section .subnav {
     margin-top: 40px;
