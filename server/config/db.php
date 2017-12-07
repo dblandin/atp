@@ -11,37 +11,20 @@ return array(
 
 	// The database server name or IP address. Usually this is 'localhost' or '127.0.0.1'.
 	'server' => 'localhost',
+	// 'server' => '127.0.0.1',
 
     // The name of the database to select.
-    //'database' => 'aa11wj8poadiene',
     'database' => 'atp',
+    // 'database' => 'atp2',
 
     // The database username to connect with.
-    //'user' => 'atpadmin',
     'user' => 'root',
 
     // The database password to connect with.
-    //'password' => 'Stinkdigital123',
     'password' => 'root',
+    // 'password' => 'd5dcc21e7dd38099cbced76852194d674a270691fec383fc',
 
     // The prefix to use when naming tables. This can be no more than 5 characters.
-    'tablePrefix' => 'craft',
-
-    // 'server' => '127.0.0.1',
-
-	// // The name of the database to select.
-	// //'database' => 'aa11wj8poadiene',
-	// 'database' => 'atp',
-
-	// // The database username to connect with.
-	// //'user' => 'atpadmin',
-	// 'user' => 'root',
-
-	// // The database password to connect with.
-	// //'password' => 'Stinkdigital123',
-	// 'password' => 'root',
-
-	// // The prefix to use when naming tables. This can be no more than 5 characters.
-	// 'tablePrefix' => 'craft',
+    'tablePrefix' => 'craft'
 
 );
