@@ -35,28 +35,16 @@ return array(
               'baseUrl'  => '',
           ),
       ),
-	'atp.sdny.in' => array(
-        'devMode' => false,
-        'cache' => false,
-        'siteUrl' => array(
-            'en_us' => 'http://atp.sdny.in/',
-        ),
-        'omitScriptNameInUrls' => true,
-        'environmentVariables' => array(
-            'basePath' => 'http://atp.sdny.in/',
-            'baseUrl'  => '',
-        ),
-    ),
-	'atp.dev.sdny.in' => array(
-        'devMode' => false,
-        'cache' => false,
-        'siteUrl' => array(
-            'en_us' => 'http://atp.dev.sdny.in/',
-        ),
-        'omitScriptNameInUrls' => true,
-        'environmentVariables' => array(
-            'basePath' => 'http://atp.dev.sdny.in/',
-            'baseUrl'  => '',
-        ),
-    )
+    	'atp.rngr.org' => array(
+            'devMode' => false,
+            'cache' => false,
+            'siteUrl' => array(
+                'en_us' => 'http://atp.rngr.org/',
+            ),
+            'omitScriptNameInUrls' => true,
+            'environmentVariables' => array(
+                'basePath' => 'http://atp.rngr.org/',
+                'baseUrl'  => '',
+            ),
+        )
 );
