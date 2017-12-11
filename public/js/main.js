@@ -247,7 +247,7 @@ $(function() {
 		console.log('carousel exists');
 		// Initialize the carousel (drag)
 		var carousel = new Siema({
-			onChange: onChange,
+			onChange: carouselChange,
 			selector: '.carousel-items-container',
 			duration: 350,
 			easing: 'cubic-bezier(0.4, 0.0, 0.2, 1)',
@@ -255,7 +255,7 @@ $(function() {
 		});
 	}
 
-	function onChange() {
+	function carouselChange() {
 		console.log('carousel changed');
 		var currentSlide = carousel.currentSlide;
 		$('.carousel-indicators button').removeClass('active');
