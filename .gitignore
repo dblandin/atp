@@ -12,3 +12,4 @@ public/js/bundle.js.map
 public/css/app.css
 public/css/app.css.map
 shared/jsons/*
+/server/config/general.php
