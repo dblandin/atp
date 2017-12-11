@@ -264,7 +264,7 @@ $(function() {
 
 	// Add click handler to indicators
 	$('.carousel-indicators button').on("click", function(e) {
-		console.log('carousel button');
+		console.log('carousel button', carousel);
 		carousel.goTo($(this).index());
 	});
 
