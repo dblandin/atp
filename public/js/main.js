@@ -244,7 +244,6 @@ $(function() {
 
 	// Does carousel exist?
 	if($('.carousel-items-container').length > 0){
-		console.log('carousel exists');
 		// Initialize the carousel (drag)
 		var carousel = new Siema({
 			onChange: carouselChange,
@@ -256,7 +255,6 @@ $(function() {
 	}
 
 	function carouselChange() {
-		console.log('carousel changed');
 		var currentSlide = carousel.currentSlide;
 		$('.carousel-indicators button').removeClass('active');
 		$('.carousel-indicators button').eq(currentSlide).addClass('active');
@@ -264,7 +262,6 @@ $(function() {
 
 	// Add click handler to indicators
 	$('.carousel-indicators button').on("click", function(e) {
-		console.log('carousel button', carousel);
 		carousel.goTo($(this).index());
 	});
 
