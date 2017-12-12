@@ -65,7 +65,7 @@
 								</div>
 								<div class="col-4-8">
 									<ul>
-										{% for news in craft.entries.section('news').relatedTo(company.newsTag).limit(3) %}
+										{% for news in craft.entries.section('news').relatedTo(company.newsTag).limit(3).order('publishedDate desc') %}
 										{% set url = news.type.handle == 'link' ? news.linkUrl : news.url %}
 										<div class="margin-b-30">
 											<h5 class="bold">{{news.publishedDate | date("M d, Y")}}</h5>
