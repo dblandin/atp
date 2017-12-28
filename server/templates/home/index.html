@@ -45,7 +45,7 @@
 							{% if expertise.type == "areaOfExpertise" %}
 								<div class="grid margin-b-50-not-last">
 									<div class="col-1-3">
-										{% set anchor = expertise.areaTitle|split(' ')[0] %}
+										{% set anchor = expertise.areaTitle|split(' ')|join('-') %}
 										<h4>{{expertise.areaTitle}}</h4>
 									</div>
 									<div class="col-2-3">
