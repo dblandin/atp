@@ -1284,6 +1284,7 @@ strong {
     top: 36px;
     right: 55px;
     width: 30px;
+    height: 30px;
     cursor: pointer;
     fill: #B3B3B3; }
     #header #menu:hover {
@@ -1368,6 +1369,7 @@ strong {
     margin-top: 0; }
 
 #body {
+  display: block;
   margin-top: 100px; }
   #body section {
     display: block;
