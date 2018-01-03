@@ -1704,8 +1704,8 @@ strong {
     left: 20px; }
 
   #body section {
-    padding-top: 40px;
-    padding-bottom: 40px; }
+    padding-top: 0px;
+    padding-bottom: 20px; }
 
   html, body {
     font-size: 15px;
@@ -1768,8 +1768,8 @@ strong {
     width: 100%; }
 
   .partnership-section {
-    padding-top: 70px !important;
-    padding-bottom: 70px !important; }
+    padding-top: 30px !important;
+    padding-bottom: 30px !important; }
     .partnership-section .news-header {
       width: 100%;
       margin-bottom: 20px; }
@@ -1787,7 +1787,7 @@ strong {
 
   #expertise .subnav-container {
     width: 100%;
-    margin-bottom: 40px;
+    margin-bottom: 20px;
     border-top: 1px solid #D9D9D9;
     border-bottom: 1px solid #D9D9D9;
     padding: 10px 0; }
@@ -1816,7 +1816,7 @@ strong {
     font-weight: 500; }
   .news-section .subnav-container {
     width: 100%;
-    margin-bottom: 40px;
+    margin-bottom: 20px;
     border-top: 1px solid #D9D9D9;
     border-bottom: 1px solid #D9D9D9;
     padding: 10px 0; }
@@ -1826,7 +1826,7 @@ strong {
   #about .subnav-container,
   #press .subnav-container,
   #legal .subnav-container {
-    margin-bottom: 40px;
+    margin-bottom: 20px;
     border-top: 1px solid #D9D9D9;
     border-bottom: 1px solid #D9D9D9;
     padding: 10px 0; }
@@ -1864,6 +1864,14 @@ strong {
 
   #article .h4 {
     font-size: 18px;
-    line-height: 26px; } }
+    line-height: 26px; }
+
+  .margin-b-50-not-last {
+    margin-bottom: 25px; }
+
+  #footer .offices {
+    padding-bottom: 70px;
+    padding-top: 30px;
+    margin-bottom: 0; } }
 
 /*# sourceMappingURL=main.css.map */

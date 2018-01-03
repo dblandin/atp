@@ -217,8 +217,8 @@
 		left: 20px;
 	}
 	#body section {
-		padding-top: 40px;
-		padding-bottom: 40px;
+		padding-top: 0px; // was 40 => 20
+		padding-bottom: 20px;
 	}
 	html, body {
 		font-size: 15px;
@@ -291,8 +291,8 @@
 		}
 	}
 	.partnership-section {
-		padding-top: 70px !important;
-		padding-bottom: 70px !important;
+		padding-top: 30px !important;
+		padding-bottom: 30px !important;
 		.news-header {
 			width: 100%;
 			margin-bottom: 20px;
@@ -318,7 +318,7 @@
 	#expertise {
 		.subnav-container {
 			width: 100%;
-			margin-bottom: 40px;
+			margin-bottom: 20px;
 			border-top: 1px solid $light-gray;
 			border-bottom: 1px solid $light-gray;
 			padding: 10px 0;
@@ -361,7 +361,7 @@
 		}
 		.subnav-container {
 			width: 100%;
-			margin-bottom: 40px;
+			margin-bottom: 20px;
 			border-top: 1px solid $light-gray;
 			border-bottom: 1px solid $light-gray;
 			padding: 10px 0;
@@ -374,7 +374,7 @@
 	#press,
 	#legal {
 		.subnav-container {
-			margin-bottom: 40px;
+			margin-bottom: 20px;
 			border-top: 1px solid $light-gray;
 			border-bottom: 1px solid $light-gray;
 			padding: 10px 0;
@@ -411,6 +411,19 @@
 	#article .h4 {
 		font-size: 18px;
 		line-height: 26px;
+	}
+
+	//////////////////////////////////////////////////////////////////////////////
+	// Hack fixes
+
+	.margin-b-50-not-last {
+		margin-bottom: 25px;
+	}
+
+	#footer .offices {
+		padding-bottom: 70px;
+		padding-top: 30px;
+		margin-bottom: 0;
 	}
 }
 
