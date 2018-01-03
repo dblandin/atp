@@ -252,6 +252,17 @@ $(function() {
 			easing: 'cubic-bezier(0.4, 0.0, 0.2, 1)',
 			loop: true
 		});
+
+		// Hack autoplay
+		var carouselTimer = setInterval(() => carousel.next(), 5000);
+
+		// window.addEventListener('touchstart', function() {
+		// 	window.clearInterval(carouselTimer);
+		// });
+
+		// window.addEventListener('touchend', function() {
+		// 	carouselTimer = setInterval(() => carousel.next(), 5000);
+		// });
 	}
 
 	function carouselChange() {
