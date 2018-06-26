@@ -28,19 +28,22 @@
 		{% set longUrl = 'https://www.appletreepartners.com/' %}
 	{% endif %}
 
-	<meta property="og:type" content="{% if entry.type is defined and entry.type == 'article' %} article {% else %} website {% endif %}" />
-	<meta property="og:title" content="{% if entry.type is defined and entry.type == 'article' %} Apple Tree Partners News {% else %} Apple Tree Partners {% endif %}" />
-	<meta property="og:description" content="{% if entry.type is defined and entry.type == 'article' %} {{ entry.title }} {% else %} We use a long term investment philosophy to build sustainable healthcare companies through meaningful partnerships and deep expertise. {% endif %}" />
-	<meta property="og:url" content="{% if entry.type is defined and entry.type == 'article' %} https://www.appletreepartners.com/news/{{entry.slug}} {% else %} https://www.appletreepartners.com {% endif %}" />
-	<meta property="og:image" content="/assets/android-chrome-192x192.png" />
+	<meta property="og:type" content="{% if entry.type is defined and entry.type == 'article' %}article{% else %}website{% endif %}" />
+	<meta property="og:title" content="{% if entry.type is defined and entry.type == 'article' %}Apple Tree Partners News{% else %}Apple Tree Partners{% endif %}" />
+	<meta property="og:description" content="{% if entry.type is defined and entry.type == 'article' %}{{ entry.title }}{% else %}We use a long term investment philosophy to build sustainable healthcare companies through meaningful partnerships and deep expertise.{% endif %}" />
+	<meta property="og:url" content="{% if entry.type is defined and entry.type == 'article' %}https://www.appletreepartners.com/news/{{entry.slug}}{% else %}https://www.appletreepartners.com{% endif %}" />
+	<meta property="og:image" content="https://www.appletreepartners.com/assets/android-chrome-192x192.png" />
+	<meta property="og:image:type" content="image/png" />
+	<meta property="og:image:width" content="192" />
+	<meta property="og:image:height" content="192" />
 	<meta property="og:site_name" content="Apple Tree Partners" />
 
 	<!-- Twitter meta -->
 	<meta name="twitter:card" content="summary" />
 	<meta name="twitter:site" content="@AppleTreePartners" />
-	<meta name="twitter:title" content="{% if entry.type is defined and entry.type == 'article' %} Apple Tree Partners News {% else %} Apple Tree Partners {% endif %}" />
-	<meta name="twitter:description" content="{% if entry.type is defined and entry.type == 'article' %} {{ entry.title }} - {{ longUrl|shorten }}{% else %} We use a long term investment philosophy to build sustainable healthcare companies through meaningful partnerships and deep expertise. - {{ longUrl|shorten }} {% endif %}" />
-	<meta name="twitter:image" content="/assets/images/site/icon_atp_logo.png" />
+	<meta name="twitter:title" content="{% if entry.type is defined and entry.type == 'article' %}Apple Tree Partners News{% else %}Apple Tree Partners{% endif %}" />
+	<meta name="twitter:description" content="{% if entry.type is defined and entry.type == 'article' %}{{ entry.title }} - {{ longUrl|shorten }}{% else %}We use a long term investment philosophy to build sustainable healthcare companies through meaningful partnerships and deep expertise. - {{ longUrl|shorten }}{% endif %}" />
+	<meta name="twitter:image" content="https://www.appletreepartners.com/assets/android-chrome-192x192.png" />
 
 	<title>{% if entry.title is defined %}{{ entry.title }} - {% endif %}{{ siteName }}</title>
 
