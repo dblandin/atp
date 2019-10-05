@@ -23,24 +23,11 @@ var plugins = [
 var filename = 'bundle.js';
 
 if( PROD ){
-    plugins.push(
-        new webpack.optimize.UglifyJsPlugin({
-            sourceMap: false,
-            mangle: true,
-            compress : {
-                drop_console: true
-            },
-            output: {
-                comments: false
-            }
-        })
-    );
-
     outputPath = __dirname + '/public/js/';
 
     filename = 'bundle.min.js';
 
-    devTool = null;
+    devTool = false;
 
     console.log('\n ---- WEBPACK ----\n \n running in production \n');
 
@@ -74,6 +61,10 @@ plugins.push( new webpack.ProvidePlugin({
 
 
 module.exports = {
+    optimization: {
+      minimize: false
+    },
+
 
     /*
     http://webpack.github.io/docs/configuration.html
