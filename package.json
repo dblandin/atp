@@ -24,6 +24,7 @@
   "devDependencies": {
     "autoprefixer-stylus": "latest",
     "backbone": "^1.2.3",
+    "concurrently": "^4.1.2",
     "custom-event": "^1.0.0",
     "eslint": "latest",
     "exports-loader": "^0.6.3",
@@ -33,7 +34,6 @@
     "live-reload": "latest",
     "node-libs-browser": "*",
     "npm": "^3.7.5",
-    "parallelshell": "latest",
     "prefix-style": "^2.0.1",
     "raf": "^3.2.0",
     "source-map": "^0.5.3",
@@ -46,11 +46,11 @@
     "webpack-cli": "^3.3.9"
   },
   "scripts": {
-    "dev": "npm run watch:js & parallelshell 'npm run watch:stylus' 'npm run livereload'",
-    "watch:js": "ENV_PROD=0 webpack --progress --colors --watch --cache",
+    "dev": "concurrently 'npm:watch:js' 'npm:watch:stylus' 'npm:livereload'",
+    "watch:js": "ENV_PROD=0 webpack --mode=development --progress --colors --watch --cache",
     "watch:stylus": "$(npm bin)/stylus -m -w ./src/styl/app.styl -o ./public/css/app.css --include-css",
-    "deploy": "npm run lint & parallelshell 'npm run dist:stylus' 'npm run dist:js'",
-    "dist:js": "ENV_PROD=1 webpack",
+    "deploy": "npm run lint && concurrently 'npm:dist:stylus' 'npm:dist:js'",
+    "dist:js": "ENV_PROD=1 webpack --mode=production",
     "dist:stylus": "$(npm bin)/stylus -u autoprefixer-stylus ./src/styl/app.styl -o ./public/css/app.min.css --include-css -c",
     "lint": "eslint ./src/scripts/project; exit 0",
     "livereload": "$(npm bin)/live-reload --port 9091 ./public/"
