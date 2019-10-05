@@ -17,7 +17,7 @@ var env = {
 
 var plugins = [
     // Avoid publishing files when compilation failed
-    new webpack.NoErrorsPlugin()
+    new webpack.NoEmitOnErrorsPlugin()
 ];
 
 var filename = 'bundle.js';
@@ -113,12 +113,16 @@ module.exports = {
     },
 
     module: {
-        loaders: [
-            { test: /\.twig$/, loader: 'twig-loader'},
-            { test: /\.json$/, loader: "json-loader" },
-            { test: /zepto\.js$/, loader: 'exports?Zepto; delete window.$; delete window.Zepto;'},
-            { test: /detectizr\.js$/, loader: 'imports?this=>window!exports?window.Detectizr;'}
-        ]
+        rules: [
+            { test: /\.twig$/, use: 'twig-loader'},
+            { test: /\.json$/, use: "json-loader" },
+            { test: /zepto\.js$/, use: 'exports-loader?Zepto; delete window.$; delete window.Zepto;'},
+            { test: /detectizr\.js$/, use: [
+	      'imports-loader?this=>window',
+	      'exports-loader?window.Detectizr'
+             ]
+	    }
+	]
     },
 
     stats: {
