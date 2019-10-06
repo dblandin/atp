@@ -10,6 +10,8 @@ services:
       - redis
     ports:
       - 8080:80
+    volumes:
+      - ./server/templates:/var/www/html/server/templates
 
     environment:
       REDIS_HOST: redis
