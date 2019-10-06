@@ -1,0 +1,47 @@
+version: '2.1'
+
+services:
+  craft:
+    image: atp
+    build:
+      context: .
+    depends_on:
+      - mariadb
+      - redis
+    ports:
+      - 8080:80
+
+    environment:
+      REDIS_HOST: redis
+      SESSION_DRIVER: redis
+      CACHE_DRIVER: redis
+
+      DB_SERVER: mariadb
+      DB_NAME: atp
+      DB_USER: craft
+      DB_PASSWORD: secret
+      DB_DATABASE: atp
+      DB_SCHEMA: public
+      DB_DRIVER: mysql
+      DB_PORT: 3306
+      DB_TABLE_PREFIX: craft
+
+  mariadb:
+    image: mariadb:10.1
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_USER: craft
+      MYSQL_PASSWORD: secret
+      MYSQL_DATABASE: atp
+    volumes:
+      # Persistent data
+      - dbdata:/var/lib/mysql
+
+  redis:
+    image: redis:4-alpine
+    volumes:
+      - redisdata:/data
+
+volumes:
+  dbdata:
+  redisdata:
