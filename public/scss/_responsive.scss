@@ -206,11 +206,11 @@
 			min-height: 400px;
 		}
 		.subnav {
-			width: 75%;
+			width: 100%;
 			margin-bottom: 40px;
 		}
 		.map-container {
-			width: 75%;
+			width: 100%;
 		}
 	}
 	.tablet-nav {
@@ -399,21 +399,6 @@
 			width: 100%;
 		}
 	}
-	#expertise {
-		.subnav-container {
-			width: 100%;
-			margin-bottom: 20px;
-			border-top: 1px solid $light-gray;
-			border-bottom: 1px solid $light-gray;
-			padding: 10px 0;
-		}
-		.subnav {
-			width: 100%;
-		}
-		.col-4-8 {
-			width: 100%;
-		}
-	}
 	#team, #portfolio {
 		padding-top: 0;
 		.team-list, .portfolio-list {
@@ -486,9 +471,12 @@
 	.contact-section .subnav-container {
 		width: 100%;
 		min-height: auto;
-		border-top: 1px solid $light-gray;
-		border-bottom: 1px solid $light-gray;
-		padding: 10px 0;
+		margin: 0;
+	}
+	.contact-section {
+		.container {
+			padding: 0;
+		}
 	}
 	.hero-section .container {
 		width: 100%;
