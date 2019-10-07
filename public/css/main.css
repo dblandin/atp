@@ -1784,6 +1784,13 @@ strong {
   background-color: #e5e5e5;
 }
 
+#footer .container {
+  padding: 0;
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+}
+
 #footer .links {
   color: #B3B3B3;
 }
@@ -2136,12 +2143,6 @@ nav ul {
   .partnership-section .container {
     padding: 0;
   }
-  .partnership-section .news-header {
-    width: 33.3%;
-  }
-  .partnership-section .partnership-carousel {
-    width: 66.6%;
-  }
 
   #team .team-list, #team .portfolio-list, #portfolio .team-list, #portfolio .portfolio-list {
     width: 100%;
@@ -2261,10 +2262,6 @@ nav ul {
     margin-top: 10px;
   }
 
-  #footer .links {
-    left: 20px;
-  }
-
   #body section {
     padding-top: 0px;
     padding-bottom: 20px;
@@ -2354,10 +2351,6 @@ nav ul {
     width: 100%;
   }
 
-  .partnership-section {
-    padding-top: 30px !important;
-    padding-bottom: 80px !important;
-  }
   .partnership-section .news-header {
     width: 100%;
     margin-bottom: 20px;
@@ -2506,6 +2499,14 @@ nav ul {
     padding-bottom: 70px;
     padding-top: 0px;
     margin-bottom: 0;
+  }
+
+  #footer .container {
+    position: relative;
+    padding: 0;
+    margin-top: 20px;
+    left: 0;
+    bottom: 20px;
   }
 
   nav {
