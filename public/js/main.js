@@ -45,16 +45,17 @@ $(function() {
 			}
 		}
 		$('.blocker').fadeOut(800);
-	}).on('resize', function(){
-		//
-	}).scroll(function() {
-		var windowScroll = $(window).scrollTop();
-		if(windowScroll > 100){
-			$('.down-arrow').hide(500);
-		} else {
-			$('.down-arrow').show(500);
-		}
-	});
+	})
+	// .on('resize', function(){
+	// 	//
+	// }).scroll(function() {
+	// 	var windowScroll = $(window).scrollTop();
+	// 	if(windowScroll > 100){
+	// 		$('.down-arrow').hide(500);
+	// 	} else {
+	// 		$('.down-arrow').show(500);
+	// 	}
+	// });
 
 	//////////////////////////////////////////////////////////////////////////////
 	// Filter News
@@ -93,7 +94,17 @@ $(function() {
 		var yearFilter = $('.year-filter-dropdown li.active').attr('id');
 		var companyFilter = $('.company-filter-dropdown li.active').attr('id');
 		$('.news-tile').removeClass('active').removeClass('hidden');
-		var results = $('.news-tile.'+yearFilter+'.'+companyFilter).addClass('active');
+		
+		if (yearFilter === 'archive') {
+			$('.news-tile.'+companyFilter).addClass('active');
+			$('.news-tile.year-2019.'+companyFilter).removeClass('active');
+			$('.news-tile.year-2018.'+companyFilter).removeClass('active');
+			$('.news-tile.year-2017.'+companyFilter).removeClass('active');
+			var results = $('.news-tile.active');
+		} else {
+			var results = $('.news-tile.'+yearFilter+'.'+companyFilter).addClass('active');
+		}
+
 		if(results.length > 0){
 			if(results.length >= 5){
 				$('.load-more-container').show();
@@ -166,12 +177,12 @@ $(function() {
 	//////////////////////////////////////////////////////////////////////////////
 	// Down Arrow Advance
 
-	$('.down-arrow').on("click", function(e) {
-		$('html, body').animate({
-			scrollTop: ($(".expertise-section").offset().top - 100)
-		}, 1000);
-		$(this).hide(500);
-	});
+	// $('.down-arrow').on("click", function(e) {
+	// 	$('html, body').animate({
+	// 		scrollTop: ($(".expertise-section").offset().top - 100)
+	// 	}, 1000);
+	// 	$(this).hide(500);
+	// });
 
 	//////////////////////////////////////////////////////////////////////////////
 	// Map
