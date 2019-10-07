@@ -1877,6 +1877,10 @@ strong {
   line-height: 4vw;
 }
 
+.load-more-container, .no-more-container {
+  margin-bottom: 10px;
+}
+
 .press-container p:last-of-type {
   margin-bottom: 0;
 }
@@ -2129,6 +2133,9 @@ nav ul {
     width: 100%;
   }
 
+  .partnership-section .container {
+    padding: 0;
+  }
   .partnership-section .news-header {
     width: 33.3%;
   }
@@ -2503,9 +2510,6 @@ nav ul {
 
   nav {
     margin-bottom: 20px;
-  }
-  nav ul:first-child {
-    margin-bottom: 10px;
   }
 
   .approach-text {
