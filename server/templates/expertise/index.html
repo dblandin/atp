@@ -62,11 +62,6 @@
 							{% for company in expertise.company %}
 								{% if company.type == "company" %}
 									<li class="col-sm-12 col-lg-3">
-										{% set image = company.companyLogo.first() %}
-					          {% if image %}
-					               <span></span><img src="{{ image.getUrl}}" alt="{{ image.title }}"/>
-					          {% endif %}
-
 										<a class="company-about col-lg-12" href="{{ company.url }}">
 											<p>{{company.companyShortDescription}}</p>
 											<h5>Read more</h5>

@@ -66,35 +66,70 @@
 	<header id="header">
 		<div class="container">
 			<a class="logo" href="http://www.appletreepartners.com/"><h2 class="letter-a">A</h2><h2 class="letter-t">T</h2><h2 class="letter-p">P</h2></a>
-
-			<svg id="menu" version="1.1" class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="-297 390 16 14">
-				<rect x="-297" y="390" class="st0" width="16" height="2"/>
-				<rect x="-297" y="402" class="st0" width="16" height="2"/>
-				<rect x="-297" y="396" class="st0" width="16" height="2"/>
-			</svg>
-
-			<nav id="navigation">
-				<svg version="1.1" class="close" xmlns="http://www.w3.org/2000/svg" width="33" height="32" viewBox="0 0 33 32">
-				  <g fill="none" fill-rule="evenodd" stroke="#FFF" stroke-width="3.35" transform="translate(1 1)">
-				    <path d="M30.1758 28.9L.1568.212M.1572 28.8991L30.1752.2101"/>
-				  </g>
-				</svg>
-				<ul>
-					<li><a class="header-link therapeutics {% if craft.request.lastSegment == 'therapeutics' %} active {% endif %}" href="/expertise/therapeutics"><h2 class="bold">Therapeutics</h2></a></li>
-					<li><a class="header-link medical-devices {% if craft.request.lastSegment == 'medical-devices' %} active {% endif %}" href="/expertise/medical-devices"><h2 class="bold">Medical Devices</h2></a></li>
-					<!-- <li><a class="header-link healthcare-services {% if craft.request.lastSegment == 'healthcare-services' %} active {% endif %}" href="/expertise/healthcare-services"><h2 class="bold">Healthcare Services</h2></a></li> -->
-					<li><a class="header-link news {% if craft.request.firstSegment == 'news' %} active {% endif %}" href="/news"><h2 class="bold">News</h2></a></li>
-					<li><a class="header-link about {% if craft.request.lastSegment == 'about' or craft.request.lastSegment == 'press' or craft.request.lastSegment == 'legal' %} active {% endif %}" href="/about"><h2 class="bold">About</h2></a></li>
-					<li><a class="header-link {% if craft.request.lastSegment == 'contact' %} active {% endif %}" href="/contact"><h2 class="bold">Contact</h2></a></li>
-				</ul>
-			</nav>
 		</div>
 	</header>
 
 	<main id="body" role="main">
-		{% block content %}
-			<!-- Page content comes here -->
-		{% endblock %}
+		<div class="container">
+			<div class="grid">
+				<nav class="main-navigation sticky col-2-8">
+					<ul>
+						<li><a class="nav-link approach {% if craft.request.firstSegment == '' %} active {% endif %}" href="/"><h4>Approach</h4</a></li>
+						<li><a class="nav-link team {% if craft.request.firstSegment == 'team' %} active {% endif %}" href="/team"><h4>Team</h4/a></li>
+						<li><a class="nav-link portfolio {% if craft.request.firstSegment == 'portfolio' %} active {% endif %}" href="/portfolio"><h4>Portfolio</h4></a></li>
+						<li><a class="nav-link news {% if craft.request.firstSegment == 'news' %} active {% endif %}" href="/news"><h4>News</h4></a></li>
+						<li><a class="nav-link contact {% if craft.request.lastSegment == 'contact' %} active {% endif %}" href="/contact"><h4>Contact</h4></a></li>
+					</ul>
+
+					{% block belowNavContent %}
+						<!-- Below navigation content comes here -->
+					{% endblock %}
+				</nav>
+				<div class="content-container col-6-8">
+				{% block content %}
+					<!-- Page content comes here -->
+				{% endblock %}
+				</div>
+				{% if craft.request.firstSegment == '' %}
+				<section class="partnership-section col-8-8">
+					<div class="container">
+						<div class="grid">
+							<div class="col-2-8">&nbsp;</div>
+							<div class="col-6-8 partnership-carousel">
+								<h4 class="bold news-header">Recent News</h4>
+								<ul class="carousel-items-container">
+									{% set news = entry.featurednewsitems.order('postDate desc') %}
+									{% for newsItem in news.limit(6) %}
+										<li class="carousel-item {% if loop.index == 1 %} active {% endif %}" data-id="{{loop.index - 1}}">
+											<div class="bold">{{newsItem.publishedDate | date("M d, Y")}}</div>
+											<a class="news-item-title" href="/news/{{newsItem.slug}}">
+												<p>{{newsItem.articleDisplayTitle}}</p>
+											</a>
+										</li>
+									{% endfor %}
+								</ul>
+								<div class="carousel-indicators">
+									<button class="active"></button>
+									<button></button>
+									<button></button>
+									<button></button>
+									<button></button>
+									<button></button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+				<footer id="footer" class="col-8-8">
+					<div class="container">
+						<div class="links">
+							<a href="/press">Press</a> <a href="/legal">Legal</a>
+						</div>
+					</div>
+				</footer>
+				{% endif %}
+			</div>
+		</div>
 	</main>
 
 	<!-- Google Analytics -->

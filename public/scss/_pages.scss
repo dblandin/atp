@@ -31,13 +31,13 @@ body {
 	max-width: 1920px;
 	margin: 0 auto;
 }
-.hero-text {
+.approach-text {
 	width: 100%;
-	font-size: 7vw;
-	line-height: 7vw;
-	padding-top: 12vh;
+	margin-top: 60px;
+
 	p {
-		margin-top: 0;
+		font-size: 2.4vw;
+		line-height: 3vw;
 	}
 }
 #body {
@@ -49,7 +49,6 @@ body {
 		padding-bottom: 55px;
 		&.hero-section {
 			padding-top: 0px;
-			min-height: calc(100vh - 100px);
 		}
 		&.color-background {
 			background-color: #e5e5e5;
@@ -57,18 +56,7 @@ body {
 	}
 }
 #footer {
-	p {
-		margin: 0;
-	}
-	.offices {
-		padding-bottom: 140px;
-		padding-top: 55px;
-		margin-bottom: 0;
-	}
 	.links {
-		position: absolute;
-		left: 55px;
-		bottom: 40px;
 		color: $gray;
 		a {
 			margin-right: 20px;
@@ -121,7 +109,6 @@ body {
 	list-style: none;
 }
 .carousel-indicators {
-	margin-top: 60px;
 	button {
 		@include transition (all, $timing-short, ease-in-out);
 		@include border-radius (100px);
@@ -144,6 +131,12 @@ body {
 		}
 	}
 }
+
+.news-item-title {
+	font-size: 4vw;
+	line-height: 4vw;
+}
+
 .press-container {
 	p {
 		&:last-of-type {
@@ -251,5 +244,23 @@ body {
 	min-height: 500px;
 	#map {
 		min-height: 500px;
+	}
+}
+
+nav ul {
+	list-style-type: none;
+}
+
+#team, #portfolio {
+	padding-top: 50px;
+}
+
+#team ul, #portfolio ul {
+	list-style-type: none;
+	font-size: 22px;
+	line-height: 24px;
+
+	li {
+		margin-bottom: 8px;
 	}
 }

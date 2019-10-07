@@ -20,51 +20,14 @@
 		<section class="news-section">
 			<div class="container">
 				<div class="grid">
-
-					<div class="subnav-container sticky col-2-8">
-						<h4 class="bold news-title">News</h4>
-						<h4>Filter by</h4>
-
-						<h4 class="toggle-year-filter">
-							<a href="#">
-								Years
-								<svg class="toggle-arrow" xmlns="http://www.w3.org/2000/svg" width="26" height="15" viewBox="0 0 26 15"><polygon fill="gray" points="12.863 15 0 2.137 1.414 .723 12.863 12.172 24.312 .723 25.726 2.137"/></svg>
-							</a>
-						</h4>
-						<ul class="year-filter-dropdown">
-							<li id="year-all" class="year-filter active"><h4>All</h4></li>
-							{% for date, entries in newsEntries | group("publishedDate|date('Y')") %}
-							<li id="year-{{date}}" class="year-filter"><h4>{{date}}</h4></li>
-							{% endfor %}
-						</ul>
-
-						<hr class="news-nav-split">
-
-						<h4 class="toggle-company-filter">
-							<a href="#">
-								Companies
-								<svg class="toggle-arrow" xmlns="http://www.w3.org/2000/svg" width="26" height="15" viewBox="0 0 26 15"><polygon fill="gray" points="12.863 15 0 2.137 1.414 .723 12.863 12.172 24.312 .723 25.726 2.137"/></svg>
-							</a>
-						</h4>
-						<ul class="company-filter-dropdown">
-							<li id="company-all" class="company-filter active"><h4>All</h4></li>
-							{% for tag in craft.tags.group('newsTags').relatedTo(newsEntries) %}
-							<li id="company-{{tag.title |replace(' ', '-') }}" class="company-filter"><h4>{{tag.title}}</h4></li>
-							{% endfor %}
-						</ul>
-
-					</div>
-
-					<div class="overview-container col-6-8">
-
+					<div class="overview-container col-8-8">
 						{% for newsEntry in newsEntries %}
 							{% set url = newsEntry.type.handle == 'link' ? newsEntry.linkUrl : newsEntry.url %}
-
 							<article class="{% if loop.index > 5 %}hidden{% endif %} active news-tile year-all company-all{% for tag in newsEntry.tags %} company-{{ tag.name |replace(' ', '-') }}{% endfor %} year-{{newsEntry.publishedDate | slice(0,4) }} row">
 
 								<div class="news-info margin-b-50">
 									<div class="news-date bold">{{newsEntry.publishedDate | date("M d, Y")}}</div>
-									<a class="title-link" href="{{ url }}"><h2>{{ newsEntry.articleDisplayTitle }}</h2></a>
+									<a class="title-link" href="{{ url }}"><h3>{{ newsEntry.articleDisplayTitle }}</h3></a>
 								</div>
 
 							</article>
@@ -84,5 +47,49 @@
 		</section>
 		{% endcache %}
 	</div>
+
+{% endblock %}
+
+{% block belowNavContent %}
+{% set newsEntries = craft.entries.section('news').limit(null).order('publishedDate desc') %}
+
+<section class="news-section news-nav">
+
+<div class="subnav-container">
+	<h4>Filter by</h4>
+
+	<h4 class="toggle-year-filter">
+		<a href="#">
+			Years
+			<svg class="toggle-arrow" xmlns="http://www.w3.org/2000/svg" width="26" height="15" viewBox="0 0 26 15"><polygon fill="gray" points="12.863 15 0 2.137 1.414 .723 12.863 12.172 24.312 .723 25.726 2.137"/></svg>
+		</a>
+	</h4>
+	<ul class="year-filter-dropdown">
+		<li id="year-all" class="year-filter active"><h4>All</h4></li>
+		<li id="year-2019" class="year-filter"><h4>2019</h4></li>
+		<li id="year-2018" class="year-filter"><h4>2018</h4></li>
+		<li id="year-2017" class="year-filter"><h4>2017</h4></li>
+		<li id="archive" class="year-filter"><h4>Archive</h4></li>
+
+	</ul>
+
+	<hr class="news-nav-split">
+
+	<h4 class="toggle-company-filter">
+		<a href="#">
+			Companies
+			<svg class="toggle-arrow" xmlns="http://www.w3.org/2000/svg" width="26" height="15" viewBox="0 0 26 15"><polygon fill="gray" points="12.863 15 0 2.137 1.414 .723 12.863 12.172 24.312 .723 25.726 2.137"/></svg>
+		</a>
+	</h4>
+	<ul class="company-filter-dropdown">
+		<li id="company-all" class="company-filter active"><h4>All</h4></li>
+		{% for tag in craft.tags.group('newsTags').relatedTo(newsEntries) %}
+		<li id="company-{{tag.title |replace(' ', '-') }}" class="company-filter"><h4>{{tag.title}}</h4></li>
+		{% endfor %}
+	</ul>
+
+</div>
+
+</section>
 
 {% endblock %}
