@@ -5,7 +5,7 @@
 
 {% extends "_layouts/_layout" %}
 
-{% set companies = craft.entries.section('company').all() %}
+{% set companies = craft.entries.section('company').order('title asc').all() %}
 
 
 {% block content %}
