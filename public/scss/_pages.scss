@@ -170,6 +170,7 @@ body {
 }
 .toggle-year-filter,
 .toggle-company-filter {
+	max-width: 180px;
 	a {
 		position: relative;
 		width: 100%;

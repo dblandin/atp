@@ -200,9 +200,6 @@
 		}
 	}
 	.contact-section {
-		.subnav-container {
-			min-height: 400px;
-		}
 		.subnav {
 			width: 100%;
 			margin-bottom: 40px;
@@ -219,9 +216,6 @@
 		&.hidden {
 			display: none;
 		}
-	}
-	.subnav-container {
-		width: 33.3%;
 	}
 	.tablet-2-3 {
 		width: 66.6%;
@@ -405,6 +399,8 @@
 			width: 100%;
 		}
 		.overview-container {
+			margin-bottom: 20px;
+
 			width: 100%;
 		}
 	}
@@ -443,6 +439,29 @@
 			width: 100%;
 			border-top: 1px solid $light-gray;
 			padding-bottom: 0 !important
+		}
+		.col-6-8 {
+			width: 100%;
+		}
+	}
+	section.contact-section {
+		margin-bottom: 20px;
+		padding-bottom: 0 !important;
+
+		.overview-container {
+			margin-top: 10px;
+		}
+
+		.subnav-container {
+			h4 {
+				font-weight: 500;
+			}
+		}
+		.subnav-container {
+			margin-top: 10px;
+			width: 100%;
+			border-top: 1px solid $light-gray;
+			padding-top: 10px;
 		}
 		.col-6-8 {
 			width: 100%;

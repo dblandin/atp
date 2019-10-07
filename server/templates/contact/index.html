@@ -43,7 +43,7 @@
 
 
 {% block belowNavContent %}
-<section class="contact-section contact-nav">
+<section class="contact-section subnav-container contact-nav">
 	<div class="subnav-container">
 		{% for location in entry.locations %}
 		<h4 class="bold"><a href="#" class="toggle-nav load-map {% if loop.index == "1" %}active{% endif %}" data-pane="{{location.cityName|replace(' ', '-')}}" data-group="subnav">{{location.cityName}}</a></h4>
