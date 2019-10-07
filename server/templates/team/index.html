@@ -5,7 +5,7 @@
 
 {% extends "_layouts/_layout" %}
 
-{% set teamMemberIdsOrder = [29] %}
+{% set teamMemberIdsOrder = [29, 1231, 1222, 1223, 1225, 1131, 977, 1224, 1227, 1228, 1229, 1230] %}
 {% set orderedTeamMemberIds = craft.entries.section('teamMember').id(teamMemberIdOrder).fixedOrder().ids() %}
 {% set otherTeamMemberIds = craft.entries.section('teamMember').id(['not']|merge(orderedTeamMemberIds)).ids() %}
 {% set teamMembers = craft.entries.section('teamMember').id(teamMemberIdsOrder|merge(otherTeamMemberIds)).fixedOrder(true).all() %}
