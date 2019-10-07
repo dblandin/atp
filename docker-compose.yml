@@ -12,6 +12,7 @@ services:
       - 8080:80
     volumes:
       - ./server/templates:/var/www/html/server/templates
+      - ./public:/var/www/html/public
 
     environment:
       REDIS_HOST: redis
