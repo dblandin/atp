@@ -1905,6 +1905,10 @@ strong {
   margin-top: 8px;
 }
 
+.toggle-year-filter,
+.toggle-company-filter {
+  max-width: 180px;
+}
 .toggle-year-filter a,
 .toggle-company-filter a {
   position: relative;
@@ -2190,9 +2194,6 @@ nav ul {
     margin-bottom: 40px;
   }
 
-  .contact-section .subnav-container {
-    min-height: 400px;
-  }
   .contact-section .subnav {
     width: 100%;
     margin-bottom: 40px;
@@ -2209,10 +2210,6 @@ nav ul {
   }
   .tablet-nav.hidden {
     display: none;
-  }
-
-  .subnav-container {
-    width: 33.3%;
   }
 
   .tablet-2-3 {
@@ -2385,6 +2382,7 @@ nav ul {
     width: 100%;
   }
   #team .overview-container, #portfolio .overview-container {
+    margin-bottom: 20px;
     width: 100%;
   }
 
@@ -2422,6 +2420,26 @@ nav ul {
     padding-bottom: 0 !important;
   }
   section.news-section .col-6-8 {
+    width: 100%;
+  }
+
+  section.contact-section {
+    margin-bottom: 20px;
+    padding-bottom: 0 !important;
+  }
+  section.contact-section .overview-container {
+    margin-top: 10px;
+  }
+  section.contact-section .subnav-container h4 {
+    font-weight: 500;
+  }
+  section.contact-section .subnav-container {
+    margin-top: 10px;
+    width: 100%;
+    border-top: 1px solid #D9D9D9;
+    padding-top: 10px;
+  }
+  section.contact-section .col-6-8 {
     width: 100%;
   }
 
