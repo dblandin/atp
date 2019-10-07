@@ -149,6 +149,9 @@
 		}
 	}
 	.partnership-section {
+		.container {
+			padding: 0;
+		}
 		.news-header {
 			width: 33.3%;
 		}
@@ -525,10 +528,6 @@
 
 	nav {
 		margin-bottom: 20px;
-
-		ul:first-child {
-			margin-bottom: 10px;
-		}
 	}
 
 	.approach-text {
