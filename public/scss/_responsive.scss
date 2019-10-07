@@ -148,15 +148,10 @@
 			width: 100%;
 		}
 	}
+
 	.partnership-section {
 		.container {
 			padding: 0;
-		}
-		.news-header {
-			width: 33.3%;
-		}
-		.partnership-carousel {
-			width: 66.6%;
 		}
 	}
 	#team, #portfolio {
@@ -289,9 +284,6 @@
 			margin-top: 10px;
 		}
 	}
-	#footer .links {
-		left: 20px;
-	}
 	#body section {
 		padding-top: 0px; // was 40 => 20
 		padding-bottom: 20px;
@@ -378,8 +370,7 @@
 		}
 	}
 	.partnership-section {
-		padding-top: 30px !important;
-		padding-bottom: 80px !important;
+		
 		.news-header {
 			width: 100%;
 			margin-bottom: 20px;
@@ -524,6 +515,14 @@
 		padding-bottom: 70px;
 		padding-top: 0px;
 		margin-bottom: 0;
+	}
+
+	#footer .container {
+		position: relative;
+		padding: 0;
+		margin-top: 20px;
+		left: 0;
+		bottom: 20px;
 	}
 
 	nav {

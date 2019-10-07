@@ -55,6 +55,14 @@ body {
 		}
 	}
 }
+
+#footer .container {
+	padding: 0;
+	position: absolute;
+	bottom: 20px;
+	left: 20px;
+}
+
 #footer {
 	.links {
 		color: $gray;
