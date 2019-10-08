@@ -156,6 +156,9 @@
 			border-bottom: 1px solid $light-gray;
 			padding: 10px 0;
 		}
+		.portfolio-list {
+			margin-bottom: 10px !important;
+		}
 		.subnav {
 			width: 100%;
 		}
@@ -536,6 +539,15 @@
 		margin-top: 20px;
 		left: 0;
 		bottom: 20px;
+	}
+
+	.copy-container {
+		min-height: 0;
+		margin-top: 10px !important;
+	}
+
+	.copy-subheader {
+		margin-top: 20px;
 	}
 
 	nav {

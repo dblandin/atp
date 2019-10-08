@@ -2157,6 +2157,9 @@ nav ul {
     border-bottom: 1px solid #D9D9D9;
     padding: 10px 0;
   }
+  #team .portfolio-list, #portfolio .portfolio-list {
+    margin-bottom: 10px !important;
+  }
   #team .subnav, #portfolio .subnav {
     width: 100%;
   }
@@ -2528,6 +2531,15 @@ nav ul {
     margin-top: 20px;
     left: 0;
     bottom: 20px;
+  }
+
+  .copy-container {
+    min-height: 0;
+    margin-top: 10px !important;
+  }
+
+  .copy-subheader {
+    margin-top: 20px;
   }
 
   nav {
