@@ -1883,11 +1883,7 @@ strong {
   box-shadow: inset 0px 0px 0px 14px black;
 }
 
-.news-item-title h4 {
-  padding: 20px 0;
-}
-
-.title-link h4 {
+.news-item-title h4, .title-link h4 {
   padding-top: 4px;
 }
 
