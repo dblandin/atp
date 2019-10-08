@@ -508,6 +508,15 @@
 		width: 100%;
 	}
 
+	#legal .container {
+		margin-top: 10px;
+		padding: 0;
+	}
+
+	#legal [class*=col-] {
+		padding: 0;
+	}
+
 	//////////////////////////////////////////////////////////////////////////////
 	// Hack fixes
 

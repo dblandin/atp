@@ -144,10 +144,14 @@ body {
 	}
 }
 
-.news-item-title {
-	font-size: 4vw;
-	line-height: 4vw;
+.news-item-title h4 {
+	padding: 20px 0;
 }
+
+.title-link h4 {
+	padding-top: 4px;
+}
+
 
 .load-more-container, .no-more-container {
 	margin-bottom: 10px;

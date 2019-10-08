@@ -15,18 +15,9 @@
 {% block content %}
 
 	<div id="legal" class="page-wrapper">
-
 		<section class="legal-section">
 			<div class="container">
 				<div class="grid">
-
-					<div class="subnav-container sticky col-2-8">
-						<h4 class="bold">About</h4>
-						<h4 class="bold"><a href="/about">Overview</a></h4>
-						<h4 class="bold"><a href="/press">Press</a></h4>
-						<h4 class="bold"><a href="/legal" class="active">Legal</a></h4>
-					</div>
-
 					<div class="overview-container col-6-8">
 						{% for copy in entry.legalCopy %}
 
@@ -37,6 +28,7 @@
 								</div>
 								<div class="col-2-3{% if loop.index > 1 %} margin-t-50{% endif %} no-first-p-top">
 									<p> {{ copy.legalCopy }} </p>
+
 									{% if copy.type == "legalLink" %}
 										<p> {{ copy.linkCopy }} </p>
 									{% endif %}
