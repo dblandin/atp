@@ -1784,6 +1784,10 @@ strong {
   background-color: #e5e5e5;
 }
 
+.partnership-carousel {
+  margin-top: 20px;
+}
+
 #footer .container {
   padding: 0;
   position: absolute;
@@ -1879,9 +1883,12 @@ strong {
   box-shadow: inset 0px 0px 0px 14px black;
 }
 
-.news-item-title {
-  font-size: 4vw;
-  line-height: 4vw;
+.news-item-title h4 {
+  padding: 20px 0;
+}
+
+.title-link h4 {
+  padding-top: 4px;
 }
 
 .load-more-container, .no-more-container {
@@ -2144,10 +2151,6 @@ nav ul {
     width: 100%;
   }
 
-  .partnership-section .container {
-    padding: 0;
-  }
-
   #team .team-list, #team .portfolio-list, #portfolio .team-list, #portfolio .portfolio-list {
     width: 100%;
     margin-bottom: 20px;
@@ -2348,14 +2351,6 @@ nav ul {
     width: 100%;
   }
 
-  .partnership-section .news-header {
-    width: 100%;
-    margin-bottom: 20px;
-  }
-  .partnership-section .partnership-carousel {
-    width: 100%;
-  }
-
   #footer .tablet-column {
     width: 100%;
   }
@@ -2506,6 +2501,15 @@ nav ul {
 
   nav.main-navigation {
     width: 100%;
+  }
+
+  #legal .container {
+    margin-top: 10px;
+    padding: 0;
+  }
+
+  #legal [class*=col-] {
+    padding: 0;
   }
 
   .margin-b-50-not-last {
