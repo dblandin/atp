@@ -25,9 +25,9 @@
 							{% set url = newsEntry.type.handle == 'link' ? newsEntry.linkUrl : newsEntry.url %}
 							<article class="{% if loop.index > 5 %}hidden{% endif %} active news-tile year-all company-all{% for tag in newsEntry.tags %} company-{{ tag.name |replace(' ', '-') }}{% endfor %} year-{{newsEntry.publishedDate | slice(0,4) }} row">
 
-								<div class="news-info margin-b-50">
+								<div class="news-info margin-b-20">
 									<div class="news-date bold">{{newsEntry.publishedDate | date("M d, Y")}}</div>
-									<a class="title-link" href="{{ url }}"><h3>{{ newsEntry.articleDisplayTitle }}</h3></a>
+									<a class="title-link" href="{{ url }}"><h4>{{ newsEntry.articleDisplayTitle }}</h4></a>
 								</div>
 
 							</article>

@@ -91,35 +91,6 @@
 				{% endblock %}
 				</div>
 				{% if craft.request.firstSegment == '' %}
-				<section class="partnership-section col-8-8">
-					<div class="container">
-						<div class="grid">
-							<div class="col-2-8">&nbsp;</div>
-							<div class="col-6-8 partnership-carousel">
-								<h4 class="bold news-header">Recent News</h4>
-								<ul class="carousel-items-container">
-									{% set news = entry.featurednewsitems.order('postDate desc') %}
-									{% for newsItem in news.limit(6) %}
-										<li class="carousel-item {% if loop.index == 1 %} active {% endif %}" data-id="{{loop.index - 1}}">
-											<div class="bold">{{newsItem.publishedDate | date("M d, Y")}}</div>
-											<a class="news-item-title" href="/news/{{newsItem.slug}}">
-												<p>{{newsItem.articleDisplayTitle}}</p>
-											</a>
-										</li>
-									{% endfor %}
-								</ul>
-								<div class="carousel-indicators">
-									<button class="active"></button>
-									<button></button>
-									<button></button>
-									<button></button>
-									<button></button>
-									<button></button>
-								</div>
-							</div>
-						</div>
-					</div>
-				</section>
 				<footer id="footer" class="col-8-8">
 					<div class="container">
 						<div class="links">
