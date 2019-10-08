@@ -1891,6 +1891,10 @@ strong {
   margin-bottom: 10px;
 }
 
+.copy-container {
+  min-height: 100px;
+}
+
 .press-container p:last-of-type {
   margin-bottom: 0;
 }

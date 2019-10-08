@@ -18,7 +18,7 @@
 		<section class="legal-section">
 			<div class="container">
 				<div class="grid">
-					<div class="overview-container col-6-8">
+					<div class="overview-container">
 						{% for copy in entry.legalCopy %}
 
 							{% if copy.type == "legalBody" %}
@@ -26,7 +26,7 @@
 									<h4> {{ copy.subheader }} </h4>
 
 								</div>
-								<div class="col-2-3{% if loop.index > 1 %} margin-t-50{% endif %} no-first-p-top">
+								<div class="copy-container col-2-3{% if loop.index > 1 %} margin-t-50{% endif %} no-first-p-top">
 									<p> {{ copy.legalCopy }} </p>
 
 									{% if copy.type == "legalLink" %}
