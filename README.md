@@ -63,3 +63,27 @@ In addition to what the `dev` command does, this should also generate minified a
 ```bash
 $ npm run build
 ```
+
+## Deployment
+
+Servers for staging and production environments run on Digital Ocean.
+
+DNS is managed via GoDaddy.
+
+Deployment is a bit rough at the moment. These are the common steps today:
+
+- SSH into one of these servers
+- `cd` to `/var/www/html`
+- Run `git status`. There might be some changes in the `server/storage` directory from CraftCMS.
+- Fetch code from GitHub
+- Reset to origin/master or whatever else you like: `git reset --hard origin/master`
+
+**Configuration**
+
+If you've updated any files that require a full server restart, run:
+
+```bash
+$ service apache2 restart
+```
+
+The current database password is set into the environment via the `cat /etc/apache2/envvars` file. See the `DB_PASSWORD` entry towards the bottom of the file. If you need to set any other environment variables, do so in this file.
