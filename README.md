@@ -1,57 +1,65 @@
-## Apple Tree Partners company website
+# Apple Tree Partners
 
-### Setup
+## Local Setup
 
-run all commands from the root of the project folder.
-```
-npm install
-```
+**Option 1: Run everything locally**
 
-### watch folders and live reload.
-```
-npm run dev
-```
+This repository has a copy of CraftCMS in its `server/` folder. This is a little strange. Usually CraftCMS and any required plugins are installed via Composer locally or on staging/production servers, but here we are.
 
-### deploy.
-```
-npm run deploy
-```
+You can use some of these resources to setup CraftCMS and all of its requirements locally:
 
-###Server
+https://docs.craftcms.com/v2/installing.html#additional-resources
 
-Use your own apache server (MAMP, WAMP, Osx Apache...).
+**Option 2: Use Docker & Docker Compose**
 
-There's 1 Vhost to setup:
+I preferred recently to use Docker and Docker Compose to spin up the server environment.
 
-```
-<VirtualHost atp.local:80>
+The Docker Compose setup uses three containers:
 
-    DocumentRoot "/Users/mathias/Documents/Projects/apple-tree-partners/public"
-    
-    ServerName atp.local
-    ServerAlias atp.local
+1. atp/app - Main application running CraftCMS, PHP, and Apache on Ubuntu
+2. mariadb - MySQL server
+3. redis - Redis server
 
-    <Directory "/Users/mathias/Documents/Projects/zocdoc-sickday/public">
-        Options FollowSymLinks
-        AllowOverride All
-        Order allow,deny
-        allow from all
-        SetEnv APPLICATION_ENV build
+To build, you can run `docker-compose build`.
 
-        DirectoryIndex index.php
-    </Directory>
-  
-</VirtualHost>
-```
+To run everything, you can run `docker-compose up` (you can use the `-d|--detach` flag to run in the background)
 
-And add this line to /etc/hosts
+**Restoring from a CraftCMS backup (using Docker approach)**
 
-```
-127.0.0.1 atp.local
+You can download a database backup from the CraftCMS admin section:
+
+https://www.appletreepartners.com/admin/settings
+
+Unzip the archive locally.
+
+With the mariadb container running (check `docker-compose ps`), you can run a new container, volume-mounting the database backup file, and restore to the running MySQL server.
+
+Enter the password `secret` (defined in the `docker-compose.yml` file) when prompted.
+
+After running the mysql command, use Ctrl+D to exit the container.
+
+```bash
+$ docker-compose up --detach mariadb
+$ docker-compose run --rm --volume ~/Downloads/path/to/backup.sql:/tmp/backup.sql mariadb /bin/bash
+root@<container>:/# mysql --host mariadb --user craft --password --database atp < /tmp/backup.sql
 ```
 
-Then, you can access :
+## Local Development
 
+Here are some common tasks you'll have to perform during development
+
+**Watch folders, compile JavaScript, Stylus, SCSS, and setup LiveReload**
+
+_Note from Devon 10/8/2019: I couldn't get Livereload to work /shrug_
+
+```bash
+$ npm run dev
 ```
-atp.local
+
+**Build generated files & JavaScript**
+
+In addition to what the `dev` command does, this should also generate minified assets and execute a full webpack build.
+
+```bash
+$ npm run build
 ```

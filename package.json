@@ -46,10 +46,10 @@
     "webpack-cli": "^3.3.9"
   },
   "scripts": {
-    "dev": "concurrently 'npm:watch:js' 'npm:watch:stylus' 'npm:livereload'",
+    "dev": "concurrently 'npm:watch:js' 'npm:watch:stylus' 'npm:livereload' 'sass --watch public/scss/main.scss:public/css/main.css'",
     "watch:js": "ENV_PROD=0 webpack --mode=development --progress --colors --watch --cache",
     "watch:stylus": "$(npm bin)/stylus -m -w ./src/styl/app.styl -o ./public/css/app.css --include-css",
-    "deploy": "npm run lint && concurrently 'npm:dist:stylus' 'npm:dist:js'",
+    "build": "npm run lint && concurrently 'npm:dist:stylus' 'npm:dist:js'",
     "dist:js": "ENV_PROD=1 webpack --mode=production",
     "dist:stylus": "$(npm bin)/stylus -u autoprefixer-stylus ./src/styl/app.styl -o ./public/css/app.min.css --include-css -c",
     "lint": "eslint ./src/scripts/project; exit 0",

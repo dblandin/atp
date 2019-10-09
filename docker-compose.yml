@@ -1,8 +1,8 @@
 version: '2.1'
 
 services:
-  craft:
-    image: atp
+  app:
+    image: atp/app
     build:
       context: .
     depends_on:
