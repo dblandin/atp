@@ -265,16 +265,43 @@ nav ul {
 	list-style-type: none;
 }
 
-#team, #portfolio {
+.nav-link h4 {
+	font-size: 24px;
+	line-height: 32px;
+	letter-spacing: 0px;
+}
+
+#team {
 	padding-top: 50px;
 }
 
-#team ul, #portfolio ul {
+#team ul {
 	list-style-type: none;
 	font-size: 22px;
 	line-height: 24px;
 
 	li {
 		margin-bottom: 8px;
+	}
+}
+
+.company-grid-item {
+	height: 200px;
+	max-width: 200px;
+	opacity: 0.7;
+	line-height: 200px;
+	-webkit-transition: opacity .1s ease-in;
+    -moz-transition: opacity .1s ease-in;
+    -o-transition: opacity .1s ease-in;
+    -ms-transition: opacity .1s ease-in;
+    transition: opacity .1s ease-in;
+
+	&:hover {
+		opacity: 1;
+	}
+
+	img {
+		max-width: 100%;
+		vertical-align: middle;
 	}
 }

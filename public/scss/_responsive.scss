@@ -150,14 +150,11 @@
 	}
 
 	#team, #portfolio {
-		.team-list, .portfolio-list {
+		.team-list {
 			width: 100%;
 			margin-bottom: 20px;
 			border-bottom: 1px solid $light-gray;
 			padding: 10px 0;
-		}
-		.portfolio-list {
-			margin-bottom: 10px !important;
 		}
 		.subnav {
 			width: 100%;
@@ -378,7 +375,7 @@
 	}
 	#team, #portfolio {
 		padding-top: 0;
-		.team-list, .portfolio-list {
+		.team-list {
 			width: 100%;
 			margin-bottom: 20px;
 			border-bottom: 1px solid $light-gray;
@@ -565,6 +562,16 @@
 
 	nav.main-navigation {
 	  margin-bottom: 0;
+	}
+
+	.company-grid-item {
+		max-width: none;
+		height: auto;
+		margin: 40px 20px;
+
+		img {
+			display: block;
+		}
 	}
 }
 

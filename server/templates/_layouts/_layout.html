@@ -116,9 +116,20 @@
 	<!-- End Google Analytics -->
 
 	<script type="text/javascript" src="/js/jquery.min.js"></script>
+	<script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
 	<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCXoQFbN_HfRuizfHOFbLOLeX-4C1mc1Yk"></script>
 	<script type="text/javascript" src="/js/siema.min.js"></script>
 	<script type="text/javascript" src="/js/main.js?v=2019-10-12"></script>
+	<script type="application/javascript">
+		$(function() {
+			$('.company-grid').masonry({
+				// options
+				itemSelector: '.company-grid-item',
+				columnWidth: 200,
+				gutter: 80
+			});
+		});
+		</script>
 
 </body>
 </html>
