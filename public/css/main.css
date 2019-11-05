@@ -2050,8 +2050,11 @@ nav ul {
 .company-grid-item {
   height: 200px;
   max-width: 200px;
-  opacity: 0.7;
+  display: block;
   line-height: 200px;
+  padding: 0 20px;
+  margin: 20px 0;
+  background-color: #d2d2d2;
   -webkit-transition: opacity 0.1s ease-in;
   -moz-transition: opacity 0.1s ease-in;
   -o-transition: opacity 0.1s ease-in;
@@ -2059,10 +2062,11 @@ nav ul {
   transition: opacity 0.1s ease-in;
 }
 .company-grid-item:hover {
-  opacity: 1;
+  background-color: #cecece;
 }
 .company-grid-item img {
   max-width: 100%;
+  text-align: center;
   vertical-align: middle;
 }
 
@@ -2582,11 +2586,7 @@ nav ul {
 
   .company-grid-item {
     max-width: none;
-    height: auto;
     margin: 40px 20px;
-  }
-  .company-grid-item img {
-    display: block;
   }
 }
 

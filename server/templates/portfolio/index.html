@@ -15,11 +15,9 @@
 				{% if companyLogo %}
 					{% set contact = company.companyContactMethods.first() %}
 					{% if contact and contact.companyWebsite %}
-					<div class="company-grid-item">
-						<a href="{{contact.companyWebsite}}">
-							<img src="{{company.companyLogo.first().url}}" />
-						</a>
-					</div>
+					<a class="company-grid-item" href="{{contact.companyWebsite}}">
+						<img src="{{company.companyLogo.first().url}}" />
+					</a>
 					{% endif %}
 				{% endif %}
 			{% endfor %}
